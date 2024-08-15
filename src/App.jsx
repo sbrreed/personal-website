@@ -83,10 +83,10 @@ function App() {
           </div>
         )}
         {page == "resume" && (
-          <a href="/2024_08_13_SReed_Resume.pdf" target="_blank">
+          <a href="/2024_08_15_SReed_Resume.pdf" target="_blank">
             <img
               className="resume"
-              src="/2024_08_13_SReed_Resume.jpg"
+              src="/2024_08_15_SReed_Resume.jpg"
               alt="Sarah Reed Resume"
             />
           </a>
