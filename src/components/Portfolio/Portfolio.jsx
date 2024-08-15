@@ -58,11 +58,25 @@ function Portfolio({ portfolioType, portfolioData }) {
           {selectedProject.ModalText != "Article" && (
             <div className="modal-description-image">
               <div className="modal-image-tech">
+                {selectedProject.ModalImageType == "Video" && (
+                  // The ModalImage has to be a vimeo link in this case.
+                  <iframe
+                    src={selectedProject.ModalImage}
+                    width="640"
+                    height="360"
+                    frameborder="0"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen
+                  ></iframe>
+                )}
                 <a href={selectedProject.LinkToProject} target="_blank">
-                  <img
-                    src={selectedProject.Thumbnail}
-                    alt={selectedProject.Title}
-                  />
+                  {selectedProject.ModalImageType == "Image" && (
+                    <img
+                      src={selectedProject.ModalImage}
+                      alt={selectedProject.Title}
+                    />
+                  )}
                 </a>
                 {portfolioType == "DataViz" && (
                   <div className="modal-technologies">
