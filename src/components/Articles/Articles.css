@@ -17,6 +17,10 @@
   width: 30%;
 }
 
+.article-image.medium img {
+  width: 50%;
+}
+
 .multi-paragraph-section p {
   margin-top: 25px;
 }

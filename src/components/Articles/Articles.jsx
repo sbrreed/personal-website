@@ -225,6 +225,97 @@ function Articles({ topic }) {
           </div>
         </div>
       )}
+      {topic == "Makeover Monday - Fashion" && (
+        <div className="article">
+          <div className="multi-paragraph-section">
+            <p>
+              I came upon the data graphic “A Subjective Look at this Issue’s
+              Fashion Stories” in the The New York Times Style Magazine. As an
+              information visualizer I was intrigued by the piece. It was
+              visually beautiful but contained some fundamental data graphic
+              issues.
+            </p>
+            <p>
+              Here's the{" "}
+              <a
+                href="https://www.nytimes.com/2018/08/15/t-magazine/fall-womens-fashion-editors-letter.html?action=click&module=RelatedLinks&pgtype=Article"
+                target="_blank"
+              >
+                original piece
+              </a>
+              . The piece is intended to chart the frequency of the various
+              categories in four photo shoots throughout the magazine. The
+              categories (listed in the legend) are somewhat arbitrary, as far
+              as I can tell, and maybe meant to be a bit silly.
+            </p>
+          </div>
+          <div className="article-image medium center">
+            <img
+              src="/DataViz/fashion_graphic/fashion_originalGraphic.jpg"
+              alt="Original graphic from NY Times Style Magazine"
+            />
+          </div>
+          <div className="multi-paragraph-section">
+            <p>
+              This piece is visually beautiful but I found it had some problems.
+              First, some categories are repeated in the legend (although they
+              do at least retain the same color mapping). I also found it hard
+              to visually track the frequency of the various categories because
+              the colors were so similar and I had to keep looking up and down
+              the to the legend, which was extensive.
+            </p>
+            <p>
+              For this week's Makeover Monday I chose to re-imagine this graphic
+              to fix some of these issues and just to play with the data. I
+              started by going through the four photo shoots and cataloging for
+              myself the number of instances of each of the categories they had
+              chosen. I'm, admittedly, not a fashion expert so I may have gotten
+              some of the numbers wrong (ex/ what, exactly is Tweed?). I made my
+              best guesses.
+            </p>
+            <p>
+              I then calculated the percent of occurrence in each photo-shoot
+              because they didn't have the same number of photos. For example,
+              the first shoot, Born Free, had 4 images whereas the Shape of
+              Things shoot had 12.
+            </p>
+            <p>
+              I opted for a stacked area chart for this one. It's pretty and I
+              think it illustrates a bit more clearly which categories are
+              represented the most and in which shoots. The color palette was
+              chosen from the cover image of the magazine using
+              <a href="https://imagecolorpicker.com/" target="_blank">
+                colorpicker.com
+              </a>
+              . The cover photo can be found
+              <a
+                href="https://www.instagram.com/p/Bmf09ujgMPd/?taken-by=hanyayanagihara"
+                target="_blank"
+              >
+                here
+              </a>
+            </p>
+          </div>
+          <div className="article-image center">
+            <img
+              src="/DataViz/fashion_graphic/fashion_areaMap_wLegend.png"
+              alt="Makeover of the NY Times Style Magazine graphic into an area map"
+            />
+          </div>
+          <p>
+            I was so excited about this version that I wanted to try another. In
+            this case I abandoned the percentages and went for raw number of
+            instances. I love radar charts and this seemed like a good use of it
+            as, I find, they are beautiful but also readable.
+          </p>
+          <div className="article-image medium center">
+            <img
+              src="/DataViz/fashion_graphic/fashion_radar_grey.png"
+              alt="Makeover of the NY Times Style Magazine graphic into a radar chart"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
