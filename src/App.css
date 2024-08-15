@@ -1,0 +1,57 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+a {
+  color: #6e57a4;
+}
+
+a:hover {
+  color: #47386b;
+}
+
+a:visited {
+  color: #5671a3;
+}
+
+.homePageContent {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 5% 0 5%;
+  gap: 30px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+@media (max-width: 700px) {
+  .homePageContent {
+    font-size: 1.25rem;
+  }
+}
+
+.homeTextQuestion {
+  font-weight: 400;
+  color: #6e57a4;
+}
+
+.introduction p {
+  margin-top: 20px;
+}
+
+.profilePicture {
+  width: 30%;
+  height: auto;
+  margin: auto;
+  border: 2px solid black;
+}
+
+.resume {
+  width: 100%;
+}
+
+.no-scroll {
+  overflow: hidden;
+}

@@ -1,0 +1,28 @@
+.article {
+  padding-bottom: 3rem;
+  font-size: 1.25rem;
+  line-height: 1.7rem;
+}
+
+.article-image img {
+  width: 70%;
+  margin: 15px auto;
+}
+
+.article-image.center {
+  display: flex;
+  justify-content: center;
+}
+.article-image.small img {
+  width: 30%;
+}
+
+.multi-paragraph-section p {
+  margin-top: 25px;
+}
+
+.flourish-iframe {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 90%;
+}

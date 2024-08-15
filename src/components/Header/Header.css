@@ -1,0 +1,54 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: max-content;
+  padding: 20px 13%;
+}
+
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+  }
+}
+
+header p {
+  margin: 5px;
+}
+
+.nameTag button {
+  font-family: "Snell Roundhand", cursive;
+  font-size: 5rem;
+  background-color: transparent;
+  border: none;
+  color: #4b4a4a;
+
+  @media (max-width: 700px) {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+
+.header-navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 35px;
+  height: max-content;
+  /* padding: 20px 40px; */
+}
+
+.header-navBar button {
+  font-size: 1.5rem;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-family: "Cinzel", serif;
+  font-weight: 200;
+  color: #4b4a4a;
+}
+
+.header-navBar button.active {
+  border-bottom: 3px solid #ffd100;
+}

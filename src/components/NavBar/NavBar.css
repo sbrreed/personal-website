@@ -1,0 +1,36 @@
+.portfolio-navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: max-content;
+  padding: 10px;
+  background-color: #6e57a4;
+  margin-bottom: 1rem;
+}
+
+.portfolio-navBar-content {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin: auto;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.portfolio-navBar button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-size: 1.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.portfolio-navBar button.active {
+  outline: 1px solid #ffd100;
+  padding: 6px;
+  background-color: #8d8c8c;
+  color: white;
+}

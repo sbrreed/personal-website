@@ -1,0 +1,19 @@
+@import "./components/Header/Header.css";
+@import "./components/NavBar/NavBar.css";
+@import "./components/Portfolio/Portfolio.css";
+@import "./components/Modal/Modal.css";
+@import "./components/Footer/Footer.css";
+@import "./components/Articles/Articles.css";
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}

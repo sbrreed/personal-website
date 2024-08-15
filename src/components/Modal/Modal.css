@@ -1,0 +1,97 @@
+.modal {
+  z-index: 1000;
+  position: fixed;
+  width: 80vw;
+  max-height: 80%;
+  top: 10vh;
+  left: 10vw;
+  animation: fadeIn 1s ease-in-out;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px 0 #ccc;
+  border: 2px solid black;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn50 {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ccc;
+  opacity: 0.5;
+  animation: fadeIn50 0.5s ease-in-out;
+}
+
+.modal-closeButton {
+  position: absolute;
+  left: 13px;
+  top: 0;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.modal-content {
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  padding: 5%;
+  gap: 30px;
+  overflow-y: auto;
+  max-height: 50%;
+  @media (max-width: 700px) {
+    gap: 0px;
+    margin-top: 10px;
+  }
+}
+
+.modal-description-image {
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+  gap: 20px;
+  align-items: start;
+  @media (max-width: 700px) {
+    grid-template-columns: none;
+    grid-template-rows: 1fr max-content;
+    gap: 0px;
+  }
+}
+
+.modal-description-image img {
+  border: 1px solid black;
+  @media (max-width: 700px) {
+    width: 70%;
+    height: auto;
+    margin: auto;
+  }
+}
+
+.modal-description p {
+  margin-top: 10px;
+}
+
+.modal-technologies {
+  margin-top: 10px;
+}
