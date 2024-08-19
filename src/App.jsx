@@ -58,11 +58,11 @@ function App() {
                   love for learning and building.{" "}
                 </p>
                 <p>
-                  My career has been a series of problems to solve - guided by
+                  My career, in it's many iterations, has always been guided by
                   the question:{" "}
                   <span className="homeTextQuestion">
-                    What are the tools and resources we have to achieve our
-                    goals?
+                    How can the tools and resources my clients and I have be
+                    used to achieve our goals?
                   </span>
                 </p>
                 <p>
