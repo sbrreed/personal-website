@@ -36,7 +36,6 @@ header p {
   justify-content: space-between;
   gap: 35px;
   height: max-content;
-  /* padding: 20px 40px; */
 }
 
 .header-navBar button {
