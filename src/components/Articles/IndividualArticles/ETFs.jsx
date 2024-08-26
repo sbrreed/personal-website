@@ -110,12 +110,20 @@ function ETFs({ data }) {
       {graphic1Type === "table" && (
         <>
           <div className="button-wrapper">
-            <button onClick={() => handleTableCollapse("close", "table1")}>
-              Collapse Table
-            </button>
-            <button onClick={() => handleTableCollapse("open", "table1")}>
-              Expand Table
-            </button>
+            <div className="expand-collapse-buttons">
+              <button
+                className="small-button"
+                onClick={() => handleTableCollapse("close", "table1")}
+              >
+                Collapse Table
+              </button>
+              <button
+                className="small-button"
+                onClick={() => handleTableCollapse("open", "table1")}
+              >
+                Expand Table
+              </button>
+            </div>
           </div>
           <div className="table-wrapper">
             <table id="table1">
@@ -198,12 +206,20 @@ function ETFs({ data }) {
         </p>
       </div>
       <div className="button-wrapper">
-        <button onClick={() => handleTableCollapse("close", "table2")}>
-          Collapse Table
-        </button>
-        <button onClick={() => handleTableCollapse("open", "table2")}>
-          Expand Table
-        </button>
+        <div className="expand-collapse-buttons">
+          <button
+            className="small-button"
+            onClick={() => handleTableCollapse("close", "table2")}
+          >
+            Collapse Table
+          </button>
+          <button
+            className="small-button"
+            onClick={() => handleTableCollapse("open", "table2")}
+          >
+            Expand Table
+          </button>
+        </div>
       </div>
       <div className="table-wrapper">
         <table>
@@ -307,15 +323,25 @@ function ETFs({ data }) {
         </p>
       </div>
       <h3>Randomized Share Numbers</h3>
-      <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
-        Randomize
-      </button>
-      <button onClick={() => handleTableCollapse("close", "table3")}>
-        Collapse Table
-      </button>
-      <button onClick={() => handleTableCollapse("open", "table3")}>
-        Expand Table
-      </button>{" "}
+      <div className="button-wrapper">
+        <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
+          Randomize
+        </button>
+        <div className="expand-collapse-buttons">
+          <button
+            className="small-button"
+            onClick={() => handleTableCollapse("close", "table3")}
+          >
+            Collapse Table
+          </button>
+          <button
+            className="small-button"
+            onClick={() => handleTableCollapse("open", "table3")}
+          >
+            Expand Table
+          </button>
+        </div>
+      </div>
       <div className="table-wrapper">
         <table>
           <thead>
@@ -437,12 +463,20 @@ function ETFs({ data }) {
         <button id="randomize" onClick={() => handleRandomize2ButtonClick()}>
           Randomize
         </button>
-        <button onClick={() => handleTableCollapse("close", "table4")}>
-          Collapse Table
-        </button>
-        <button onClick={() => handleTableCollapse("open", "table4")}>
-          Expand Table
-        </button>
+        <div className="expand-collapse-buttons">
+          <button
+            className="small-button"
+            onClick={() => handleTableCollapse("close", "table4")}
+          >
+            Collapse Table
+          </button>
+          <button
+            className="small-button"
+            onClick={() => handleTableCollapse("open", "table4")}
+          >
+            Expand Table
+          </button>
+        </div>
       </div>
       <div className="table-wrapper">
         <table>

@@ -122,6 +122,29 @@ td.last-td-negative {
   color: red;
 }
 
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  align-items: start;
+  @media (max-width: 700px) {
+    width: unset;
+  }
+}
+
+.expand-collapse-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 10px 0;
+  @media (max-width: 700px) {
+    justify-content: unset;
+    margin: 0;
+    gap: 0;
+  }
+}
+
 .article button {
   background-color: #6e57a4;
   color: white;
@@ -129,12 +152,23 @@ td.last-td-negative {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin: 10px;
+  margin-right: 10px; /* margin: 10px; */
   font-size: 1.3rem;
   @media (max-width: 700px) {
     font-size: 0.9rem;
     line-height: normal;
-    max-width: 30%;
+    margin: 3px;
+    padding: 5px;
+  }
+}
+
+.article button.small-button {
+  font-size: 1rem;
+  padding: 5px 10px;
+  margin: 5px 0;
+  @media (max-width: 700px) {
+    font-size: 0.7rem;
+    line-height: normal;
     margin: 3px;
     padding: 5px;
   }
