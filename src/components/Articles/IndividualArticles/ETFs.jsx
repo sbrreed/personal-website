@@ -20,6 +20,9 @@ function ETFs({ data }) {
 
   const [graphic1Type, setGraphic1Type] = useState("chart");
   const [table1CollapseState, setTable1CollapseState] = useState("close");
+  const [table2CollapseState, setTable2CollapseState] = useState("close");
+  const [table3CollapseState, setTable3CollapseState] = useState("close");
+  const [table4CollapseState, setTable4CollapseState] = useState("close");
 
   const handleGraphic1ButtonClick = (type) => {
     setGraphic1Type(type);
@@ -30,8 +33,12 @@ function ETFs({ data }) {
   const handleRandomize2ButtonClick = () => {
     setRandomSarahData(getRandomizedData(sarahData));
   };
+
   const handleTableCollapse = (state, table) => {
-    table == "table2" && setTable1CollapseState(state);
+    table == "table1" && setTable1CollapseState(state);
+    table == "table2" && setTable2CollapseState(state);
+    table == "table3" && setTable3CollapseState(state);
+    table == "table4" && setTable4CollapseState(state);
   };
 
   return (
@@ -100,33 +107,76 @@ function ETFs({ data }) {
           Chart
         </button>
       </div>
-      {graphic1Type === "table" &&
-        {
-          /* <table id="table1">
-          <thead>
-            <tr>
-              <th>Stock Name</th>
-              <th>Symbol</th>
-              <th>Price on 12/31/21 ($)</th>
-              <th>Price on 08/21/24 ($)</th>
-              <th>Difference in Prices ($)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {micaData.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td>{item.Name}</td>
-                  <td>{item.Symbol}</td>
-                  <td>{item.Price_12_31_21}</td>
-                  <td>{item.Price_08_21_24}</td>
-                  <td>{item.Difference_in_Prices}</td>
+      {graphic1Type === "table" && (
+        <>
+          <div className="button-wrapper">
+            <button onClick={() => handleTableCollapse("close", "table1")}>
+              Collapse Table
+            </button>
+            <button onClick={() => handleTableCollapse("open", "table1")}>
+              Expand Table
+            </button>
+          </div>
+          <div className="table-wrapper">
+            <table id="table1">
+              <thead>
+                <tr>
+                  <th>Stock Name</th>
+                  <th>Symbol</th>
+                  <th>Price on 12/31/21 ($)</th>
+                  <th>Price on 08/21/24 ($)</th>
+                  <th>Difference in Prices ($)</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table> */
-        }}
+              </thead>
+              <tbody>
+                {table1CollapseState == "open" &&
+                  micaData.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{item.Name}</td>
+                        <td>{item.Symbol}</td>
+                        <td>{item.Price_12_31_21}</td>
+                        <td>{item.Price_08_21_24}</td>
+                        <td>{item.Difference_in_Prices}</td>
+                      </tr>
+                    );
+                  })}
+                {table1CollapseState == "close" && (
+                  <tr className="totalOnly">
+                    <td>
+                      {micaData_withTotals[micaData_withTotals.length - 1].Name}
+                    </td>
+                    <td>
+                      {
+                        micaData_withTotals[micaData_withTotals.length - 1]
+                          .Symbol
+                      }
+                    </td>
+                    <td>
+                      {
+                        micaData_withTotals[micaData_withTotals.length - 1]
+                          .Price_12_31_21
+                      }
+                    </td>
+                    <td>
+                      {
+                        micaData_withTotals[micaData_withTotals.length - 1]
+                          .Price_08_21_24
+                      }
+                    </td>
+                    <td>
+                      {
+                        micaData_withTotals[micaData_withTotals.length - 1]
+                          .Difference_in_Prices
+                      }
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
       {graphic1Type === "chart" && (
         <div className="flourish-iframe">
           <iframe
@@ -147,7 +197,15 @@ function ETFs({ data }) {
           total value.
         </p>
       </div>
-      <div className="table">
+      <div className="button-wrapper">
+        <button onClick={() => handleTableCollapse("close", "table2")}>
+          Collapse Table
+        </button>
+        <button onClick={() => handleTableCollapse("open", "table2")}>
+          Expand Table
+        </button>
+      </div>
+      <div className="table-wrapper">
         <table>
           <thead>
             <tr>
@@ -161,39 +219,79 @@ function ETFs({ data }) {
             </tr>
           </thead>
           <tbody>
-            {micaData_withTotals.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td>{item.Name}</td>
-                  <td>{item.Symbol}</td>
-                  <td>{item.NumberofShares}</td>
-                  <td>{item.Price_12_31_21}</td>
-                  <td>{item.Price_08_21_24}</td>
-                  <td>{item.Difference_in_Prices}</td>
-                  <td
-                    className={
-                      index == micaData_withTotals.length - 1 &&
-                      item.Diff_Times_Mult < 0
-                        ? "last-td-negative"
-                        : ""
-                    }
-                  >
-                    {item.Diff_Times_Mult}
-                  </td>
-                </tr>
-              );
-            })}
+            {table2CollapseState == "open" &&
+              micaData_withTotals.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{item.Name}</td>
+                    <td>{item.Symbol}</td>
+                    <td>{item.NumberofShares}</td>
+                    <td>{item.Price_12_31_21}</td>
+                    <td>{item.Price_08_21_24}</td>
+                    <td>{item.Difference_in_Prices}</td>
+                    <td
+                      className={
+                        index == micaData_withTotals.length - 1 &&
+                        item.Diff_Times_Mult < 0
+                          ? "last-td-negative"
+                          : ""
+                      }
+                    >
+                      {item.Diff_Times_Mult}
+                    </td>
+                  </tr>
+                );
+              })}
+            {table2CollapseState == "close" && (
+              <tr className="totalOnly">
+                <td>
+                  {micaData_withTotals[micaData_withTotals.length - 1].Name}
+                </td>
+                <td>
+                  {micaData_withTotals[micaData_withTotals.length - 1].Symbol}
+                </td>
+                <td>
+                  {
+                    micaData_withTotals[micaData_withTotals.length - 1]
+                      .NumberofShares
+                  }
+                </td>
+                <td>
+                  {
+                    micaData_withTotals[micaData_withTotals.length - 1]
+                      .Price_12_31_21
+                  }
+                </td>
+                <td>
+                  {
+                    micaData_withTotals[micaData_withTotals.length - 1]
+                      .Price_08_21_24
+                  }
+                </td>
+                <td>
+                  {
+                    micaData_withTotals[micaData_withTotals.length - 1]
+                      .Difference_in_Prices
+                  }
+                </td>
+                <td
+                  className={
+                    micaData_withTotals[micaData_withTotals.length - 1]
+                      .Diff_Times_Mult < 0
+                      ? "last-td-negative"
+                      : ""
+                  }
+                >
+                  {
+                    micaData_withTotals[micaData_withTotals.length - 1]
+                      .Diff_Times_Mult
+                  }
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
-      {/* <div className="flourish-iframe" id="mica_table_with_shareNums">
-        <iframe
-          src="https://flo.uri.sh/visualisation/19155326/embed"
-          title="Interactive or visual content"
-          style={{ width: "100%", height: "600px", border: "0" }}
-          sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
-        ></iframe>
-      </div> */}
       <div className="multi-paragraph-section">
         <p>
           We can see that the Tesla stocks have taken a big loss and Mica has a
@@ -212,69 +310,71 @@ function ETFs({ data }) {
       <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
         Randomize
       </button>
-      <button onClick={() => handleTableCollapse("close", "table2")}>
+      <button onClick={() => handleTableCollapse("close", "table3")}>
         Collapse Table
       </button>
-      <button onClick={() => handleTableCollapse("open", "table2")}>
+      <button onClick={() => handleTableCollapse("open", "table3")}>
         Expand Table
       </button>{" "}
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Stock Name</th>
-            <th>Symbol</th>
-            <th>Number of Shares</th>
-            <th>Price on 12/31/21($)</th>
-            <th>Price on 08/21/24($)</th>
-            <th>Difference in Prices($)</th>
-            <th>Difference * Number of Shares($) </th>
-          </tr>
-        </thead>
-        <tbody>
-          {table1CollapseState == "open" &&
-            randomMicaData.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td>{item.Name}</td>
-                  <td>{item.Symbol}</td>
-                  <td>{item.NumberofShares}</td>
-                  <td>{item.Price_12_31_21}</td>
-                  <td>{item.Price_08_21_24}</td>
-                  <td>{item.Difference_in_Prices}</td>
-                  <td
-                    className={
-                      index == randomMicaData.length - 1 &&
-                      item.Diff_Times_Mult < 0
-                        ? "last-td-negative"
-                        : ""
-                    }
-                  >
-                    {item.Diff_Times_Mult}
-                  </td>
-                </tr>
-              );
-            })}
-          {table1CollapseState == "close" && (
-            <tr className="totalOnly">
-              <td>{randomMicaDataTotalOnly.Name}</td>
-              <td>{randomMicaDataTotalOnly.Symbol}</td>
-              <td>{randomMicaDataTotalOnly.NumberofShares}</td>
-              <td>{randomMicaDataTotalOnly.Price_12_31_21}</td>
-              <td>{randomMicaDataTotalOnly.Price_08_21_24}</td>
-              <td>{randomMicaDataTotalOnly.Difference_in_Prices}</td>
-              <td
-                className={
-                  randomMicaDataTotalOnly.Diff_Times_Mult < 0
-                    ? "last-td-negative"
-                    : ""
-                }
-              >
-                {randomMicaDataTotalOnly.Diff_Times_Mult}
-              </td>
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Stock Name</th>
+              <th>Symbol</th>
+              <th>Number of Shares</th>
+              <th>Price on 12/31/21($)</th>
+              <th>Price on 08/21/24($)</th>
+              <th>Difference in Prices($)</th>
+              <th>Difference * Number of Shares($) </th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {table3CollapseState == "open" &&
+              randomMicaData.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{item.Name}</td>
+                    <td>{item.Symbol}</td>
+                    <td>{item.NumberofShares}</td>
+                    <td>{item.Price_12_31_21}</td>
+                    <td>{item.Price_08_21_24}</td>
+                    <td>{item.Difference_in_Prices}</td>
+                    <td
+                      className={
+                        index == randomMicaData.length - 1 &&
+                        item.Diff_Times_Mult < 0
+                          ? "last-td-negative"
+                          : ""
+                      }
+                    >
+                      {item.Diff_Times_Mult}
+                    </td>
+                  </tr>
+                );
+              })}
+            {table3CollapseState == "close" && (
+              <tr className="totalOnly">
+                <td>{randomMicaDataTotalOnly.Name}</td>
+                <td>{randomMicaDataTotalOnly.Symbol}</td>
+                <td>{randomMicaDataTotalOnly.NumberofShares}</td>
+                <td>{randomMicaDataTotalOnly.Price_12_31_21}</td>
+                <td>{randomMicaDataTotalOnly.Price_08_21_24}</td>
+                <td>{randomMicaDataTotalOnly.Difference_in_Prices}</td>
+                <td
+                  className={
+                    randomMicaDataTotalOnly.Diff_Times_Mult < 0
+                      ? "last-td-negative"
+                      : ""
+                  }
+                >
+                  {randomMicaDataTotalOnly.Diff_Times_Mult}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
       <div className="multi-paragraph-section">
         <p>
           Clicking the Randomize button, I noticed that the total value was
@@ -333,46 +433,88 @@ function ETFs({ data }) {
         </p>
       </div>
       <h3>Randomized Share Numbers</h3>
-      <button id="randomize" onClick={() => handleRandomize2ButtonClick()}>
-        Randomize
-      </button>
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Stock Name</th>
-            <th>Symbol</th>
-            <th>Number of Shares</th>
-            <th>Price on 12/31/21 ($)</th>
-            <th>Price on 08/21/24 ($)</th>
-            <th>Difference in Prices ($)</th>
-            <th>Difference * Number of Shares ($) </th>
-          </tr>
-        </thead>
-        <tbody>
-          {randomSarahData.map((item, index) => {
-            return (
-              <tr key={index}>
-                <td>{item.Name}</td>
-                <td>{item.Symbol}</td>
-                <td>{item.NumberofShares}</td>
-                <td>{item.Price_12_31_21}</td>
-                <td>{item.Price_08_21_24}</td>
-                <td>{item.Difference_in_Prices}</td>
+      <div className="button-wrapper">
+        <button id="randomize" onClick={() => handleRandomize2ButtonClick()}>
+          Randomize
+        </button>
+        <button onClick={() => handleTableCollapse("close", "table4")}>
+          Collapse Table
+        </button>
+        <button onClick={() => handleTableCollapse("open", "table4")}>
+          Expand Table
+        </button>
+      </div>
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Stock Name</th>
+              <th>Symbol</th>
+              <th>Number of Shares</th>
+              <th>Price on 12/31/21 ($)</th>
+              <th>Price on 08/21/24 ($)</th>
+              <th>Difference in Prices ($)</th>
+              <th>Difference * Number of Shares ($) </th>
+            </tr>
+          </thead>
+          <tbody>
+            {table4CollapseState == "open" &&
+              randomSarahData.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{item.Name}</td>
+                    <td>{item.Symbol}</td>
+                    <td>{item.NumberofShares}</td>
+                    <td>{item.Price_12_31_21}</td>
+                    <td>{item.Price_08_21_24}</td>
+                    <td>{item.Difference_in_Prices}</td>
+                    <td
+                      className={
+                        index == randomSarahData.length - 1 &&
+                        item.Diff_Times_Mult < 0
+                          ? "last-td-negative"
+                          : ""
+                      }
+                    >
+                      {item.Diff_Times_Mult}
+                    </td>
+                  </tr>
+                );
+              })}
+            {table4CollapseState == "close" && (
+              <tr className="totalOnly">
+                <td>{randomSarahData[randomSarahData.length - 1].Name}</td>
+                <td>{randomSarahData[randomSarahData.length - 1].Symbol}</td>
+                <td>
+                  {randomSarahData[randomSarahData.length - 1].NumberofShares}
+                </td>
+                <td>
+                  {randomSarahData[randomSarahData.length - 1].Price_12_31_21}
+                </td>
+                <td>
+                  {randomSarahData[randomSarahData.length - 1].Price_08_21_24}
+                </td>
+                <td>
+                  {
+                    randomSarahData[randomSarahData.length - 1]
+                      .Difference_in_Prices
+                  }
+                </td>
                 <td
                   className={
-                    index == randomSarahData.length - 1 &&
-                    item.Diff_Times_Mult < 0
+                    randomSarahData[randomSarahData.length - 1]
+                      .Diff_Times_Mult < 0
                       ? "last-td-negative"
                       : ""
                   }
                 >
-                  {item.Diff_Times_Mult}
+                  {randomSarahData[randomSarahData.length - 1].Diff_Times_Mult}
                 </td>
               </tr>
-            );
-          })}
-        </tbody>
-      </table> */}
+            )}
+          </tbody>
+        </table>
+      </div>
       <div className="multi-paragraph-section">
         <p>
           This is all about spreading risk. While there are combinations of
