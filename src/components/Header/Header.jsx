@@ -1,41 +1,47 @@
 import { useState } from "react";
-
-function Header({ setPage }) {
-  const [active, setActive] = useState("home");
-  function handleButtonClick(page) {
-    setPage(page);
-    setActive(page);
-  }
+import { NavLink } from "react-router-dom";
+function Header() {
+  // const [active, setActive] = useState("home");
+  // function handleButtonClick(page) {
+  //   setPage(page);
+  //   setActive(page);
+  // }
   return (
     <header className="App-header">
       <div className="nameTag">
-        <button id="header-nameTag" onClick={() => handleButtonClick("home")}>
+        <NavLink id="header-nameTag" to="/">
           {" "}
           Sarah Reed{" "}
-        </button>
+        </NavLink>
       </div>
       <div className="header-navBar">
-        <button
+        <NavLink
           id="header-navBar-home"
-          onClick={() => handleButtonClick("home")}
-          className={active == "home" ? "active" : ""}
+          to={"/"}
+          className={({ isActive, isPending }) =>
+            isActive ? "active" : isPending ? "pending" : ""
+          }
         >
           HOME
-        </button>
-        <button
+        </NavLink>
+        <NavLink
           id="header-navBar-portfolio"
-          onClick={() => handleButtonClick("portfolio")}
-          className={active == "portfolio" ? "active" : ""}
+          to={"/portfolio/DataViz"}
+          className={({ isActive, isPending }) =>
+            isActive ? "active" : isPending ? "pending" : ""
+          }
         >
           PORTFOLIO
-        </button>
-        <button
+        </NavLink>
+        <NavLink
           id="header-navBar-resume"
-          onClick={() => handleButtonClick("resume")}
-          className={active == "resume" ? "active" : ""}
+          to={"/resume"}
+          className={({ isActive, isPending }) =>
+            isActive ? "active" : isPending ? "pending" : ""
+          }
         >
           RESUME
-        </button>
+        </NavLink>
       </div>
     </header>
   );

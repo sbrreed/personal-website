@@ -17,12 +17,13 @@ header p {
   margin: 5px;
 }
 
-.nameTag button {
+.nameTag a {
   font-family: "Snell Roundhand", cursive;
   font-size: 5rem;
   background-color: transparent;
   border: none;
   color: #4b4a4a;
+  text-decoration: none;
 
   @media (max-width: 700px) {
     font-size: 4rem;
@@ -38,7 +39,7 @@ header p {
   height: max-content;
 }
 
-.header-navBar button {
+.header-navBar a {
   font-size: 1.5rem;
   border: none;
   padding: 0;
@@ -46,8 +47,9 @@ header p {
   font-family: "Cinzel", serif;
   font-weight: 200;
   color: #4b4a4a;
+  text-decoration: none;
 }
 
-.header-navBar button.active {
+.header-navBar a.active {
   border-bottom: 3px solid #ffd100;
 }

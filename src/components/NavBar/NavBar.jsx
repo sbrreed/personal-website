@@ -1,38 +1,36 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-function NavBar({ setPortfolioType, portfolioType }) {
-  const [activeButton, setActiveButton] = useState(null);
-  if (!activeButton) setActiveButton(portfolioType);
-
-  const handleButtonClick = (type) => {
-    setPortfolioType(type);
-    setActiveButton(type);
-  };
-
+function NavBar() {
   return (
     <div className="portfolio-navBar">
       <div className="portfolio-navBar-content">
-        <button
+        <NavLink
           id="portfolio-navBar-dataViz"
-          onClick={() => handleButtonClick("DataViz")}
-          className={activeButton === "DataViz" ? "active" : ""}
+          to="/portfolio/DataViz"
+          className={({ isActive, isPending }) =>
+            isActive ? "active" : isPending ? "pending" : ""
+          }
         >
           Data Visualization
-        </button>
-        <button
+        </NavLink>
+        <NavLink
           id="portfolio-navBar-mechEng"
-          onClick={() => handleButtonClick("MechEng")}
-          className={activeButton === "MechEng" ? "active" : ""}
+          to="/portfolio/MechEng"
+          className={({ isActive, isPending }) =>
+            isActive ? "active" : isPending ? "pending" : ""
+          }
         >
           Mechanical Engineering
-        </button>
-        <button
+        </NavLink>
+        <NavLink
           id="portfolio-navBar-wood"
-          onClick={() => handleButtonClick("Wood")}
-          className={activeButton === "Wood" ? "active" : ""}
+          to="/portfolio/Wood"
+          className={({ isActive, isPending }) =>
+            isActive ? "active" : isPending ? "pending" : ""
+          }
         >
           Wood
-        </button>
+        </NavLink>
       </div>
     </div>
   );

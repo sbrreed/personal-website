@@ -9,10 +9,10 @@ function Footer() {
           </p>
           <div className="links">
             <a href="https://github.com/sbrreed/" target="_blank">
-              <img src="github-mark.png"></img>
+              <img src="/github-mark.png"></img>
             </a>
             <a href="https://www.linkedin.com/in/sarahbrreed/" target="_blank">
-              <img src="In-Blue-128.png"></img>
+              <img src="/In-Blue-128.png"></img>
             </a>
           </div>
         </div>
