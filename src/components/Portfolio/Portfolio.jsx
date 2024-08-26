@@ -51,9 +51,12 @@ function Portfolio({ portfolioType, portfolioData }) {
       </div>
       {modalIsOpen && selectedProject && portfolioType != "Wood" && (
         <Modal onClose={closeModal}>
-          <h2>{selectedProject.Title}</h2>
+          <h1>{selectedProject.Title}</h1>
           {selectedProject.ModalText == "Article" && (
-            <Articles topic={selectedProject.Title} />
+            <Articles
+              topic={selectedProject.Title}
+              articleDataPath={selectedProject.ArticleDataPath}
+            />
           )}
           {selectedProject.ModalText != "Article" && (
             <div className="modal-description-image">

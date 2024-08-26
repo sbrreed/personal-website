@@ -1,0 +1,448 @@
+import getFilteredETFData from "../../../sharedTools/getFilteredETFData";
+import getRandomizedData from "../../../sharedTools/getRandomizedData";
+import { useState, useEffect } from "react";
+
+function ETFs({ data }) {
+  const micaData = getFilteredETFData({ data: data, person: "Mica" });
+  const sarahData = getFilteredETFData({ data: data, person: "Sarah" });
+
+  const micaData_withTotals = addTotals(micaData);
+
+  const [randomMicaData, setRandomMicaData] = useState(
+    getRandomizedData(micaData)
+  );
+
+  const randomMicaDataTotalOnly = randomMicaData[randomMicaData.length - 1];
+
+  const [randomSarahData, setRandomSarahData] = useState(
+    getRandomizedData(sarahData)
+  );
+
+  const [graphic1Type, setGraphic1Type] = useState("chart");
+  const [table1CollapseState, setTable1CollapseState] = useState("close");
+
+  const handleGraphic1ButtonClick = (type) => {
+    setGraphic1Type(type);
+  };
+  const handleRandomize1ButtonClick = () => {
+    setRandomMicaData(getRandomizedData(micaData));
+  };
+  const handleRandomize2ButtonClick = () => {
+    setRandomSarahData(getRandomizedData(sarahData));
+  };
+  const handleTableCollapse = (state, table) => {
+    table == "table2" && setTable1CollapseState(state);
+  };
+
+  return (
+    <div className="article">
+      <div className="multi-paragraph-section">
+        <h2 className="sectionTitle">The discovery</h2>
+        <p>
+          Back in June of 2020, when my daughter was 14, I wanted to start to
+          teach her about the stock market. I also wanted to teach her about
+          philanthropy. In order to combine both these lessons, I opened an
+          account for her with{" "}
+          <a href="https://www.stockpile.com/" targe="_blank">
+            Stockpile
+          </a>
+          , an investing app that lets parents open accounts with their children
+          and buy fractional shares (whole shares often being too expensive).
+        </p>
+        <p>
+          We put $5000 in the account and made an agreement that at the end of
+          the year we would assess the growth on the principal and she would get
+          to keep 20% and donate the rest of the growth to charities of her
+          choice. She chose 21 stocks, almost all companies she had heard of,
+          and allocated the $5000 as she saw fit.
+        </p>
+        <p>
+          By December of 2021 the account had grown to $6700, so we chose some
+          stocks to sell that would add up to $1700 and some charities to donate
+          to. Then the pandemic wound down and we more or less forgot about the
+          account. (This is often how my parenting ideas wind up.)
+        </p>
+        <p>
+          Fast foward to last week, and my daughter, who is looking for ways to
+          fund her fancy nail habit, logged onto the account. To our surprise,
+          the value of the account had dropped to $4,500. My lectures about the
+          importance of investing were not working my favor. How could that be?
+          My own investments had been steadily growing. I knew there had been a
+          downturn in the markets but they had mostly recovered. To cover for my
+          ignorance, I assumed there must be something nefarious going on. This
+          app must be stealing from us in some way.
+        </p>
+      </div>
+      <h2 className="sectionTitle">The investigation</h2>
+      <p>
+        To investigate what was going on, I dug back through the account
+        statements (Stockpile, unfortnately is very bare-boned and doesn't have
+        any easy way to dig through account history other than the PDF
+        statements). I knew the account had grown and then we had withdrawn from
+        it. What I wanted to do was investigate the growth of the stocks after
+        that activity. I determined that Dec 2021 was a safe place to start. I
+        pulled the value of each stock on 12/31/21 and 08/21/24 and compared
+        them.
+      </p>
+      <div className="graphic-chooser-buttons">
+        <button
+          id="table1"
+          className={graphic1Type === "table" ? "active" : ""}
+          onClick={() => handleGraphic1ButtonClick("table")}
+        >
+          Table
+        </button>
+        <button
+          id="chart1"
+          className={graphic1Type === "chart" ? "active" : ""}
+          onClick={() => handleGraphic1ButtonClick("chart")}
+        >
+          Chart
+        </button>
+      </div>
+      {graphic1Type === "table" &&
+        {
+          /* <table id="table1">
+          <thead>
+            <tr>
+              <th>Stock Name</th>
+              <th>Symbol</th>
+              <th>Price on 12/31/21 ($)</th>
+              <th>Price on 08/21/24 ($)</th>
+              <th>Difference in Prices ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {micaData.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td>{item.Name}</td>
+                  <td>{item.Symbol}</td>
+                  <td>{item.Price_12_31_21}</td>
+                  <td>{item.Price_08_21_24}</td>
+                  <td>{item.Difference_in_Prices}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table> */
+        }}
+      {graphic1Type === "chart" && (
+        <div className="flourish-iframe">
+          <iframe
+            src="https://flo.uri.sh/visualisation/19141961/embed"
+            title="Interactive or visual content"
+            style={{ width: "100%", height: "600px", border: "0" }}
+            sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+          ></iframe>
+        </div>
+      )}
+      <div className="multi-paragraph-section">
+        <p>
+          Looking at the totals in this chart or table, it looks like the value
+          of the portfolio should have gone up since the total value of all the
+          shares is up (modestly). But that's only if she owned the same amount
+          of each stock. Then I remembered I needed to account for the different
+          amounts of each share. Once I calculated that I saw the decrease in
+          total value.
+        </p>
+      </div>
+      <div className="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Stock Name</th>
+              <th>Symbol</th>
+              <th>Number of Shares</th>
+              <th>Price on 12/31/21 ($)</th>
+              <th>Price on 08/21/24 ($)</th>
+              <th>Difference in Prices ($)</th>
+              <th>Difference * Number of Shares ($) </th>
+            </tr>
+          </thead>
+          <tbody>
+            {micaData_withTotals.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td>{item.Name}</td>
+                  <td>{item.Symbol}</td>
+                  <td>{item.NumberofShares}</td>
+                  <td>{item.Price_12_31_21}</td>
+                  <td>{item.Price_08_21_24}</td>
+                  <td>{item.Difference_in_Prices}</td>
+                  <td
+                    className={
+                      index == micaData_withTotals.length - 1 &&
+                      item.Diff_Times_Mult < 0
+                        ? "last-td-negative"
+                        : ""
+                    }
+                  >
+                    {item.Diff_Times_Mult}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {/* <div className="flourish-iframe" id="mica_table_with_shareNums">
+        <iframe
+          src="https://flo.uri.sh/visualisation/19155326/embed"
+          title="Interactive or visual content"
+          style={{ width: "100%", height: "600px", border: "0" }}
+          sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+        ></iframe>
+      </div> */}
+      <div className="multi-paragraph-section">
+        <p>
+          We can see that the Tesla stocks have taken a big loss and Mica has a
+          lot of Tesla. When she was choosing the number of shares of each stock
+          she was more or less choosing randomly. Which made me think, maybe the
+          overall decrese in value of this portfolio is just due to her choice
+          in allocation?
+        </p>
+        <p>
+          In the table below the Number of Shares have been randomly chosen. Try
+          clicking the <b>Randomize</b> button. This will randomly choose values
+          for the Number of Shares column between 0.1-4.
+        </p>
+      </div>
+      <h3>Randomized Share Numbers</h3>
+      <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
+        Randomize
+      </button>
+      <button onClick={() => handleTableCollapse("close", "table2")}>
+        Collapse Table
+      </button>
+      <button onClick={() => handleTableCollapse("open", "table2")}>
+        Expand Table
+      </button>{" "}
+      {/* <table>
+        <thead>
+          <tr>
+            <th>Stock Name</th>
+            <th>Symbol</th>
+            <th>Number of Shares</th>
+            <th>Price on 12/31/21($)</th>
+            <th>Price on 08/21/24($)</th>
+            <th>Difference in Prices($)</th>
+            <th>Difference * Number of Shares($) </th>
+          </tr>
+        </thead>
+        <tbody>
+          {table1CollapseState == "open" &&
+            randomMicaData.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td>{item.Name}</td>
+                  <td>{item.Symbol}</td>
+                  <td>{item.NumberofShares}</td>
+                  <td>{item.Price_12_31_21}</td>
+                  <td>{item.Price_08_21_24}</td>
+                  <td>{item.Difference_in_Prices}</td>
+                  <td
+                    className={
+                      index == randomMicaData.length - 1 &&
+                      item.Diff_Times_Mult < 0
+                        ? "last-td-negative"
+                        : ""
+                    }
+                  >
+                    {item.Diff_Times_Mult}
+                  </td>
+                </tr>
+              );
+            })}
+          {table1CollapseState == "close" && (
+            <tr className="totalOnly">
+              <td>{randomMicaDataTotalOnly.Name}</td>
+              <td>{randomMicaDataTotalOnly.Symbol}</td>
+              <td>{randomMicaDataTotalOnly.NumberofShares}</td>
+              <td>{randomMicaDataTotalOnly.Price_12_31_21}</td>
+              <td>{randomMicaDataTotalOnly.Price_08_21_24}</td>
+              <td>{randomMicaDataTotalOnly.Difference_in_Prices}</td>
+              <td
+                className={
+                  randomMicaDataTotalOnly.Diff_Times_Mult < 0
+                    ? "last-td-negative"
+                    : ""
+                }
+              >
+                {randomMicaDataTotalOnly.Diff_Times_Mult}
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+      <div className="multi-paragraph-section">
+        <p>
+          Clicking the Randomize button, I noticed that the total value was
+          positive sometimes, but often negative. Since I knew my own
+          investments had been steadily growing, what was the difference between
+          my investments and Mica's?
+        </p>
+      </div>
+      <h2>Exchange Traded Funds (ETFs)</h2>
+      <div className="multi-paragraph-section">
+        <p>
+          Long ago my brothers had convinced me to switch to ETFs from
+          individual stocks. Their explanations made sense by I hadn't really
+          tested the theory.
+        </p>
+        <p>
+          First, here's the theory (thanks to ChatGPT for helping to write this
+          part):{" "}
+        </p>
+        <p>
+          Exchange-Traded Funds (ETFs) are a type of investment that lets you
+          buy a small piece of many different things, like stocks, bonds, or
+          other assets, all at once. You can think of an ETF like a basket that
+          holds a variety of items inside. When you buy a share of an ETF,
+          you’re buying a small piece of everything in that basket. ETFs are
+          traded on the stock market, so you can buy or sell them at any time
+          during the trading day, just like you would with individual stocks.
+          They are popular because they help spread out risk by including many
+          different investments, and they usually cost less to manage compared
+          to other types of funds.
+        </p>
+        <p>
+          The main differences between ETFs, individual stocks, and mutual funds
+          come down to how they work and how you buy them. When you buy a stock,
+          you’re buying a piece of a single company, so if that company does
+          well, your investment grows, but if it doesn’t, you could lose money.
+          Mutual funds, like ETFs, also let you invest in a mix of different
+          things, but you can only buy or sell them at the end of the trading
+          day, not whenever you want. ETFs offer the best of both worlds: they
+          give you the variety of a mutual fund but the flexibility of a stock,
+          so you can trade them throughout the day. For more information, you
+          can check out{" "}
+          <a href="https://www.investopedia.com/terms/e/etf.asp">
+            Investopedia’s ETF guide
+          </a>{" "}
+          and{" "}
+          <a href="https://www.fool.com/investing/how-to-invest/etf-vs-mutual-fund-vs-stock/">
+            The Motley Fool’s comparison of ETFs, stocks, and mutual funds
+          </a>
+          .
+        </p>
+        <p>
+          The table below has an assortment of ETFs that I've invested in. I've
+          set the number of shares to be random. Click the Randomize button to
+          try different allocations. How often does it turn out negative?
+        </p>
+      </div>
+      <h3>Randomized Share Numbers</h3>
+      <button id="randomize" onClick={() => handleRandomize2ButtonClick()}>
+        Randomize
+      </button>
+      {/* <table>
+        <thead>
+          <tr>
+            <th>Stock Name</th>
+            <th>Symbol</th>
+            <th>Number of Shares</th>
+            <th>Price on 12/31/21 ($)</th>
+            <th>Price on 08/21/24 ($)</th>
+            <th>Difference in Prices ($)</th>
+            <th>Difference * Number of Shares ($) </th>
+          </tr>
+        </thead>
+        <tbody>
+          {randomSarahData.map((item, index) => {
+            return (
+              <tr key={index}>
+                <td>{item.Name}</td>
+                <td>{item.Symbol}</td>
+                <td>{item.NumberofShares}</td>
+                <td>{item.Price_12_31_21}</td>
+                <td>{item.Price_08_21_24}</td>
+                <td>{item.Difference_in_Prices}</td>
+                <td
+                  className={
+                    index == randomSarahData.length - 1 &&
+                    item.Diff_Times_Mult < 0
+                      ? "last-td-negative"
+                      : ""
+                  }
+                >
+                  {item.Diff_Times_Mult}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table> */}
+      <div className="multi-paragraph-section">
+        <p>
+          This is all about spreading risk. While there are combinations of
+          allocations that would result in an overall negative return on this
+          portfolio, the vast majority of allocations are net positive.
+        </p>
+        <p>
+          In Mica's portfolio, she's limited to the 21 stocks she chose and the
+          allocations she deemed appropriate at the time. ETFs, on the other
+          hand EACH hold many stocks. The Health Care Select Sector SPDR Fund,
+          for example, held 65 different stocks as of writing this. So, even
+          though this portfolio appears to only have 10 investments, in reality
+          it represents hundreds of them. There are both{" "}
+          <a href="https://www.fidelity.com/learning-center/investment-products/etf/types-of-etfs-actively-managed">
+            passively and actively
+          </a>{" "}
+          managed ETFs, but that's a topic for another day.{" "}
+        </p>
+        <p>
+          ETFs, like mutual funds, do come with expense ratios. An expense ratio
+          is a fee that covers the cost of managing an investment fund, such as
+          a mutual fund or an ETF. It’s expressed as a percentage of your total
+          investment in the fund. For example, if a fund has an expense ratio of
+          0.5%, this means you pay 0.5% of your investment amount each year to
+          cover the fund's operating expenses, like management fees and
+          administrative costs. The expense ratio is automatically deducted from
+          the fund’s returns, so you don’t pay it directly, but it reduces the
+          overall performance of your investment. ETFs typically have a lower
+          expense ratio than mutual funds, which is one of the reasons they are
+          so popular.
+        </p>
+        <p>
+          So, I can safely assume that there is nothing nefarious going on with
+          our Stockpile account. In investigating this, however, I did come to
+          realize that we're paying $5/month for the account, which probably is
+          not worth it. Many lessons learned.{" "}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function addTotals(data) {
+  const clonedData = JSON.parse(JSON.stringify(data));
+  clonedData[data.length + 1] = {
+    Name: "",
+    Symbol: "TOTAL",
+    NumberofShares: "",
+    Price_12_31_21: clonedData
+      .reduce((acc, item) => {
+        return acc + parseFloat(item.Price_12_31_21);
+      }, 0)
+      .toFixed(2),
+    Price_08_21_24: clonedData
+      .reduce((acc, item) => {
+        return acc + parseFloat(item.Price_08_21_24);
+      }, 0)
+      .toFixed(2),
+    Difference_in_Prices: clonedData
+      .reduce((acc, item) => {
+        return acc + parseFloat(item.Difference_in_Prices);
+      }, 0)
+      .toFixed(2),
+    Diff_Times_Mult: clonedData
+      .reduce((acc, item) => {
+        return acc + parseFloat(item.Diff_Times_Mult);
+      }, 0)
+      .toFixed(2),
+  };
+  return clonedData;
+}
+
+export default ETFs;

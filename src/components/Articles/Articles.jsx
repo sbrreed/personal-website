@@ -1,4 +1,32 @@
-function Articles({ topic }) {
+import { useEffect, useState } from "react";
+import Papa from "papaparse";
+import getFilteredETFData from "../../sharedTools/getFilteredETFData";
+import ETFs from "./IndividualArticles/ETFs";
+
+function Articles({ topic, articleDataPath }) {
+  const [articleData, setArticleData] = useState([]);
+
+  const fetchArticleData = async (articleDataPath) => {
+    const result = await fetch(articleDataPath);
+    const csvFile = await result.text();
+    // Parse the CSV and save data to store
+    await new Promise((resolve) => {
+      Papa.parse(csvFile, {
+        header: true,
+        complete: ({ data }) => {
+          setArticleData(data);
+          resolve();
+        },
+      });
+    });
+  };
+
+  useEffect(() => {
+    if (articleDataPath) {
+      fetchArticleData(articleDataPath);
+    }
+  }, [articleDataPath]);
+
   return (
     <div>
       {topic == "Political Ads Reach" && (
@@ -316,6 +344,8 @@ function Articles({ topic }) {
           </div>
         </div>
       )}
+      {topic == "The case for Exchange Traded Funds vs Individual Stocks" &&
+        articleData.length > 0 && <ETFs data={articleData} />}
     </div>
   );
 }

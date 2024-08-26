@@ -13,6 +13,13 @@
   overflow-y: auto;
 }
 
+.modal:has(.article) {
+  width: 90vw;
+  max-height: 95%;
+  top: 5vh;
+  left: 5vw;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
