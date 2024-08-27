@@ -13,7 +13,7 @@
 }
 
 .footerText a {
-  color: #613f6e;
+  color: var(--primary-purple);
 }
 
 .footerText a:hover {

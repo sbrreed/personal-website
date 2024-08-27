@@ -4,7 +4,7 @@
   justify-content: space-between;
   height: max-content;
   padding: 10px;
-  background-color: #6e57a4;
+  background-color: var(--primary-purple);
   margin-bottom: 1rem;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .portfolio-navBar a.active {
-  outline: 1px solid #ffd100;
+  outline: 1px solid var(--primary-yellow);
   padding: 6px;
-  background-color: #8d8c8c;
+  background-color: var(--medium-gray);
   color: white;
 }

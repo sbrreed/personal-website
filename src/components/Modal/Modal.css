@@ -8,7 +8,7 @@
   animation: fadeIn 1s ease-in-out;
   background-color: white;
   border-radius: 0.5rem;
-  box-shadow: 0 0 10px 0 #ccc;
+  box-shadow: 0 0 10px 0 var(--light-gray);
   border: 2px solid black;
   overflow-y: auto;
 }
@@ -48,7 +48,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #ccc;
+  background-color: var(--light-gray);
   opacity: 0.5;
   animation: fadeIn50 0.5s ease-in-out;
 }
@@ -73,6 +73,10 @@
     gap: 0px;
     margin-top: 10px;
   }
+}
+
+.modal-title {
+  border-bottom: 3px solid var(--primary-yellow);
 }
 
 .modal-description-image {

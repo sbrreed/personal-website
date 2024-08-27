@@ -84,7 +84,7 @@ function Portfolio() {
         </div>
         {modalIsOpen && selectedProject && portfolioType != "Wood" && (
           <Modal onClose={closeModal}>
-            <h1>{selectedProject.Title}</h1>
+            <h1 className="modal-title">{selectedProject.Title}</h1>
             {selectedProject.ModalText == "Article" && (
               <Articles
                 topic={selectedProject.Title}

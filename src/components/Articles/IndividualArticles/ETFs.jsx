@@ -50,7 +50,7 @@ function ETFs({ data }) {
           teach her about the stock market. I also wanted to teach her about
           philanthropy. In order to combine both these lessons, I opened an
           account for her with{" "}
-          <a href="https://www.stockpile.com/" targe="_blank">
+          <a href="https://www.stockpile.com/" target="_blank">
             Stockpile
           </a>
           , an investing app that lets parents open accounts with their children

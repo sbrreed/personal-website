@@ -10,6 +10,16 @@
   font-family: "Roboto", sans-serif;
 }
 
+:root {
+  --primary-purple: #6e57a4;
+  --table-row-purple: #c5b9df;
+  --very-light-purple: #fbfafe;
+  --primary-yellow: #ffd100;
+  --nameTag-dark-gray: #4b4a4a;
+  --medium-gray: #8d8c8c;
+  --light-gray: #cccccc;
+}
+
 p {
   margin: 0;
 }

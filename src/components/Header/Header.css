@@ -22,7 +22,7 @@ header p {
   font-size: 5rem;
   background-color: transparent;
   border: none;
-  color: #4b4a4a;
+  color: var(--nameTag-dark-gray);
   text-decoration: none;
 
   @media (max-width: 700px) {
@@ -51,5 +51,5 @@ header p {
 }
 
 .header-navBar a.active {
-  border-bottom: 3px solid #ffd100;
+  border-bottom: 3px solid var(--primary-yellow);
 }

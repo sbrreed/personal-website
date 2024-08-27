@@ -51,7 +51,7 @@
 
 table {
   border-collapse: collapse;
-  border: 2px solid rgb(170, 170, 170);
+  border: 2px solid var(--light-gray);
   height: 600px;
   overflow-y: scroll;
 }
@@ -64,14 +64,14 @@ table * {
   font-size: 0.875rem;
   font-weight: normal;
   font-family: "Source Sans Pro", sans-serif;
-  color: rgb(51, 51, 51);
+  color: var(--nameTag-dark-gray);
   @media (max-width: 700px) {
     font-size: 0.75rem;
   }
 }
 
 tr {
-  border-bottom: 1px solid rgb(62, 62, 62);
+  border-bottom: 1px solid var(--nameTag-dark-gray);
   display: table-row;
 }
 
@@ -80,10 +80,10 @@ th {
   font-size: 1.2rem;
   line-height: 1.5rem;
   text-align: start;
-  border-left: 1px solid rgb(62, 62, 62);
+  border-left: 1px solid var(--nameTag-dark-gray);
   height: 5%;
   padding: 5px 5px;
-  background-color: #e7e7e7;
+  background-color: var(--very-light-purple);
   @media (max-width: 700px) {
     font-size: 0.75rem;
     line-height: normal;
@@ -91,11 +91,11 @@ th {
 }
 
 tr:nth-child(odd) {
-  background-color: #b2accc;
+  background-color: var(--table-row-purple);
 }
 
 tr:nth-child(even) {
-  background-color: #e7e7e7;
+  background-color: var(--very-light-purple);
 }
 
 table:not(#table1) tr:last-of-type td {
@@ -111,7 +111,7 @@ table:not(#table1) tr:last-of-type td {
 td {
   padding: 1px 5px 1px 10px;
   height: 7%;
-  border-left: 1px solid rgb(62, 62, 62);
+  border-left: 1px solid var(--nameTag-dark-gray);
 }
 
 td {
@@ -146,7 +146,7 @@ td.last-td-negative {
 }
 
 .article button {
-  background-color: #6e57a4;
+  background-color: var(--primary-purple);
   color: white;
   border: none;
   padding: 10px 20px;
