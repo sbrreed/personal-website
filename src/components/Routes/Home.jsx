@@ -24,11 +24,11 @@ export default function Home() {
             We are story-tellers with a unique story-telling medium.
           </p>
         </div>
-        <img
+        {/* <img
           className="profilePicture"
           src="/profile_picture.jpeg"
           alt="Sarah Reed"
-        />
+        /> */}
       </div>
     </div>
   );
