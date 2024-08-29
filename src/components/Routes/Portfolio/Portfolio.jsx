@@ -41,6 +41,13 @@ function Portfolio() {
     portfolioType,
   });
 
+  const professionalDataVizData = filteredPortfolioData.filter(
+    (item) => item.Type == "Professional"
+  );
+  const personalDataVizData = filteredPortfolioData.filter(
+    (item) => item.Type == "Personal"
+  );
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const openModal = (item) => {
@@ -69,18 +76,55 @@ function Portfolio() {
             <p>Click on a card to learn more about the project</p>
           </div>
         )}
+        {portfolioType == "DataViz" && (
+          <div className="data-viz-container">
+            <div className="professional-data-viz">
+              <h2>Professional Work</h2>
+              <div className="data-viz-group">
+                {professionalDataVizData.map((item, index) => {
+                  return (
+                    <Card
+                      key={`card_${item.Title}`}
+                      item={item}
+                      style={{ animationDelay: `${index * 0.3}s` }}
+                      onClick={() => openModal(item)}
+                      portfolioType={portfolioType}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+            <div className="personal-data-viz">
+              <h2>Articles and Personal Projects</h2>
+              <div className="data-viz-group">
+                {personalDataVizData.map((item, index) => {
+                  return (
+                    <Card
+                      key={`card_${item.Title}`}
+                      item={item}
+                      style={{ animationDelay: `${index * 0.3}s` }}
+                      onClick={() => openModal(item)}
+                      portfolioType={portfolioType}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
         <div className="portfolio-container">
-          {filteredPortfolioData.map((item, index) => {
-            return (
-              <Card
-                key={`card_${index}`}
-                item={item}
-                style={{ animationDelay: `${index * 0.3}s` }}
-                onClick={() => openModal(item)}
-                portfolioType={portfolioType}
-              />
-            );
-          })}
+          {portfolioType != "DataViz" &&
+            filteredPortfolioData.map((item, index) => {
+              return (
+                <Card
+                  key={`card_${index}`}
+                  item={item}
+                  style={{ animationDelay: `${index * 0.3}s` }}
+                  onClick={() => openModal(item)}
+                  portfolioType={portfolioType}
+                />
+              );
+            })}
         </div>
         {modalIsOpen && selectedProject && portfolioType != "Wood" && (
           <Modal onClose={closeModal}>

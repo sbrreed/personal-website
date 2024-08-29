@@ -20,7 +20,7 @@
 .card {
   border: 2px solid #6e57a4;
   display: grid;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 3fr 1fr;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
   gap: 20px;
@@ -42,10 +42,21 @@
   cursor: default;
 }
 
-.portfolio-container {
+.portfolio-container,
+.data-viz-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+
+.data-viz-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.data-viz-container h2 {
+  border-bottom: 2px solid var(--primary-yellow);
 }
 
 .portfolio img {
@@ -67,13 +78,15 @@
 }
 
 @media (max-width: 900px) {
-  .portfolio-container {
+  .portfolio-container,
+  .data-viz-group {
     grid-template-columns: repeat(2, auto);
   }
 }
 
 @media (max-width: 700px) {
-  .portfolio-container {
+  .portfolio-container,
+  .data-viz-group {
     grid-template-columns: auto;
   }
 }
