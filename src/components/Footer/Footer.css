@@ -1,6 +1,7 @@
 .footerContent {
   background-color: var(--primary-purple);
   padding: 3%;
+  margin-top: 3%;
 }
 .footerText {
   font-family: "Roboto", sans-serif;

@@ -19,17 +19,14 @@
 }
 .card {
   border: 2px solid #6e57a4;
-  display: grid;
-  grid-template-rows: 3fr 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
   gap: 20px;
   padding: 6%;
   border-radius: 0.5rem;
-
-  @media (max-width: 1200px) {
-    grid-template-rows: 1fr 1fr;
-  }
 }
 
 .card:hover {
