@@ -164,7 +164,16 @@ function Portfolio() {
                         <b>Technologies:</b>{" "}
                         {selectedProject.Technologies.split(",").map(
                           (item, index) => {
-                            return <span key={`tech_${index}`}>{item}, </span>;
+                            if (
+                              index !=
+                              selectedProject.Technologies.split(",").length - 1
+                            ) {
+                              return (
+                                <span key={`tech_${index}`}>{item}, </span>
+                              );
+                            } else {
+                              return <span key={`tech_${index}`}>{item} </span>;
+                            }
                           }
                         )}
                       </p>
