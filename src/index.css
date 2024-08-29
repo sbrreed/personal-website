@@ -11,13 +11,15 @@
 }
 
 :root {
-  --primary-purple: #6e57a4;
-  --table-row-purple: #c5b9df;
+  --primary-purple: #75648c;
+  --table-row-purple: #a68aa4;
   --very-light-purple: #fbfafe;
-  --primary-yellow: #ffd100;
-  --nameTag-dark-gray: #4b4a4a;
+  --primary-yellow: #f2d57e;
+  --nameTag-dark-gray: #2b2b2b;
   --medium-gray: #8d8c8c;
   --light-gray: #cccccc;
+  --green: #5c7358;
+  --light-blue: #84bfb4;
 }
 
 p {

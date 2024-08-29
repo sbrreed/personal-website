@@ -3,10 +3,7 @@ function Footer() {
     <footer className="footer">
       <div className="footerContent">
         <div className="footerText">
-          <p>
-            Want to chat?{" "}
-            <a href="mailto:sarahbreed01@gmail.com">sarahbreed01@gmail.com</a>
-          </p>
+          <p>Want to chat? sarahbreed01 at gmail</p>
           <div className="links">
             <a href="https://github.com/sbrreed/" target="_blank">
               <img src="/github-mark.png"></img>
