@@ -13,12 +13,27 @@ function ETFs({ data }) {
   );
 
   const randomMicaDataTotalOnly = randomMicaData[randomMicaData.length - 1];
+  const initialMicaRandomTotalNegativeCount =
+    randomMicaDataTotalOnly.Diff_Times_Mult < 0 ? 1 : 0;
 
   const [randomSarahData, setRandomSarahData] = useState(
     getRandomizedData(sarahData)
   );
 
+  const initialSarahRandomTotalNegativeCount =
+    randomSarahData[randomSarahData.length - 1].Diff_Times_Mult < 0 ? 1 : 0;
+
   const [graphic1Type, setGraphic1Type] = useState("chart");
+  const [numClicksRandomize1, setNumClicksRandomize1] = useState(1);
+  const [numNegativeRandomize1, setNumNegativeRandomize1] = useState(
+    initialMicaRandomTotalNegativeCount
+  );
+
+  const [numClicksRandomize2, setNumClicksRandomize2] = useState(1);
+  const [numNegativeRandomize2, setNumNegativeRandomize2] = useState(
+    initialSarahRandomTotalNegativeCount
+  );
+
   const [table1CollapseState, setTable1CollapseState] = useState("close");
   const [table2CollapseState, setTable2CollapseState] = useState("close");
   const [table3CollapseState, setTable3CollapseState] = useState("close");
@@ -28,9 +43,17 @@ function ETFs({ data }) {
     setGraphic1Type(type);
   };
   const handleRandomize1ButtonClick = () => {
+    setNumClicksRandomize1(numClicksRandomize1 + 1);
+    if (randomMicaDataTotalOnly.Diff_Times_Mult < 0) {
+      setNumNegativeRandomize1(numNegativeRandomize1 + 1);
+    }
     setRandomMicaData(getRandomizedData(micaData));
   };
   const handleRandomize2ButtonClick = () => {
+    setNumClicksRandomize2(numClicksRandomize2 + 1);
+    if (randomSarahData[randomSarahData.length - 1].Diff_Times_Mult < 0) {
+      setNumNegativeRandomize2(numNegativeRandomize2 + 1);
+    }
     setRandomSarahData(getRandomizedData(sarahData));
   };
 
@@ -44,7 +67,9 @@ function ETFs({ data }) {
   return (
     <div className="article">
       <div className="multi-paragraph-section">
-        <h2 className="sectionTitle">The discovery</h2>
+        <div className="section-divider">
+          <h2>The discovery</h2>
+        </div>
         <p>
           Back in June of 2020, when my daughter was 14, I wanted to start to
           teach her about the stock market. I also wanted to teach her about
@@ -57,22 +82,34 @@ function ETFs({ data }) {
           and buy fractional shares (whole shares often being too expensive).
         </p>
         <p>
-          We put $5000 in the account and made an agreement that at the end of
-          the year we would assess the growth on the principal and she would get
-          to keep 20% and donate the rest of the growth to charities of her
-          choice. She chose 21 stocks, almost all companies she had heard of,
-          and allocated the $5000 as she saw fit.
+          We put some money in the account and made an agreement that at the end
+          of the year we would assess the growth on the principal and she would
+          get to keep 20% and donate the rest of the growth to charities of her
+          choice. While I knew that investment funds were the safer bet for
+          investing, I allowed her to choose 21 stocks, almost all companies she
+          had heard of, and allocate the funds as she saw fit. I thought this
+          approach would be more exciting for her, and considering it was meant
+          to be an educational exercise, it seemed worth the risk.
         </p>
         <p>
-          By December of 2021 the account had grown to $6700, so we chose some
-          stocks to sell that would add up to $1700 and some charities to donate
-          to. Then the pandemic wound down and we more or less forgot about the
-          account. (This is often how my parenting ideas wind up.)
+          By December of 2021 the account had grown, so we chose some stocks to
+          sell that would add up to the amount of growth and some charities to
+          donate to. We withdrew the growth, bringing the account back down to
+          its principal value.
         </p>
         <p>
-          Fast foward to last week, and my daughter, who is looking for ways to
-          fund her fancy nail habit, logged onto the account. To our surprise,
-          the value of the account had dropped to $4,500. My lectures about the
+          {" "}
+          Come December of 2022, the market had turned and her stocks were down
+          so there was no growth to pull from. Instead of re-allocating the
+          funds, or switching out stocks, we chose to wait and see what would
+          happen. As the pandemic wound down, and our lives picked back up and
+          we more or less forgot about the account. (This is often how my
+          parenting lessons wind up.)
+        </p>
+        <p>
+          Recently, however, my daughter was looking for ways to fund her fancy
+          nail habit and logged onto the account. To our surprise, the value of
+          the account had not recovered its losses. My lectures about the
           importance of investing were not working my favor. How could that be?
           My own investments had been steadily growing. I knew there had been a
           downturn in the markets but they had mostly recovered. To cover for my
@@ -80,7 +117,9 @@ function ETFs({ data }) {
           app must be stealing from us in some way.
         </p>
       </div>
-      <h2 className="sectionTitle">The investigation</h2>
+      <div className="section-divider">
+        <h2>The investigation</h2>
+      </div>
       <p>
         To investigate what was going on, I dug back through the account
         statements (Stockpile, unfortnately is very bare-boned and doesn't have
@@ -310,11 +349,11 @@ function ETFs({ data }) {
       </div>
       <div className="multi-paragraph-section">
         <p>
-          We can see that the Tesla stocks have taken a big loss and Mica has a
-          lot of Tesla. When she was choosing the number of shares of each stock
-          she was more or less choosing randomly. Which made me think, maybe the
-          overall decrese in value of this portfolio is just due to her choice
-          in allocation?
+          With the table expanded, we can see that the Tesla stocks have taken a
+          big loss and Mica has a lot of Tesla. When she was choosing the number
+          of shares of each stock she was more or less choosing randomly. Which
+          made me think, maybe the overall decrese in value of this portfolio is
+          just due to her choice in allocation?
         </p>
         <p>
           In the table below the Number of Shares have been randomly chosen. Try
@@ -324,9 +363,31 @@ function ETFs({ data }) {
       </div>
       <h3>Randomized Share Numbers</h3>
       <div className="button-wrapper">
-        <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
-          Randomize
-        </button>
+        <div className="random-bar-wrapper">
+          <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
+            Randomize
+          </button>
+          <div className="bar-container-wrapper">
+            <p>Percent of allocations resulting in a negative return.</p>
+            <div className="bar-container">
+              <div
+                className="bar"
+                style={{
+                  width: `${(
+                    (numNegativeRandomize1 / numClicksRandomize1) *
+                    100
+                  ).toFixed(0)}%`,
+                }}
+              ></div>
+              <p>
+                {((numNegativeRandomize1 / numClicksRandomize1) * 100).toFixed(
+                  0
+                )}
+                %
+              </p>
+            </div>
+          </div>
+        </div>
         <div className="expand-collapse-buttons">
           <button
             className="small-button"
@@ -405,11 +466,14 @@ function ETFs({ data }) {
         <p>
           Clicking the Randomize button, I noticed that the total value was
           positive sometimes, but often negative. Since I knew my own
-          investments had been steadily growing, what was the difference between
-          my investments and Mica's?
+          investments had been steadily growing (but I don't consider myself an
+          accomplished stock picker), what was the difference between my
+          investments and Mica's?
         </p>
       </div>
-      <h2>Exchange Traded Funds (ETFs)</h2>
+      <div className="section-divider">
+        <h2>Exchange Traded Funds (ETFs)</h2>
+      </div>
       <div className="multi-paragraph-section">
         <p>
           Long ago my brothers had convinced me to switch to ETFs from
@@ -453,16 +517,38 @@ function ETFs({ data }) {
           .
         </p>
         <p>
-          The table below has an assortment of ETFs that I've invested in. I've
-          set the number of shares to be random. Click the Randomize button to
-          try different allocations. How often does it turn out negative?
+          The table below has an assortment of ETFs. I've set the number of
+          shares to be random. Click the Randomize button to try different
+          allocations. How often does it turn out negative?
         </p>
       </div>
       <h3>Randomized Share Numbers</h3>
       <div className="button-wrapper">
-        <button id="randomize" onClick={() => handleRandomize2ButtonClick()}>
-          Randomize
-        </button>
+        <div className="random-bar-wrapper">
+          <button id="randomize" onClick={() => handleRandomize2ButtonClick()}>
+            Randomize
+          </button>
+          <div className="bar-container-wrapper">
+            <p>Percent of allocations resulting in a negative return.</p>
+            <div className="bar-container">
+              <div
+                className="bar"
+                style={{
+                  width: `${(
+                    (numNegativeRandomize2 / numClicksRandomize2) *
+                    100
+                  ).toFixed(0)}%`,
+                }}
+              ></div>
+              <p>
+                {((numNegativeRandomize2 / numClicksRandomize2) * 100).toFixed(
+                  0
+                )}
+                %
+              </p>
+            </div>
+          </div>
+        </div>
         <div className="expand-collapse-buttons">
           <button
             className="small-button"
@@ -551,9 +637,10 @@ function ETFs({ data }) {
       </div>
       <div className="multi-paragraph-section">
         <p>
-          This is all about spreading risk. While there are combinations of
-          allocations that would result in an overall negative return on this
-          portfolio, the vast majority of allocations are net positive.
+          There are a number of things going on here. First and foremost, it's
+          about spreading risk. While I'm sure are combinations of allocations
+          that would result in an overall negative return on this portfolio, the
+          vast majority of allocations are net positive.
         </p>
         <p>
           In Mica's portfolio, she's limited to the 21 stocks she chose and the
@@ -561,11 +648,64 @@ function ETFs({ data }) {
           hand EACH hold many stocks. The Health Care Select Sector SPDR Fund,
           for example, held 65 different stocks as of writing this. So, even
           though this portfolio appears to only have 10 investments, in reality
-          it represents hundreds of them. There are both{" "}
+          it represents hundreds of them.
+        </p>
+      </div>
+      <div className="multi-paragraph-section">
+        <div className="section-divider">
+          <h2>Why it matters who chooses the stocks and how.</h2>
+        </div>
+        <p>
+          In 2022 we saw Mica's investments were down but decided to stay the
+          course. This is the standard conventional wisdom when it comes to
+          investing. Pick your investments and stay with them. This wisdom,
+          however, really only applies to funds (ETFs and mutual funds). The
+          reason is that, in reality, these funds are not just picking stocks
+          and sticking with them-- they're constantly being assessed and
+          re-allocated. Had we actively watched the account and re-allocated the
+          funds, we might have seen a different outcome. But who has time or
+          interest for that?
+        </p>
+        <p>
+          There are both{" "}
           <a href="https://www.fidelity.com/learning-center/investment-products/etf/types-of-etfs-actively-managed">
             passively and actively
           </a>{" "}
-          managed ETFs, but that's a topic for another day.{" "}
+          managed ETFs, but the difference isn't really important here. What's
+          important is that each fund holds a large variety of stocks
+          (individual companies) and watches to see how those stocks are doing.
+        </p>
+        <h3>VOO</h3>
+        <p>
+          Let's look at a well know, common ETF: VOO (
+          <a
+            href="https://investor.vanguard.com/investment-products/etfs/profile/voo#distributions"
+            target="_blank"
+          >
+            Vanguard S&P 500 ETF
+          </a>
+          ). This fund "seeks to track the investment performance of the S&P 500
+          Index". What does that mean?{" "}
+        </p>
+        <p>
+          The S&P 500 Index is made up of 500 of the largest U.S. companies, but
+          these companies aren't all treated equally in the index. Some
+          companies are bigger and more valuable than others, so they have a
+          bigger "weight" in the index. For example, a huge company like Apple
+          might make up a bigger percentage of the index compared to a smaller
+          company. When Vanguard creates the ETF, they buy shares of each
+          company in the S&P 500, but they buy more shares of the big companies
+          (like Apple) and fewer shares of the smaller companies. They do this
+          in a way that matches exactly how the companies are weighted in the
+          index. This way, the ETF closely mirrors the overall performance of
+          the S&P 500. So, if the big companies in the index do well, the ETF
+          will do well too, because it owns more of those big companies.
+        </p>
+        <p>
+          As companies grow and shrink and come and go from the S&P 500, this
+          fund buys and sells stock in those companies to keep pace. Remember,
+          by buying a share of VOO, you're buying a share of their collection.
+          You're returns are a share of the returns on the collection.{" "}
         </p>
         <p>
           ETFs, like mutual funds, do come with expense ratios. An expense ratio
