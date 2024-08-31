@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 function Header() {
-  // const [active, setActive] = useState("home");
-  // function handleButtonClick(page) {
-  //   setPage(page);
-  //   setActive(page);
-  // }
   return (
     <header className="App-header">
       <div className="nameTag">
