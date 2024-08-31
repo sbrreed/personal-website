@@ -347,6 +347,9 @@ function ETFs({ data }) {
           </tbody>
         </table>
       </div>
+      <div className="mobile-scroll-tip">
+        <p>Scroll table horizontally to see more data.</p>
+      </div>
       <div className="multi-paragraph-section">
         <p>
           With the table expanded, we can see that the Tesla stocks have taken a
@@ -461,6 +464,9 @@ function ETFs({ data }) {
             )}
           </tbody>
         </table>
+      </div>
+      <div className="mobile-scroll-tip">
+        <p>Scroll table horizontally to see more data.</p>
       </div>
       <div className="multi-paragraph-section">
         <p>
@@ -635,6 +641,9 @@ function ETFs({ data }) {
           </tbody>
         </table>
       </div>
+      <div className="mobile-scroll-tip">
+        <p>Scroll table horizontally to see more data.</p>
+      </div>
       <div className="multi-paragraph-section">
         <p>
           There are a number of things going on here. First and foremost, it's
@@ -677,7 +686,7 @@ function ETFs({ data }) {
         </p>
         <h3>VOO</h3>
         <p>
-          Let's look at a well know, common ETF: VOO (
+          Let's look at a well known, common ETF: VOO (
           <a
             href="https://investor.vanguard.com/investment-products/etfs/profile/voo#distributions"
             target="_blank"

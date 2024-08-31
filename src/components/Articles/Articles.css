@@ -198,6 +198,7 @@ td.last-td-negative {
   flex-direction: column;
   align-items: center;
 }
+
 .bar-container {
   width: 100%;
   background-color: #e0e0e0;
@@ -214,4 +215,33 @@ td.last-td-negative {
   background-color: var(--green);
   border-radius: 5px;
   transition: width 0.3s ease; /* Smooth transition */
+}
+
+.mobile-scroll-tip {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .random-bar-wrapper {
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+  .bar-container-wrapper p {
+    font-size: 0.8rem;
+    line-height: normal;
+  }
+  .bar-container {
+    width: 100%;
+    height: 20px;
+    margin-top: 5px;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .mobile-scroll-tip {
+    display: block;
+    font-size: 0.8rem;
+    line-height: normal;
+    margin-top: 5px;
+  }
 }
