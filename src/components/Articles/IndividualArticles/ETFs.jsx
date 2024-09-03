@@ -71,8 +71,8 @@ function ETFs({ data }) {
           <h2>The discovery</h2>
         </div>
         <p>
-          Back in June of 2020, when my daughter was 14, I wanted to start to
-          teach her about the stock market. I also wanted to teach her about
+          Back in June of 2020, when my daughter was 14, I wanted to start
+          teaching her about the stock market. I also wanted to teach her about
           philanthropy. In order to combine both these lessons, I opened an
           account for her with{" "}
           <a href="https://www.stockpile.com/" target="_blank">
@@ -122,7 +122,7 @@ function ETFs({ data }) {
       </div>
       <p>
         To investigate what was going on, I dug back through the account
-        statements (Stockpile, unfortnately is very bare-boned and doesn't have
+        statements (Stockpile, unfortunately is very bare-boned and doesn't have
         any easy way to dig through account history other than the PDF
         statements). I knew the account had grown and then we had withdrawn from
         it. What I wanted to do was investigate the growth of the stocks after
@@ -136,34 +136,24 @@ function ETFs({ data }) {
           className={graphic1Type === "table" ? "active" : ""}
           onClick={() => handleGraphic1ButtonClick("table")}
         >
-          Table
+          Show as Table
         </button>
         <button
           id="chart1"
           className={graphic1Type === "chart" ? "active" : ""}
           onClick={() => handleGraphic1ButtonClick("chart")}
         >
-          Chart
+          Show as Chart
         </button>
       </div>
+      <p>
+        The chart below shows the value of each stock at these two dates. Hover
+        over, or tap on, a line to see the stock and it's values. For more
+        detailed information, click the "Show as Table" button. You'll get a
+        table with each stock and it's values.
+      </p>
       {graphic1Type === "table" && (
         <>
-          <div className="button-wrapper">
-            <div className="expand-collapse-buttons">
-              <button
-                className="small-button"
-                onClick={() => handleTableCollapse("close", "table1")}
-              >
-                Collapse Table
-              </button>
-              <button
-                className="small-button"
-                onClick={() => handleTableCollapse("open", "table1")}
-              >
-                Expand Table
-              </button>
-            </div>
-          </div>
           <div className="table-wrapper">
             <table id="table1">
               <thead>
@@ -176,49 +166,17 @@ function ETFs({ data }) {
                 </tr>
               </thead>
               <tbody>
-                {table1CollapseState == "open" &&
-                  micaData.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{item.Name}</td>
-                        <td>{item.Symbol}</td>
-                        <td>{item.Price_12_31_21}</td>
-                        <td>{item.Price_08_21_24}</td>
-                        <td>{item.Difference_in_Prices}</td>
-                      </tr>
-                    );
-                  })}
-                {table1CollapseState == "close" && (
-                  <tr className="totalOnly">
-                    <td>
-                      {micaData_withTotals[micaData_withTotals.length - 1].Name}
-                    </td>
-                    <td>
-                      {
-                        micaData_withTotals[micaData_withTotals.length - 1]
-                          .Symbol
-                      }
-                    </td>
-                    <td>
-                      {
-                        micaData_withTotals[micaData_withTotals.length - 1]
-                          .Price_12_31_21
-                      }
-                    </td>
-                    <td>
-                      {
-                        micaData_withTotals[micaData_withTotals.length - 1]
-                          .Price_08_21_24
-                      }
-                    </td>
-                    <td>
-                      {
-                        micaData_withTotals[micaData_withTotals.length - 1]
-                          .Difference_in_Prices
-                      }
-                    </td>
-                  </tr>
-                )}
+                {micaData.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{item.Name}</td>
+                      <td>{item.Symbol}</td>
+                      <td>{item.Price_12_31_21}</td>
+                      <td>{item.Price_08_21_24}</td>
+                      <td>{item.Difference_in_Prices}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -353,22 +311,41 @@ function ETFs({ data }) {
       <div className="multi-paragraph-section">
         <p>
           With the table expanded, we can see that the Tesla stocks have taken a
-          big loss and Mica has a lot of Tesla. When she was choosing the number
-          of shares of each stock she was more or less choosing randomly. Which
-          made me think, maybe the overall decrese in value of this portfolio is
-          just due to her choice in allocation?
+          big loss and my daughter has a lot of Tesla. In 2020, when she was
+          choosing her stocks, Tesla was doing great. The glitz and glamour of
+          the stock drew her in.
+        </p>
+      </div>
+      <div className="section-divider">
+        <h2>Curiosity strikes</h2>
+      </div>
+      <div className="multi-paragraph-section">
+        <p>
+          The following section digs deeper into my investigation. If this is
+          too in the weeds for you, feel free to skip to the{" "}
+          <a href="#ETFs">Exchange Traded Funds</a> section.
+        </p>
+        <p>
+          Since my daughter was only 14, and not especially savvy about the
+          stock market, we could think of her choices in number of shares of
+          each stock as random. Which made me think, maybe the overall decrease
+          in value of this portfolio is just due to her choice in allocation?
+          Essentially, how unlucky we were to have chosen an allocation that
+          resulted in a negative return?
         </p>
         <p>
           In the table below the Number of Shares have been randomly chosen. Try
-          clicking the <b>Randomize</b> button. This will randomly choose values
-          for the Number of Shares column between 0.1-4.
+          clicking the <b>Randomly Choose Number of Shares</b> button. This will
+          randomly choose values (between 0.1 and 4) for the Number of Shares
+          column. How often does it turn out negative? (Expand the table to see
+          the allocations changing.)
         </p>
       </div>
       <h3>Randomized Share Numbers</h3>
       <div className="button-wrapper">
         <div className="random-bar-wrapper">
           <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
-            Randomize
+            Randomly Choose Number of Shares
           </button>
           <div className="bar-container-wrapper">
             <p>Percent of allocations resulting in a negative return.</p>
@@ -470,26 +447,23 @@ function ETFs({ data }) {
       </div>
       <div className="multi-paragraph-section">
         <p>
-          Clicking the Randomize button, I noticed that the total value was
-          positive sometimes, but often negative. Since I knew my own
-          investments had been steadily growing (but I don't consider myself an
-          accomplished stock picker), what was the difference between my
-          investments and Mica's?
+          Clicking the button, I noticed that the total value was positive
+          sometimes, but often negative. Since I knew my own investments had
+          been steadily growing (but I don't consider myself an accomplished
+          stock picker), what was the difference between my investments and my
+          daughter's?
         </p>
       </div>
-      <div className="section-divider">
+      <div className="section-divider" id="ETFs">
         <h2>Exchange Traded Funds (ETFs)</h2>
       </div>
       <div className="multi-paragraph-section">
         <p>
           Long ago my brothers had convinced me to switch to ETFs from
-          individual stocks. Their explanations made sense by I hadn't really
-          tested the theory.
+          individual stocks. Their explanations made sense, however, I hadn't
+          really tested the theory.
         </p>
-        <p>
-          First, here's the theory (thanks to ChatGPT for helping to write this
-          part):{" "}
-        </p>
+        <p>First, here's the theory:</p>
         <p>
           Exchange-Traded Funds (ETFs) are a type of investment that lets you
           buy a small piece of many different things, like stocks, bonds, or
@@ -647,17 +621,17 @@ function ETFs({ data }) {
       <div className="multi-paragraph-section">
         <p>
           There are a number of things going on here. First and foremost, it's
-          about spreading risk. While I'm sure are combinations of allocations
-          that would result in an overall negative return on this portfolio, the
-          vast majority of allocations are net positive.
+          about spreading risk. While I'm sure there are combinations of
+          allocations that would result in an overall negative return on this
+          portfolio, the vast majority of allocations are net positive.
         </p>
         <p>
-          In Mica's portfolio, she's limited to the 21 stocks she chose and the
-          allocations she deemed appropriate at the time. ETFs, on the other
-          hand EACH hold many stocks. The Health Care Select Sector SPDR Fund,
-          for example, held 65 different stocks as of writing this. So, even
-          though this portfolio appears to only have 10 investments, in reality
-          it represents hundreds of them.
+          In my daughter's portfolio, she's limited to the 21 stocks she chose
+          and the allocations she deemed appropriate at the time. ETFs, on the
+          other hand EACH hold many stocks. The Health Care Select Sector SPDR
+          Fund, for example, held 65 different stocks as of writing this. So,
+          even though this portfolio appears to only have 10 investments, in
+          reality it represents hundreds of them.
         </p>
       </div>
       <div className="multi-paragraph-section">
@@ -665,8 +639,8 @@ function ETFs({ data }) {
           <h2>Why it matters who chooses the stocks and how.</h2>
         </div>
         <p>
-          In 2022 we saw Mica's investments were down but decided to stay the
-          course. This is the standard conventional wisdom when it comes to
+          In 2022 we saw my daughter's investments were down but decided to stay
+          the course. This is the standard conventional wisdom when it comes to
           investing. Pick your investments and stay with them. This wisdom,
           however, really only applies to funds (ETFs and mutual funds). The
           reason is that, in reality, these funds are not just picking stocks
@@ -684,7 +658,9 @@ function ETFs({ data }) {
           important is that each fund holds a large variety of stocks
           (individual companies) and watches to see how those stocks are doing.
         </p>
-        <h3>VOO</h3>
+        <h3>
+          A look at the <i>VOO</i> ETF
+        </h3>
         <p>
           Let's look at a well known, common ETF: VOO (
           <a
@@ -714,8 +690,9 @@ function ETFs({ data }) {
           As companies grow and shrink and come and go from the S&P 500, this
           fund buys and sells stock in those companies to keep pace. Remember,
           by buying a share of VOO, you're buying a share of their collection.
-          You're returns are a share of the returns on the collection.{" "}
+          Your returns are a share of the returns on the collection.{" "}
         </p>
+        <h3>Expense Ratios</h3>
         <p>
           ETFs, like mutual funds, do come with expense ratios. An expense ratio
           is a fee that covers the cost of managing an investment fund, such as

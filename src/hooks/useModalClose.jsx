@@ -9,8 +9,6 @@ function useModalClose(modalIsOpen, closeModal, modalRef, portfolioType) {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      console.log(modalRef.current);
-      console.log("event.target", event.target);
       if (modalRef.current && event.target.classList.contains("modalOverlay")) {
         handleCloseNavigation();
         closeModal();
