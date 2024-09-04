@@ -74,7 +74,7 @@ table * {
   font-weight: normal;
   font-family: "Source Sans Pro", sans-serif;
   color: var(--nameTag-dark-gray);
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 0.75rem;
   }
 }
@@ -93,7 +93,7 @@ th {
   height: 5%;
   padding: 5px 5px;
   background-color: var(--very-light-purple);
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 0.75rem;
     line-height: normal;
   }
@@ -111,7 +111,7 @@ table:not(#table1) tr:last-of-type td {
   font-weight: bold;
   font-size: 1rem;
   line-height: 1.1rem;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 0.75rem;
     line-height: normal;
   }
@@ -137,7 +137,7 @@ td.last-td-negative {
   flex-direction: column;
   width: max-content;
   align-items: start;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: unset;
   }
 }
@@ -148,7 +148,7 @@ td.last-td-negative {
   justify-content: space-between;
   gap: 10px;
   margin: 10px 0;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     justify-content: unset;
     margin: 0;
     gap: 0;
@@ -164,7 +164,7 @@ td.last-td-negative {
   cursor: pointer;
   margin-right: 10px; /* margin: 10px; */
   font-size: 1.3rem;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 0.9rem;
     line-height: normal;
     margin: 3px;
@@ -180,7 +180,7 @@ td.last-td-negative {
   font-size: 1rem;
   padding: 5px 10px;
   margin: 5px 0;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 0.7rem;
     line-height: normal;
     margin: 3px;
@@ -222,7 +222,7 @@ td.last-td-negative {
   display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .random-bar-wrapper {
     flex-direction: column;
     align-items: start;

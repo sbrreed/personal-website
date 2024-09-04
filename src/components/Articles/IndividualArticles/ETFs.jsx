@@ -1,6 +1,8 @@
 import getFilteredETFData from "../../../sharedTools/getFilteredETFData";
 import getRandomizedData from "../../../sharedTools/getRandomizedData";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import LineChart from "../../D3/LineChart";
+import HorizontalBarChart from "../../D3/HorizontalBarChart";
 
 function ETFs({ data }) {
   const micaData = getFilteredETFData({ data: data, person: "Mica" });
@@ -34,11 +36,11 @@ function ETFs({ data }) {
     initialSarahRandomTotalNegativeCount
   );
 
-  const [table1CollapseState, setTable1CollapseState] = useState("close");
   const [table2CollapseState, setTable2CollapseState] = useState("close");
   const [table3CollapseState, setTable3CollapseState] = useState("close");
   const [table4CollapseState, setTable4CollapseState] = useState("close");
 
+  //handle Button clicks
   const handleGraphic1ButtonClick = (type) => {
     setGraphic1Type(type);
   };
@@ -58,7 +60,6 @@ function ETFs({ data }) {
   };
 
   const handleTableCollapse = (state, table) => {
-    table == "table1" && setTable1CollapseState(state);
     table == "table2" && setTable2CollapseState(state);
     table == "table3" && setTable3CollapseState(state);
     table == "table4" && setTable4CollapseState(state);
@@ -341,7 +342,7 @@ function ETFs({ data }) {
           the allocations changing.)
         </p>
       </div>
-      <h3>Randomized Share Numbers</h3>
+      <h3>Randomized Share Numbers (Individual stocks)</h3>
       <div className="button-wrapper">
         <div className="random-bar-wrapper">
           <button id="randomize" onClick={() => handleRandomize1ButtonClick()}>
@@ -368,7 +369,7 @@ function ETFs({ data }) {
             </div>
           </div>
         </div>
-        <div className="expand-collapse-buttons">
+        {/* <div className="expand-collapse-buttons">
           <button
             className="small-button"
             onClick={() => handleTableCollapse("close", "table3")}
@@ -381,9 +382,9 @@ function ETFs({ data }) {
           >
             Expand Table
           </button>
-        </div>
+        </div> */}
       </div>
-      <div className="table-wrapper">
+      {/* <div className="table-wrapper">
         <table>
           <thead>
             <tr>
@@ -441,10 +442,18 @@ function ETFs({ data }) {
             )}
           </tbody>
         </table>
+      </div> */}
+      <div>
+        <HorizontalBarChart
+          data={randomMicaData}
+          options={{
+            y_axis_labels: "Name",
+          }}
+        />
       </div>
-      <div className="mobile-scroll-tip">
+      {/* <div className="mobile-scroll-tip">
         <p>Scroll table horizontally to see more data.</p>
-      </div>
+      </div> */}
       <div className="multi-paragraph-section">
         <p>
           Clicking the button, I noticed that the total value was positive
@@ -497,12 +506,17 @@ function ETFs({ data }) {
           .
         </p>
         <p>
+          But, like my daughter's unlucky selection, what if I've just gotten
+          lucky and chosen the right allocation of ETFs? If I had chosen a
+          different allocation, would my return be likely to be down?
+        </p>
+        <p>
           The table below has an assortment of ETFs. I've set the number of
           shares to be random. Click the Randomize button to try different
           allocations. How often does it turn out negative?
         </p>
       </div>
-      <h3>Randomized Share Numbers</h3>
+      <h3>Randomized Share Numbers (ETFs)</h3>
       <div className="button-wrapper">
         <div className="random-bar-wrapper">
           <button id="randomize" onClick={() => handleRandomize2ButtonClick()}>
@@ -529,7 +543,7 @@ function ETFs({ data }) {
             </div>
           </div>
         </div>
-        <div className="expand-collapse-buttons">
+        {/* <div className="expand-collapse-buttons">
           <button
             className="small-button"
             onClick={() => handleTableCollapse("close", "table4")}
@@ -542,9 +556,9 @@ function ETFs({ data }) {
           >
             Expand Table
           </button>
-        </div>
+        </div> */}
       </div>
-      <div className="table-wrapper">
+      {/* <div className="table-wrapper">
         <table>
           <thead>
             <tr>
@@ -614,9 +628,17 @@ function ETFs({ data }) {
             )}
           </tbody>
         </table>
-      </div>
-      <div className="mobile-scroll-tip">
+      </div> */}
+      {/* <div className="mobile-scroll-tip">
         <p>Scroll table horizontally to see more data.</p>
+      </div> */}
+      <div>
+        <HorizontalBarChart
+          data={randomSarahData}
+          options={{
+            y_axis_labels: "Symbol",
+          }}
+        />
       </div>
       <div className="multi-paragraph-section">
         <p>

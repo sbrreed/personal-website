@@ -1,0 +1,27 @@
+.x-axis-label {
+  font-size: 1rem;
+}
+.tick text {
+  font-size: 1rem;
+}
+.y-axis-label {
+  font-size: 1rem;
+}
+
+.stock-bar-chart-bar {
+  fill: var(--green);
+}
+.bar-chart-total-text.negative {
+  fill: red;
+}
+
+@media (max-width: 1000px) {
+  .x-axis-label,
+  .tick text,
+  .y-axis-label {
+    font-size: 0.75rem;
+  }
+  .bar-chart-total-text {
+    font-size: 1.2rem;
+  }
+}

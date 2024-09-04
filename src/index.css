@@ -4,6 +4,7 @@
 @import "./components/Modal/Modal.css";
 @import "./components/Footer/Footer.css";
 @import "./components/Articles/Articles.css";
+@import "./components/D3/D3Charts.css";
 
 * {
   box-sizing: border-box;
