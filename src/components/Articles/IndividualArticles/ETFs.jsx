@@ -167,7 +167,7 @@ function ETFs({ data }) {
                 </tr>
               </thead>
               <tbody>
-                {micaData.map((item, index) => {
+                {micaData_withTotals.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>{item.Name}</td>
