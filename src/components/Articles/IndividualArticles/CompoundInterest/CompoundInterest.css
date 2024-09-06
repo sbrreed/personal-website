@@ -1,0 +1,16 @@
+#investmentForm input {
+  margin-left: 5px;
+  font-size: 1.25rem;
+}
+
+.chartInputs {
+  border: 2px solid var(--primary-purple);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width: max-content;
+}
+
+.chartInputs div {
+  margin: 5px 0;
+}
