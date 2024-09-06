@@ -1,8 +1,8 @@
-import getFilteredETFData from "../../../sharedTools/getFilteredETFData";
-import getRandomizedData from "../../../sharedTools/getRandomizedData";
+import getFilteredETFData from "./getFilteredETFData";
+import getRandomizedData from "../../../../sharedTools/getRandomizedData";
 import { useState } from "react";
-import LineChart from "../../D3/LineChart";
-import HorizontalBarChart from "../../D3/HorizontalBarChart";
+import LineChart from "../../../D3/LineChart";
+import HorizontalBarChart from "../../../D3/HorizontalBarChart";
 
 function ETFs({ data }) {
   const micaData = getFilteredETFData({ data: data, person: "Mica" });

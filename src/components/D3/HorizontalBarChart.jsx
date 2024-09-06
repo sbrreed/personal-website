@@ -7,14 +7,12 @@ const HorizontalBarChart = ({ data, options }) => {
   const { windowHeight, windowWidth } = useWindowDimensions();
   const chartHeight = data.length * barHeight;
   const chartWidth = windowWidth < 1000 ? windowWidth * 0.7 : 400;
-  console.log("chartWidth", chartWidth);
   let margin = { top: 20, right: 300, bottom: 50, left: 140 };
   if (windowWidth < 1000) {
     margin = { top: 40, right: 20, bottom: 50, left: 20 };
   }
 
   const { y_axis_labels } = options;
-  console.log("height", windowHeight, "width", windowWidth);
 
   const drawHorizontalBarChart = (svg) => {
     const totals = data.filter((d) => d.Symbol === "TOTAL");

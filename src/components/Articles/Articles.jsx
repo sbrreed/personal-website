@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Papa from "papaparse";
-import getFilteredETFData from "../../sharedTools/getFilteredETFData";
-import ETFs from "./IndividualArticles/ETFs";
+import ETFs from "./IndividualArticles/ETFs/ETFs";
+import CompoundInterest from "./IndividualArticles/CompoundInterest/CompoundInterest";
 
 function Articles({ topic, articleDataPath }) {
   const [articleData, setArticleData] = useState([]);
@@ -346,6 +346,7 @@ function Articles({ topic, articleDataPath }) {
       )}
       {topic == "The case for Exchange Traded Funds vs Individual Stocks" &&
         articleData.length > 0 && <ETFs data={articleData} />}
+      {topic == "Compound Interest Visualized" && <CompoundInterest />}
     </div>
   );
 }
