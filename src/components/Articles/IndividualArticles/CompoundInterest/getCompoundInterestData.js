@@ -16,7 +16,7 @@ function getCompoundInterestData(
     // Push the age and value to the results array
     results.push({
       age: currentAge + year,
-      value: totalValue.toFixed(2), // Fixed to two decimal places for cleaner output
+      value1: totalValue.toFixed(2), // Fixed to two decimal places for cleaner output
     });
   }
 

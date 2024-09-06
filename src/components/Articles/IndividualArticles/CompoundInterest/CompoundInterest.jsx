@@ -3,18 +3,20 @@ import LineChart from "../../../D3/LineChart";
 import getCompoundInterestData from "./getCompoundInterestData";
 
 function CompoundInterest() {
-  const [currentAge, setCurrentAge] = useState(25);
+  const [currentAge, setCurrentAge] = useState(""); // Start with an empty age field
   const [initialInvestment, setInitialInvestment] = useState(1000);
   const [annualContribution, setAnnualContribution] = useState(1000);
   const [allDataSets, setAllDataSets] = useState([]); // Array to hold all data sets
   const [clickCount, setClickCount] = useState(0); // Track how many times "Calculate" was clicked
   const [investmentHistory, setInvestmentHistory] = useState([]); // Track the history of initialInvestment and annualContribution
+  const [prevAge, setPrevAge] = useState(null); // Track the previous currentAge
+  const [resetChart, setResetChart] = useState(false); // Track whether to reset the chart
+
   const numYearsToReport = 50;
   const interestRate = 8;
 
   // Function to generate data and update the chart
   const generateDataAndUpdateChart = (age, initial, contribution) => {
-    // Generate new data set
     const newDataSet = getCompoundInterestData(
       age,
       initial,
@@ -23,41 +25,45 @@ function CompoundInterest() {
       interestRate
     );
 
-    // Merge new dataset with existing datasets
-    const mergedData = newDataSet.map((dataPoint, index) => {
-      const existing = allDataSets[index] || { age: dataPoint.age }; // Keep age, add new values
-      return { ...existing, [`value${clickCount + 1}`]: dataPoint.value };
-    });
+    if (age !== prevAge) {
+      setAllDataSets(newDataSet); // Reset chart with new age data
+      setInvestmentHistory([
+        { initialInvestment: initial, annualContribution: contribution },
+      ]); // Clear the investment history
+      setClickCount(1); // Reset click count
+      setResetChart(true); // Flag to reset chart
+      setPrevAge(age); // Update prevAge to currentAge
+    } else {
+      // Add new line if age hasn't changed
+      const mergedData = newDataSet.map((dataPoint, index) => {
+        const existing = allDataSets[index] || { age: dataPoint.age };
+        return { ...existing, [`value${clickCount + 1}`]: dataPoint.value1 };
+      });
 
-    // Update the state with the new data set and increment click count
-    setAllDataSets(mergedData);
-    setInvestmentHistory([
-      ...investmentHistory,
-      { initialInvestment: initial, annualContribution: contribution },
-    ]);
-    setClickCount(clickCount + 1);
+      setAllDataSets(mergedData);
+      setInvestmentHistory([
+        ...investmentHistory,
+        { initialInvestment: initial, annualContribution: contribution },
+      ]);
+      setClickCount(clickCount + 1);
+    }
   };
-
-  // Initial chart render with default values
-  useEffect(() => {
-    generateDataAndUpdateChart(
-      currentAge,
-      initialInvestment,
-      annualContribution
-    );
-  }, []); // Run once when the component mounts
 
   // Handle form submission
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent form from submitting
+    event.preventDefault();
 
-    // Get current form values
+    if (currentAge === "") {
+      alert("Please enter a valid age");
+      return;
+    }
+
     const age = Number(document.getElementById("currentAge").value);
     const initial = Number(document.getElementById("initialInvestment").value);
     const contribution = Number(
       document.getElementById("annualContribution").value
     );
-    // Generate data and update chart
+
     generateDataAndUpdateChart(age, initial, contribution);
   };
 
@@ -85,7 +91,7 @@ function CompoundInterest() {
               id="initialInvestment"
               name="initialInvestment"
               value={initialInvestment}
-              onChange={(e) => setInitialInvestment(e.target.value)}
+              onChange={(e) => setInitialInvestment(Number(e.target.value))}
               required
             />
           </div>
@@ -97,7 +103,7 @@ function CompoundInterest() {
               id="annualContribution"
               name="annualContribution"
               value={annualContribution}
-              onChange={(e) => setAnnualContribution(e.target.value)}
+              onChange={(e) => setAnnualContribution(Number(e.target.value))}
               required
             />
           </div>
@@ -105,7 +111,12 @@ function CompoundInterest() {
           <button type="submit">Calculate</button>
         </div>
       </form>
-      <LineChart data={allDataSets} investmentHistory={investmentHistory} />
+      <LineChart
+        data={allDataSets}
+        investmentHistory={investmentHistory}
+        resetChart={resetChart}
+        setResetChart={setResetChart}
+      />
     </div>
   );
 }
