@@ -224,6 +224,20 @@ td.last-td-negative {
   display: none;
 }
 
+.tooltip {
+  line-height: 1.5rem;
+  border: 2px solid var(--primary-purple);
+  background: #f9f9f9;
+  padding: 5px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.tooltip span {
+  font-weight: bold;
+}
+
 @media (max-width: 1000px) {
   .random-bar-wrapper {
     flex-direction: column;

@@ -16,13 +16,7 @@ const LineChart = ({ data, investmentHistory }) => {
       .append("div")
       .attr("class", "tooltip")
       .style("position", "absolute")
-      .style("visibility", "hidden")
-      .style("background", "#f9f9f9")
-      .style("padding", "5px")
-      .style("border", "1px solid #ccc")
-      .style("border-radius", "4px")
-      .style("pointer-events", "none")
-      .style("z-index", "9999");
+      .style("visibility", "hidden");
 
     return () => {
       tooltip.remove(); // Cleanup tooltip on component unmount
@@ -103,11 +97,14 @@ const LineChart = ({ data, investmentHistory }) => {
         // .style("cursor", "pointer")
         .on("mouseover", function (event, d) {
           const value = d[`value${i}`];
-          const dotValue = d3.format("$,")(value);
+          const dotValue = d3.format("$,")(Math.round(value));
           tooltip
             .style("visibility", "visible")
             .html(
-              `Age: ${d.age}<br>Value: ${dotValue}<br>Initial: $${investment.initialInvestment}<br>Annual: $${investment.annualContribution}`
+              `<span className = 'prop'>Age:</span> ${d.age}<br>
+              <span className = 'prop'>Value:</span>  ${dotValue}<br>
+              <span className = 'prop'>Initial:</span>  $${investment.initialInvestment}<br>
+              <span className = 'prop'>Annual:</span>  $${investment.annualContribution}`
             )
             .style("left", event.pageX + 10 + "px")
             .style("top", event.pageY - 20 + "px");
