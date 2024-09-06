@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const LineChart = ({ data, investmentHistory, resetChart, setResetChart }) => {
-  const { windowHeight, windowWidth } = useWindowDimensions();
+  const { windowWidth } = useWindowDimensions();
   const chartHeight = 500;
   const chartWidth = windowWidth * 0.65;
   let margin = { top: 20, right: 30, bottom: 30, left: 100 };
@@ -148,13 +148,17 @@ const LineChart = ({ data, investmentHistory, resetChart, setResetChart }) => {
         .on("mouseover", function (event, d) {
           const value = d[`value${i}`];
           const dotValue = d3.format("$,")(Math.round(value));
+          const totalContrib = d3.format("$,")(
+            investment.annualContribution * (+d.age - x_axis_values[0])
+          );
           tooltip
             .style("visibility", "visible")
             .html(
               `<span className = 'prop'>Age:</span> ${d.age}<br>
               <span className = 'prop'>Value:</span>  ${dotValue}<br>
               <span className = 'prop'>Initial:</span>  $${investment.initialInvestment}<br>
-              <span className = 'prop'>Annual:</span>  $${investment.annualContribution}`
+              <span className = 'prop'>Annual:</span>  $${investment.annualContribution}<br>
+              <span className = 'prop'>Total Contribution:</span>  ${totalContrib}<br>`
             )
             .style("left", event.pageX + 10 + "px")
             .style("top", event.pageY - 20 + "px");

@@ -69,6 +69,26 @@ function CompoundInterest() {
 
   return (
     <div className="article">
+      <div className="multi-paragraph-section">
+        <p>
+          Compound interest was allegedly described by Albert Einstein as "the
+          8th wonder of the world." Compound interest happens when the interest
+          on an investment is re-invested. The interest for the following
+          period, then, is calculated on a bigger value. And so on.{" "}
+        </p>
+        <p>
+          {" "}
+          In this calculator, the interest rate has been set at 8%, which is the
+          widely considered standard rate of return for the stock market.
+        </p>
+        <p>
+          Use this calculator to play with various initial investment and annual
+          contribution limits. Which seems to have the most impact?
+        </p>
+        <p>
+          First, let's start with your age. (Or your dog's age, it's up to you)
+        </p>
+      </div>
       <form id="investmentForm" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="currentAge">Current Age:</label>
@@ -111,6 +131,9 @@ function CompoundInterest() {
           <button type="submit">Calculate</button>
         </div>
       </form>
+      <p>
+        Tap on or hover over any dot to see the age and value at that point.
+      </p>
       <LineChart
         data={allDataSets}
         investmentHistory={investmentHistory}
