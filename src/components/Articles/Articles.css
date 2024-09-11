@@ -60,6 +60,10 @@
   padding: 0;
 }
 
+.subsection-title {
+  font-weight: bold;
+}
+
 table {
   border-collapse: collapse;
   border: 2px solid var(--light-gray);

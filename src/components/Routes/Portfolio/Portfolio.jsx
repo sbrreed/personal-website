@@ -112,13 +112,15 @@ function Portfolio() {
               <div className="data-viz-group">
                 {personalDataVizData.map((item, index) => {
                   return (
-                    <Card
-                      key={`card_${item.Title}`}
-                      item={item}
-                      style={{ animationDelay: `${index * 0.3}s` }}
-                      onClick={() => openModal(item)}
-                      portfolioType={portfolioType}
-                    />
+                    item.ShowHide != "Hide" && (
+                      <Card
+                        key={`card_${item.Title}`}
+                        item={item}
+                        style={{ animationDelay: `${index * 0.3}s` }}
+                        onClick={() => openModal(item)}
+                        portfolioType={portfolioType}
+                      />
+                    )
                   );
                 })}
               </div>
