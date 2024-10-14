@@ -5,31 +5,43 @@ function RankedChoiceVoting() {
     Biking: "",
     Running: "",
     Hiking: "",
-    Climbing: "",
-    // Skiing: 0.2,
+    Skiing: "",
   };
+
+  // First round
   const [firstRoundChoicePercentages, setFirstRoundChoicePercentages] =
     useState(choicePercentagesDefault);
   const [firstRoundChoiceToRemove, setFirstRoundChoiceToRemove] = useState("");
+  const [firstRoundButtonClicked, setFirstRoundButtonClicked] = useState(false);
+  const [firstRoundWinner, setFirstRoundWinner] = useState("");
+  const [firstRoundLoser, setFirstRoundLoser] = useState("");
+
+  //second round
   const [secondRoundChoicePercentages, setSecondRoundChoicePercentages] =
     useState({});
   const [secondRoundChoiceToRemove, setSecondRoundChoiceToRemove] =
     useState("");
   const [thirdRoundChoicePercentages, setThirdRoundChoicePercentages] =
     useState({});
-
-  const [firstRoundWinner, setFirstRoundWinner] = useState("");
   const [secondRoundWinner, setSecondRoundWinner] = useState("");
+  const [secondRoundButtonClicked, setSecondRoundButtonClicked] =
+    useState(false);
+
   const [thirdRoundWinner, setThirdRoundWinner] = useState("");
 
+  //third round
   const handlePublicButtonClick = () => {
     const newChoicePercentages = randomlyAssignValues(
       firstRoundChoicePercentages
     );
     setFirstRoundChoicePercentages(newChoicePercentages);
     determineWinner(newChoicePercentages, setFirstRoundWinner);
+    setFirstRoundLoser(determineLoser(newChoicePercentages));
+    setFirstRoundButtonClicked(true);
+
     setSecondRoundChoicePercentages({});
     setSecondRoundWinner("");
+
     setThirdRoundChoicePercentages({});
     setThirdRoundWinner("");
     setFirstRoundChoiceToRemove("");
@@ -37,29 +49,46 @@ function RankedChoiceVoting() {
   };
 
   const handleCreateSecondRoundClick = () => {
-    const { updatedChoiceObject, valueToDistribute } = findAndRemoveMin(
-      firstRoundChoicePercentages,
-      setFirstRoundChoiceToRemove
+    const { updatedChoiceObject, loser, valueToDistribute } = findAndRemoveMin(
+      firstRoundChoicePercentages
     );
+    setFirstRoundChoiceToRemove(loser);
     const newChoicePercentages = randomlyReAssignRemovedValue(
       updatedChoiceObject,
       valueToDistribute
     );
     setSecondRoundChoicePercentages(newChoicePercentages);
     determineWinner(newChoicePercentages, setSecondRoundWinner);
+    setSecondRoundButtonClicked(true);
   };
 
   const handleCreateThirdRoundClick = () => {
-    const { updatedChoiceObject, valueToDistribute } = findAndRemoveMin(
-      secondRoundChoicePercentages,
-      setSecondRoundChoiceToRemove
+    const { updatedChoiceObject, loser, valueToDistribute } = findAndRemoveMin(
+      secondRoundChoicePercentages
     );
+    setSecondRoundChoiceToRemove(loser);
     const newChoicePercentages = randomlyReAssignRemovedValue(
       updatedChoiceObject,
       valueToDistribute
     );
     setThirdRoundChoicePercentages(newChoicePercentages);
     determineWinner(newChoicePercentages, setThirdRoundWinner);
+  };
+
+  const handleClearChoicesClick = () => {
+    setFirstRoundChoicePercentages(choicePercentagesDefault);
+    setFirstRoundChoiceToRemove("");
+    setFirstRoundButtonClicked(false);
+    setFirstRoundWinner("");
+    setFirstRoundLoser("");
+
+    setSecondRoundChoicePercentages({});
+    setSecondRoundChoiceToRemove("");
+    setSecondRoundWinner("");
+    setSecondRoundButtonClicked(false);
+
+    setThirdRoundChoicePercentages({});
+    setThirdRoundWinner("");
   };
 
   const randomlyAssignValues = (choiceObject) => {
@@ -113,30 +142,6 @@ function RankedChoiceVoting() {
     return newChoicePercentages;
   };
 
-  const findAndRemoveMin = (choicePercentages, choiceRemovalFunction) => {
-    // Find the key with the minimum value
-    let minKey = Object.keys(choicePercentages).reduce((min, key) =>
-      choicePercentages[key] < choicePercentages[min] ? key : min
-    );
-    choiceRemovalFunction(minKey);
-
-    // Create a new object excluding the key with the minimum value
-    let newChoicePercentages = Object.keys(choicePercentages).reduce(
-      (acc, key) => {
-        if (key !== minKey) {
-          acc[key] = choicePercentages[key];
-        }
-        return acc;
-      },
-      {}
-    );
-
-    return {
-      updatedChoiceObject: newChoicePercentages,
-      valueToDistribute: choicePercentages[minKey],
-    };
-  };
-
   const determineWinner = (newChoicePercentages, roundWinner) => {
     let thereIsAWinner = false;
     Object.keys(newChoicePercentages).forEach((choice) => {
@@ -150,8 +155,37 @@ function RankedChoiceVoting() {
     }
   };
 
+  const determineLoser = (choicePercentages) => {
+    let loser = Object.keys(choicePercentages).reduce((min, key) =>
+      choicePercentages[key] < choicePercentages[min] ? key : min
+    );
+    return loser;
+  };
+
+  const findAndRemoveMin = (choicePercentages) => {
+    // Find the key with the minimum value
+    const loser = determineLoser(choicePercentages);
+
+    // Create a new object excluding the key with the minimum value
+    let newChoicePercentages = Object.keys(choicePercentages).reduce(
+      (acc, key) => {
+        if (key !== loser) {
+          acc[key] = choicePercentages[key];
+        }
+        return acc;
+      },
+      {}
+    );
+
+    return {
+      updatedChoiceObject: newChoicePercentages,
+      loser: loser,
+      valueToDistribute: choicePercentages[loser],
+    };
+  };
+
   return (
-    <div>
+    <div id="RankedChoiceVoting">
       <p>
         Ranked Choice Voting (RCV) will be on the Colorado ballot this year.
         Some people (mostly nerdy people like me) are very exicted about it,
@@ -164,104 +198,195 @@ function RankedChoiceVoting() {
         {" "}
         For this example, we're going to be voting between 4 outdoor activities
         (it is Colorado after all). Each voter can rank the activities in their
-        order of preference. Love running but hate skiing? Then rank running as
-        number 1 and skiing as number 4.
+        order of preference. Love skiing but hate running? Then rank skiing as
+        number 1 and running as number 4.
+      </p>
+      <div className="image-container">
+        <img
+          src="/DataViz/ranked_choice/ballot.png"
+          alt="Ranked Choice Voting Ballot"
+        ></img>
+      </div>
+      <p>
+        The key piece of information to know about RCV is that{" "}
+        <b>the first candidate to get over 50% of the vote WINS</b>. RCV is a
+        process of elimination until this happens-- the intention being to find
+        a candidate that the majority of the population can live with.{" "}
       </p>
       <p>
-        The key piece of information to know about RCV is that the first
-        candidate to get <b>over 50%</b> of the vote wins. RCV is a process of
-        elimination until this happens-- the intention being to find a candidate
-        that the majority of the population can live with.{" "}
-      </p>
-      <p>
         {" "}
-        To simulate a bigger election, click the Assign Public Choices button
-        below. This will randomly assign ranks for the 4 choices.{" "}
+        To simulate a bigger election, click the <b>Vote!</b> button below. This
+        will randomly assign ranks for the 4 choices as if a public election had
+        been run.{" "}
       </p>
-      <button onClick={() => handlePublicButtonClick()}>
-        {" "}
-        Assign Public choices
-      </button>
-      <p>First Round</p>
-      {Object.keys(firstRoundChoicePercentages).map((choice) => {
-        return (
-          <div key={choice}>
-            <p
-              className={
-                choice === firstRoundChoiceToRemove ? "crossed-out" : ""
-              }
-            >
-              {choice} : {firstRoundChoicePercentages[choice]}
-            </p>
-          </div>
-        );
-      })}
-      <p>
-        {" "}
-        Ok, so here we can imagine this was the outcome of the first round of
-        vote counting.
-      </p>
+      <div className="voting-container">
+        <button onClick={() => handlePublicButtonClick()}> Vote!</button>
+        <h3 className="round-title">Raw Election Results</h3>
+        {Object.keys(firstRoundChoicePercentages).map((choice) => {
+          return (
+            <div key={choice} className="choice-div">
+              <img
+                src={`/DataViz/ranked_choice/${choice}.svg`}
+                className={
+                  firstRoundChoiceToRemove == choice
+                    ? "choice-icon deselected"
+                    : "choice-icon"
+                }
+                alt={choice}
+              ></img>{" "}
+              <p
+                className={
+                  choice === firstRoundChoiceToRemove
+                    ? "crossed-out choice"
+                    : "choice"
+                }
+              >
+                : {(firstRoundChoicePercentages[choice] * 100).toFixed(0)}%
+              </p>
+            </div>
+          );
+        })}
+      </div>
       {firstRoundWinner !== "" && (
         <>
+          <h3>We have a winner!</h3>
           <p>
             Since {firstRoundWinner} got <b>over 50%</b> of the vote, they win
             the contest and the whole thing is over.{" "}
           </p>
-          <p>Winner: {firstRoundWinner}</p>
+          <p>
+            Click the <b>Run Again</b> button to run another round of public
+            voting and see how the process would work if no one won the first
+            round.{" "}
+          </p>
+          <p className="winner-text">Winner: {firstRoundWinner}</p>
+          <button onClick={() => handleClearChoicesClick()}>Run Again</button>
         </>
       )}
-      {firstRoundWinner == "" && (
+      {firstRoundWinner == "" && firstRoundButtonClicked && (
         <div>
           <p>
+            {" "}
+            Ok, so here we can imagine this was the outcome of the first round
+            of vote counting.
+          </p>
+          <p>
             Since no single choice got more than 50% of the vote, we go to the
-            second round. Now, here, no one needs to vote again. That's because
-            everyone has already told us what their second choice would be.{" "}
+            second round. No one needs to vote again. That's because everyone
+            has already told us what their second choice would be.{" "}
           </p>
           <p>
             First, we eliminate the choice with the lowest score--
-            {firstRoundChoiceToRemove}. Anyone who voted for{" "}
-            {firstRoundChoiceToRemove} as their first choice, will have their
-            second choice applied. So, say you voted for{" "}
-            {firstRoundChoiceToRemove} as your first and Hiking as your second
-            choice. Your vote would now go to Hiking.{" "}
+            {firstRoundLoser}. Anyone who voted for {firstRoundLoser} as their
+            first choice, will have their second choice applied. So, say you
+            voted for {firstRoundLoser} as your first choice. Your vote would
+            now be applied to your second choice. Meaning, your vote is still
+            counted.{" "}
           </p>
-          <p>Click the See Second Round button to apply these votes.</p>
-          <button onClick={() => handleCreateSecondRoundClick()}>
-            See Second Round{" "}
-          </button>
-          {Object.keys(secondRoundChoicePercentages).map((choice) => {
-            return (
-              <div key={choice}>
-                <p
-                  className={
-                    secondRoundChoiceToRemove == choice ? "crossed-out" : ""
-                  }
-                >
-                  {choice} : {secondRoundChoicePercentages[choice]}
-                </p>
-              </div>
-            );
-          })}
-          {secondRoundWinner !== "" && <p>Winner: {secondRoundWinner}</p>}
+          <p>
+            Click the <b>See Second Round Results</b> button to apply these
+            votes.
+          </p>
+          <div className="voting-container">
+            <button onClick={() => handleCreateSecondRoundClick()}>
+              See Second Round Results{" "}
+            </button>
+            {Object.keys(secondRoundChoicePercentages).map((choice) => {
+              return (
+                <div key={choice} className="choice-div">
+                  <img
+                    src={`/DataViz/ranked_choice/${choice}.svg`}
+                    className={
+                      secondRoundChoiceToRemove == choice
+                        ? "choice-icon deselected"
+                        : "choice-icon"
+                    }
+                    alt={choice}
+                  ></img>{" "}
+                  <p
+                    className={
+                      secondRoundChoiceToRemove == choice
+                        ? "crossed-out choice"
+                        : "choice"
+                    }
+                  >
+                    : {(secondRoundChoicePercentages[choice] * 100).toFixed(0)}%
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          {secondRoundWinner !== "" && (
+            <>
+              <h3>We have a winner!</h3>
+              <p>
+                Since {secondRoundWinner} got more than 50% of the vote, they
+                win.
+              </p>
+              <p className="winner-text">Winner: {secondRoundWinner}</p>
+              <button onClick={() => handleClearChoicesClick()}>
+                Run Again
+              </button>
+            </>
+          )}
+          {secondRoundWinner == "" && secondRoundButtonClicked && (
+            <>
+              <p>
+                Once again, no choice got more than 50% of the vote so we'll
+                need to go one more round to see who wins. The choice with the
+                lowest ranking will have their votes distributed to the next
+                choice on their ballot. This could be a voter's second or third
+                choice depending on how they voted for their first choice (if
+                their first choice made it through the first round of
+                elimination).{" "}
+              </p>
+              <p>
+                Click the <b>See Third Round Results</b> button to run the last
+                round of this voting process and see the winner!
+              </p>
+            </>
+          )}
         </div>
       )}
       {firstRoundWinner == "" &&
         secondRoundWinner == "" &&
         Object.keys(secondRoundChoicePercentages).length !== 0 && (
           <div>
-            <button onClick={() => handleCreateThirdRoundClick()}>
-              See Third Round{" "}
-            </button>
-            {Object.keys(thirdRoundChoicePercentages).map((choice) => {
-              return (
-                <div key={choice}>
-                  <p>
-                    {choice} : {thirdRoundChoicePercentages[choice]}
-                  </p>
-                </div>
-              );
-            })}
-            {thirdRoundWinner !== "" && <p>Winner: {thirdRoundWinner}</p>}
+            <div className="voting-container">
+              <button onClick={() => handleCreateThirdRoundClick()}>
+                See Third Round Results{" "}
+              </button>
+              {Object.keys(thirdRoundChoicePercentages).map((choice) => {
+                return (
+                  <div key={choice} className="choice-div">
+                    <img
+                      src={`/DataViz/ranked_choice/${choice}.svg`}
+                      className="choice-icon"
+                      alt={choice}
+                    ></img>{" "}
+                    <p className="choice">
+                      : {(thirdRoundChoicePercentages[choice] * 100).toFixed(0)}
+                      %
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+            {thirdRoundWinner !== "" && (
+              <>
+                <h3>We have a winner!</h3>
+                <p className="winner-text">Winner: {thirdRoundWinner}</p>
+                <p>
+                  The beauty of this type of voting is that we can be certain
+                  that a true majority of voters listed {thirdRoundWinner} in
+                  their top three choices. And maybe, just maybe, this is a
+                  candidate we can all live with.
+                </p>
+                <button onClick={() => handleClearChoicesClick()}>
+                  Run Again
+                </button>
+              </>
+            )}
           </div>
         )}
     </div>
