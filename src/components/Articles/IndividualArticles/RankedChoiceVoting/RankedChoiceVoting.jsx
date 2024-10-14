@@ -201,11 +201,29 @@ function RankedChoiceVoting() {
         order of preference. Love skiing but hate running? Then rank skiing as
         number 1 and running as number 4.
       </p>
-      <div className="image-container">
-        <img
-          src="/DataViz/ranked_choice/ballot.png"
-          alt="Ranked Choice Voting Ballot"
-        ></img>
+      <p>This might be how three people vote.</p>
+      <div className="sample-voting-container">
+        <p>Person 1</p>
+        <p>Person 2</p>
+        <p>Person 3</p>
+        <div className="image-container">
+          <img
+            src="/DataViz/ranked_choice/ballot.png"
+            alt="Ranked Choice Voting Ballot"
+          ></img>
+        </div>
+        <div className="image-container">
+          <img
+            src="/DataViz/ranked_choice/ballot2.png"
+            alt="Ranked Choice Voting Ballot"
+          ></img>
+        </div>
+        <div className="image-container">
+          <img
+            src="/DataViz/ranked_choice/ballot3.png"
+            alt="Ranked Choice Voting Ballot"
+          ></img>
+        </div>
       </div>
       <p>
         The key piece of information to know about RCV is that{" "}
@@ -215,9 +233,9 @@ function RankedChoiceVoting() {
       </p>
       <p>
         {" "}
-        To simulate a bigger election, click the <b>Vote!</b> button below. This
-        will randomly assign ranks for the 4 choices as if a public election had
-        been run.{" "}
+        To simulate a <b>bigger</b> election, click the <b>Vote!</b> button
+        below. This will randomly assign ranks for the 4 choices as if a public
+        election had been run.{" "}
       </p>
       <div className="voting-container">
         <button onClick={() => handlePublicButtonClick()}> Vote!</button>
