@@ -185,7 +185,7 @@ function RankedChoiceVoting() {
   };
 
   return (
-    <div id="RankedChoiceVoting">
+    <div id="RankedChoiceVoting" className="article">
       <p>
         Ranked Choice Voting (RCV) will be on the Colorado ballot this year.
         Some people (mostly nerdy people like me) are very exicted about it,
