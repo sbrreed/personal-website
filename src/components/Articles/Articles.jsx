@@ -3,6 +3,7 @@ import Papa from "papaparse";
 import ETFs from "./IndividualArticles/ETFs/ETFs";
 import CompoundInterest from "./IndividualArticles/CompoundInterest/CompoundInterest";
 import Supplements from "./IndividualArticles/Supplements/Supplements";
+import RankedChoiceVoting from "./IndividualArticles/RankedChoiceVoting/RankedChoiceVoting";
 
 function Articles({ topic, articleDataPath }) {
   const [articleData, setArticleData] = useState([]);
@@ -349,6 +350,7 @@ function Articles({ topic, articleDataPath }) {
         articleData.length > 0 && <ETFs data={articleData} />}
       {topic == "Compound Interest Visualized" && <CompoundInterest />}
       {topic == "Supplement Research" && <Supplements />}
+      {topic == "Ranked Choice Voting" && <RankedChoiceVoting />}
     </div>
   );
 }

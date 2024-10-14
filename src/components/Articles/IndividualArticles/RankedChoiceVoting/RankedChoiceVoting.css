@@ -1,0 +1,95 @@
+.crossed-out {
+  text-decoration: line-through;
+}
+
+#RankedChoiceVoting p:not(.choice) {
+  margin-top: 20px;
+}
+
+#RankedChoiceVoting .choice-icon {
+  height: 36px;
+  width: 36px;
+  margin-right: 10px;
+}
+
+#RankedChoiceVoting img {
+  width: 85%;
+  height: auto;
+}
+
+#RankedChoiceVoting .choice-icon.deselected {
+  opacity: 0.2;
+}
+
+#RankedChoiceVoting button {
+  background-color: var(--primary-yellow);
+  border: 3px solid var(--primary-purple);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 1.3rem;
+}
+.voting-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.choice-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.choice-div p {
+  font-size: 1.2rem;
+}
+
+.winner-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-purple);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.purple-text {
+  color: var(--primary-purple);
+  font-weight: bold;
+}
+
+.sample-voting-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  text-align: center;
+}
+
+@media (min-width: 700px) {
+  #RankedChoiceVoting .choice-div p {
+    font-size: 1.7rem;
+  }
+  #RankedChoiceVoting p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  #RankedChoiceVoting img {
+    width: 40%;
+    height: auto;
+  }
+
+  #RankedChoiceVoting .choice-icon {
+    height: 7%;
+    width: 7%;
+    margin-right: 10px;
+  }
+}
