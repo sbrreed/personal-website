@@ -26,6 +26,7 @@ function RankedChoiceVoting() {
   const [secondRoundWinner, setSecondRoundWinner] = useState("");
   const [secondRoundButtonClicked, setSecondRoundButtonClicked] =
     useState(false);
+  const [secondRoundLoser, setSecondRoundLoser] = useState("");
 
   const [thirdRoundWinner, setThirdRoundWinner] = useState("");
 
@@ -53,6 +54,8 @@ function RankedChoiceVoting() {
       firstRoundChoicePercentages
     );
     setFirstRoundChoiceToRemove(loser);
+    setSecondRoundLoser(determineLoser(updatedChoiceObject));
+
     const newChoicePercentages = randomlyReAssignRemovedValue(
       updatedChoiceObject,
       valueToDistribute
@@ -185,7 +188,7 @@ function RankedChoiceVoting() {
   };
 
   return (
-    <div id="RankedChoiceVoting" className="article">
+    <div id="RankedChoiceVoting" className="article fullScreen">
       <p>
         Ranked Choice Voting (RCV) will be on the Colorado ballot this year.
         Some people (mostly nerdy people like me) are very exicted about it,
@@ -197,15 +200,18 @@ function RankedChoiceVoting() {
       <p>
         {" "}
         For this example, we're going to be voting between 4 outdoor activities
-        (it is Colorado after all). Each voter can rank the activities in their
-        order of preference. Love skiing but hate running? Then rank skiing as
-        number 1 and running as number 4.
+        (it is Colorado after all). Each voter can rank their activity choices
+        in their order of preference. Love skiing but hate running? Then rank
+        skiing as your number 1 choice and running as your number 4 choice.
       </p>
-      <p>This might be how three people vote.</p>
+      <p>
+        Imagine Elmo, Bert and Ernie needed to decide what to do this weekend.
+        They made up some voting ballots and filled them out.
+      </p>
       <div className="sample-voting-container">
-        <p>Person 1</p>
-        <p>Person 2</p>
-        <p>Person 3</p>
+        <p>Elmo's Ballot</p>
+        <p>Bert's Ballot</p>
+        <p>Ernie's Ballot</p>
         <div className="image-container">
           <img
             src="/DataViz/ranked_choice/ballot.png"
@@ -230,6 +236,13 @@ function RankedChoiceVoting() {
         <b>the first candidate to get over 50% of the vote WINS</b>. RCV is a
         process of elimination until this happens-- the intention being to find
         a candidate that the majority of the population can live with.{" "}
+      </p>
+      <p>
+        {" "}
+        In this example, two out of the three of them voted skiing as their #1
+        choice, so, since skiing got over 50% of the number 1 choices (66% in
+        this case), it wins. This is a simple example, though. What would happen
+        if millions of people were voting?
       </p>
       <p>
         {" "}
@@ -351,12 +364,14 @@ function RankedChoiceVoting() {
             <>
               <p>
                 Once again, no choice got more than 50% of the vote so we'll
-                need to go one more round to see who wins. The choice with the
-                lowest ranking will have their votes distributed to the next
-                choice on their ballot. This could be a voter's second or third
-                choice depending on how they voted for their first choice (if
-                their first choice made it through the first round of
-                elimination).{" "}
+                need to go one more round to see who wins. Anyone who voted for{" "}
+                {secondRoundLoser} (which is the choice with the lowest ranking)
+                as their first choice, will have their votes distributed to the
+                next choice on their ballot. This could be a voter's second or
+                third choice depending on how they voted for their first choice
+                (if their first choice made it through the first round of
+                elimination). This is where we're especially glad we have
+                computers to do the number crunching.{" "}
               </p>
               <p>
                 Click the <b>See Third Round Results</b> button to run the last
