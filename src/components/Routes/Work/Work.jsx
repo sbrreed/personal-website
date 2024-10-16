@@ -1,47 +1,47 @@
 import Card from "./Card";
 import Modal from "../../Modal/Modal";
 import Articles from "../../Articles/Articles";
-import getFilteredPortfolioData from "../../../sharedTools/getFilteredPortfolioData";
+import getFilteredWorkData from "../../../sharedTools/getFilteredWorkData";
 import { useState, useEffect, useRef } from "react";
 import Papa from "papaparse";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import NavBar from "../../NavBar/NavBar";
-import FetchPortfolioData from "../../../sharedTools/getFetchPortfolioData";
+import FetchWorkData from "../../../sharedTools/getFetchWorkData";
 import useModalClose from "../../../hooks/useModalClose";
 
 export async function loader({ params }) {
-  const portfolioType = params.portfolioType;
-  return { portfolioType };
+  const workType = params.workType;
+  return { workType };
 }
 
-function Portfolio() {
-  const { portfolioType } = useLoaderData();
+function Work() {
+  const { workType } = useLoaderData();
   const [searchParams] = useSearchParams();
   const project = searchParams.get("project");
   const modalRef = useRef();
 
   // get all the necessary data
-  const [portfolioData, setPortfolioData] = useState([]);
+  const [workData, setWorkData] = useState([]);
 
   useEffect(() => {
     async function loadData() {
-      const data = await FetchPortfolioData();
-      setPortfolioData(data);
+      const data = await FetchWorkData();
+      setWorkData(data);
     }
     loadData();
   }, []);
 
-  // Filter the data based on the portfolio type
-  const filteredPortfolioData = getFilteredPortfolioData({
-    data: portfolioData,
-    portfolioType,
+  // Filter the data based on the work type
+  const filteredWorkData = getFilteredWorkData({
+    data: workData,
+    workType,
   });
 
   // Filter the data based on the type of project
-  const professionalDataVizData = filteredPortfolioData.filter(
+  const professionalDataVizData = filteredWorkData.filter(
     (item) => item.Type == "Professional"
   );
-  const personalDataVizData = filteredPortfolioData.filter(
+  const personalDataVizData = filteredWorkData.filter(
     (item) => item.Type == "Personal"
   );
 
@@ -50,14 +50,14 @@ function Portfolio() {
 
   // If the project is in the URL, open the modal
   useEffect(() => {
-    if (project && filteredPortfolioData.length > 0) {
-      const foundProject = filteredPortfolioData.find(
+    if (project && filteredWorkData.length > 0) {
+      const foundProject = filteredWorkData.find(
         (item) => item.URL_Title === project
       );
       setSelectedProject(foundProject || null);
       setModalIsOpen(!!foundProject);
     }
-  }, [project, filteredPortfolioData]);
+  }, [project, filteredWorkData]);
 
   const openModal = (item) => {
     setSelectedProject(item);
@@ -78,18 +78,18 @@ function Portfolio() {
   }, [modalIsOpen]);
 
   // Custom hook to handle all modal closing (clicking outside, pressing escape key, etc.)
-  useModalClose(modalIsOpen, closeModal, modalRef, portfolioType);
+  useModalClose(modalIsOpen, closeModal, modalRef, workType);
 
   return (
     <>
       <NavBar />
-      <div className={modalIsOpen ? "portfolio modalOpen" : "portfolio"}>
-        {portfolioType != "Wood" && (
-          <div className="portfolio-intro">
+      <div className={modalIsOpen ? "work modalOpen" : "work"}>
+        {workType != "Wood" && (
+          <div className="work-intro">
             <p>Click on a card to learn more about the project</p>
           </div>
         )}
-        {portfolioType == "DataViz" && (
+        {workType == "DataViz" && (
           <div className="data-viz-container">
             <div className="professional-data-viz">
               <h2>Professional Work</h2>
@@ -101,7 +101,7 @@ function Portfolio() {
                       item={item}
                       style={{ animationDelay: `${index * 0.3}s` }}
                       onClick={() => openModal(item)}
-                      portfolioType={portfolioType}
+                      workType={workType}
                     />
                   );
                 })}
@@ -118,7 +118,7 @@ function Portfolio() {
                         item={item}
                         style={{ animationDelay: `${index * 0.3}s` }}
                         onClick={() => openModal(item)}
-                        portfolioType={portfolioType}
+                        workType={workType}
                       />
                     )
                   );
@@ -127,16 +127,16 @@ function Portfolio() {
             </div>
           </div>
         )}
-        <div className="portfolio-container">
-          {portfolioType != "DataViz" &&
-            filteredPortfolioData.map((item, index) => {
+        <div className="work-container">
+          {workType != "DataViz" &&
+            filteredWorkData.map((item, index) => {
               return (
                 <Card
                   key={`card_${index}`}
                   item={item}
                   style={{ animationDelay: `${index * 0.3}s` }}
                   onClick={() => openModal(item)}
-                  portfolioType={portfolioType}
+                  workType={workType}
                 />
               );
             })}
@@ -144,9 +144,9 @@ function Portfolio() {
         {modalIsOpen &&
           selectedProject &&
           project != undefined &&
-          portfolioType != "Wood" && (
+          workType != "Wood" && (
             <div ref={modalRef}>
-              <Modal onClose={closeModal} portfolioType={portfolioType}>
+              <Modal onClose={closeModal} workType={workType}>
                 <h1 className="modal-title">{selectedProject.Title}</h1>
                 {selectedProject.ModalText == "Article" && (
                   <Articles
@@ -177,7 +177,7 @@ function Portfolio() {
                           />
                         )}
                       </a>
-                      {portfolioType == "DataViz" && (
+                      {workType == "DataViz" && (
                         <div className="modal-technologies">
                           <p>
                             <b>Technologies:</b>{" "}
@@ -238,4 +238,4 @@ function Portfolio() {
   );
 }
 
-export default Portfolio;
+export default Work;

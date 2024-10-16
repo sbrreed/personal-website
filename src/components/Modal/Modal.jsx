@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-function Modal({ onClose, children, portfolioType }) {
+function Modal({ onClose, children, workType }) {
   const navigate = useNavigate();
   const handleCloseNavigation = () => {
-    navigate(`/portfolio/${portfolioType}`);
+    navigate(`/work/${workType}`);
   };
   return (
     <>

@@ -1,4 +1,4 @@
-.portfolio-navBar {
+.work-navBar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,7 +9,7 @@
   margin-bottom: 1rem;
 }
 
-.portfolio-navBar-content {
+.work-navBar-content {
   display: flex;
   flex-direction: row;
   gap: 50px;
@@ -21,7 +21,7 @@
   }
 }
 
-.portfolio-navBar a {
+.work-navBar a {
   border: none;
   padding: 0;
   background-color: transparent;
@@ -32,13 +32,13 @@
   text-decoration: none;
 }
 
-.portfolio-navBar a.active {
+.work-navBar a.active {
   outline: 1px solid var(--primary-yellow);
   padding: 6px;
   background-color: var(--medium-gray);
   color: white;
 }
 
-.portfolio-navBar a.active:focus {
+.work-navBar a.active:focus {
   outline: 3px solid var(--primary-yellow);
 }
