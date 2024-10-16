@@ -20,13 +20,13 @@ function Header() {
           HOME
         </NavLink>
         <NavLink
-          id="header-navBar-portfolio"
-          to={"/portfolio/DataViz"}
+          id="header-navBar-work"
+          to={"/work/DataViz"}
           className={({ isActive, isPending }) =>
             isActive ? "active" : isPending ? "pending" : ""
           }
         >
-          PORTFOLIO
+          WORK
         </NavLink>
         <NavLink
           id="header-navBar-resume"

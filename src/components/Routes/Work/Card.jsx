@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function Card({ item, style, onClick, portfolioType }) {
+function Card({ item, style, onClick, workType }) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const handleNavigation = () => {
-    navigate(`/portfolio/${portfolioType}/?project=${item.URL_Title}`);
+    navigate(`/work/${workType}/?project=${item.URL_Title}`);
   };
 
   const handleImageLoad = () => {
@@ -14,10 +14,10 @@ function Card({ item, style, onClick, portfolioType }) {
 
   return (
     <button
-      className={`card ${portfolioType}`}
+      className={`card ${workType}`}
       style={style}
       onClick={
-        portfolioType !== "Wood"
+        workType !== "Wood"
           ? () => {
               handleNavigation();
               onClick();

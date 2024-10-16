@@ -1,6 +1,6 @@
 import Papa from "papaparse";
-export default async function FetchPortfolioData() {
-  const dataFilePath = "/portfolio_data.csv";
+export default async function FetchWorkData() {
+  const dataFilePath = "/work_data.csv";
   const result = await fetch(dataFilePath);
   const csvFile = await result.text();
 

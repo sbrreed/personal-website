@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div className="portfolio-navBar">
-      <div className="portfolio-navBar-content">
+    <div className="work-navBar">
+      <div className="work-navBar-content">
         <NavLink
-          id="portfolio-navBar-dataViz"
-          to="/portfolio/DataViz"
+          id="work-navBar-dataViz"
+          to="/work/DataViz"
           className={({ isActive, isPending }) =>
             isActive ? "active" : isPending ? "pending" : ""
           }
@@ -14,8 +14,8 @@ function NavBar() {
           Data Visualization
         </NavLink>
         <NavLink
-          id="portfolio-navBar-mechEng"
-          to="/portfolio/MechEng"
+          id="work-navBar-mechEng"
+          to="/work/MechEng"
           className={({ isActive, isPending }) =>
             isActive ? "active" : isPending ? "pending" : ""
           }
@@ -23,8 +23,8 @@ function NavBar() {
           Mechanical Engineering
         </NavLink>
         <NavLink
-          id="portfolio-navBar-wood"
-          to="/portfolio/Wood"
+          id="work-navBar-wood"
+          to="/work/Wood"
           className={({ isActive, isPending }) =>
             isActive ? "active" : isPending ? "pending" : ""
           }

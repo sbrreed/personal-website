@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function useModalClose(modalIsOpen, closeModal, modalRef, portfolioType) {
+function useModalClose(modalIsOpen, closeModal, modalRef, workType) {
   const navigate = useNavigate();
   const handleCloseNavigation = () => {
-    navigate(`/portfolio/${portfolioType}`);
+    navigate(`/work/${workType}`);
   };
 
   useEffect(() => {
