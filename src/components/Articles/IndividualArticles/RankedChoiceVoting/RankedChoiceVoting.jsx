@@ -240,9 +240,12 @@ function RankedChoiceVoting() {
       <p>
         {" "}
         In this example, two out of the three of them voted skiing as their #1
-        choice, so, since skiing got over 50% of the number 1 choices (66% in
-        this case), it wins. This is a simple example, though. What would happen
-        if millions of people were voting?
+        choice, so, since skiing got over 50% of the #1 choices (66% in this
+        case), it wins.{" "}
+      </p>
+      <p>
+        This is a simple example, though. What would happen if millions of
+        people were voting?
       </p>
       <p>
         {" "}
@@ -352,7 +355,9 @@ function RankedChoiceVoting() {
               <h3>We have a winner!</h3>
               <p>
                 Since {secondRoundWinner} got more than 50% of the vote, they
-                win.
+                win. If no one had gotten more than 50% of the vote, however, a
+                third round of tallying would have been necessary. Click the{" "}
+                <b>Run Again</b> button to run another round of public voting.
               </p>
               <p className="winner-text">Winner: {secondRoundWinner}</p>
               <button onClick={() => handleClearChoicesClick()}>
