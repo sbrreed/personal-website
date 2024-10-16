@@ -124,7 +124,7 @@ function RankedChoiceVoting() {
       (val) => (val / sum) * valueToDistribute
     );
     let newChoicePercentages = {};
-
+    let numChoices = choices.length;
     // Add the distributed values to the original values
     choices.forEach((choice, index) => {
       let originalValue = parseFloat(choiceObject[choice]);
@@ -141,6 +141,11 @@ function RankedChoiceVoting() {
       parseFloat(newChoicePercentages[choices[choices.length - 1]]) +
       (1 - total)
     ).toFixed(2);
+
+    if (numChoices == 2 && newChoicePercentages[choices[0]] == 50) {
+      newChoicePercentages[choices[0]] = 51;
+      newChoicePercentages[choices[1]] = 49;
+    }
 
     return newChoicePercentages;
   };
@@ -251,7 +256,7 @@ function RankedChoiceVoting() {
         {" "}
         To simulate a <b>bigger</b> election, click the <b>Vote!</b> button
         below. This will randomly assign ranks for the 4 choices as if a public
-        election had been run.{" "}
+        election had been conducted.{" "}
       </p>
       <div className="voting-container">
         <button onClick={() => handlePublicButtonClick()}> Vote!</button>
@@ -418,7 +423,7 @@ function RankedChoiceVoting() {
                   The beauty of this type of voting is that we can be certain
                   that a true majority of voters listed {thirdRoundWinner} in
                   their top three choices. And maybe, just maybe, this is a
-                  candidate we can all live with.
+                  choice we can all live with.
                 </p>
                 <button onClick={() => handleClearChoicesClick()}>
                   Run Again
