@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: WebsiteFTP
 
     steps:
       # Checkout the repository code
@@ -18,7 +19,7 @@ jobs:
       - name: Deploy to FTP server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: sarahreed.art
+          server: ${{ secrets.WebsiteFTP.FTP_HOST }}
           username: ${{ secrets.WebsiteFTP.FTP_USERNAME }}
           password: ${{ secrets.WebsiteFTP.FTP_PASSWORD }}
           local-dir: dist
