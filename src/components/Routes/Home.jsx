@@ -16,8 +16,7 @@ export default function Home() {
           </p>
 
           <p>
-            My career has been guided by the question:
-            <nbsp />
+            My career has been guided by the question:{" "}
             <span className="homeTextQuestion">
               How can I achieve my goals with my current tools and resources?
             </span>
