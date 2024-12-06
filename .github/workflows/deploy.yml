@@ -18,7 +18,7 @@ jobs:
       - name: Deploy to FTP server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.WebsiteFTP.FTP_HOST }}
+          server: sarahreed.art
           username: ${{ secrets.WebsiteFTP.FTP_USERNAME }}
           password: ${{ secrets.WebsiteFTP.FTP_PASSWORD }}
           local-dir: dist
