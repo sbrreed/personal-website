@@ -18,8 +18,8 @@ jobs:
       - name: Deploy to FTP server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.Website FTP.FTP_HOST }}
-          username: ${{ secrets.Website FTP.FTP_USERNAME }}
-          password: ${{ secrets.Website FTP.FTP_PASSWORD }}
+          server: ${{ secrets.WebsiteFTP.FTP_HOST }}
+          username: ${{ secrets.WebsiteFTP.FTP_USERNAME }}
+          password: ${{ secrets.WebsiteFTP.FTP_PASSWORD }}
           local-dir: dist
-          port: ${{ secrets.Website FTP.FTP_PORT || '21' }}
+          port: '21'
