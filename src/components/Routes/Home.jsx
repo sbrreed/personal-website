@@ -4,10 +4,10 @@ export default function Home() {
       <div className="homePageContent">
         <div className="introduction">
           <p>
-            There are many names for what I love to do: Information storyteller,
-            Data Visualization Developer, Data Journalist. My specialty is
-            online interactive tools for presenting information. ( I also create
-            in print and video).
+            There are many names for what I do: Information storyteller, Data
+            Visualization Developer, Data Geek. My specialty is presenting
+            information with online interactive tools. ( I also create in print
+            and video ).
           </p>
           <p>
             I have always been curious, driven by a love for learning and
