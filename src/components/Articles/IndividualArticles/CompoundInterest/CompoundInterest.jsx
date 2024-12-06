@@ -78,8 +78,12 @@ function CompoundInterest() {
         </p>
         <p>
           {" "}
-          In this calculator, the interest rate has been set at 8%, which is the
-          widely considered standard rate of return for the stock market.
+          In this calculator, the interest rate has been set at 8%, which is the{" "}
+          <a href="https://www.fool.com/investing/how-to-invest/stocks/average-stock-market-return/">
+            {" "}
+            widely considered
+          </a>{" "}
+          standard rate of return for the stock market.
         </p>
         <p>
           Use this calculator to play with various initial investment and annual
@@ -111,7 +115,11 @@ function CompoundInterest() {
               id="initialInvestment"
               name="initialInvestment"
               value={initialInvestment}
-              onChange={(e) => setInitialInvestment(Number(e.target.value))}
+              onChange={(e) =>
+                setInitialInvestment(
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
+              }
               required
             />
           </div>
@@ -123,7 +131,11 @@ function CompoundInterest() {
               id="annualContribution"
               name="annualContribution"
               value={annualContribution}
-              onChange={(e) => setAnnualContribution(Number(e.target.value))}
+              onChange={(e) =>
+                setAnnualContribution(
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
+              }
               required
             />
           </div>

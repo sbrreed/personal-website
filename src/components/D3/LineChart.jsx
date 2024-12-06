@@ -24,7 +24,7 @@ const LineChart = ({ data, investmentHistory, resetChart, setResetChart }) => {
     const tooltip = d3
       .select("body")
       .append("div")
-      .attr("class", "tooltip")
+      .attr("class", "lineChart-tooltip tooltip")
       .style("position", "absolute")
       .style("visibility", "hidden");
 
@@ -119,7 +119,7 @@ const LineChart = ({ data, investmentHistory, resetChart, setResetChart }) => {
       "#545454",
     ];
 
-    const tooltip = d3.select(".tooltip");
+    const tooltip = d3.select(".lineChart-tooltip");
 
     const numLines = Object.keys(data[0]).filter((key) =>
       key.startsWith("value")
@@ -154,11 +154,11 @@ const LineChart = ({ data, investmentHistory, resetChart, setResetChart }) => {
           tooltip
             .style("visibility", "visible")
             .html(
-              `<span className = 'prop'>Age:</span> ${d.age}<br>
-              <span className = 'prop'>Value:</span>  ${dotValue}<br>
-              <span className = 'prop'>Initial:</span>  $${investment.initialInvestment}<br>
-              <span className = 'prop'>Annual:</span>  $${investment.annualContribution}<br>
-              <span className = 'prop'>Total Contribution:</span>  ${totalContrib}<br>`
+              `<span class = 'prop'>Age:</span> ${d.age}<br>
+              <span class = 'prop'>Initial:</span>  $${investment.initialInvestment}<br>
+              <span class = 'prop'>Annual:</span>  $${investment.annualContribution}<br>
+              <span class = 'prop'>Total In:</span> ${totalContrib}<br>
+              <span class = 'prop'>Total Value:</span>  <span class='totalValue'>${dotValue}<span><br>`
             )
             .style("left", event.pageX + 10 + "px")
             .style("top", event.pageY - 20 + "px");
