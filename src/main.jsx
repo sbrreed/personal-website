@@ -8,6 +8,7 @@ import Work, {
 } from "./components/Routes/Work/Work.jsx";
 import Resume from "./components/Routes/Resume.jsx";
 import Home from "./components/Routes/Home.jsx";
+import FamilyTree from "./components/Routes/FamilyTree/FamilyTree.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/resume",
         element: <Resume />,
+      },
+      {
+        path: "/family-tree",
+        element: <FamilyTree />,
       },
     ],
   },
