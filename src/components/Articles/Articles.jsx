@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import ETFs from "./IndividualArticles/ETFs/ETFs";
 import CompoundInterest from "./IndividualArticles/CompoundInterest/CompoundInterest";
+import CompoundInterestBalloon from "./IndividualArticles/CompoundInterest/CompoundInterestBalloon";
 import Supplements from "./IndividualArticles/Supplements/Supplements";
 import RankedChoiceVoting from "./IndividualArticles/RankedChoiceVoting/RankedChoiceVoting";
 
@@ -349,6 +350,7 @@ function Articles({ topic, articleDataPath }) {
       {topic == "The case for Exchange Traded Funds vs Individual Stocks" &&
         articleData.length > 0 && <ETFs data={articleData} />}
       {topic == "Compound Interest Visualized" && <CompoundInterest />}
+      {topic == "Compound Interest Balloon" && <CompoundInterestBalloon />}
       {topic == "Supplement Research" && <Supplements />}
       {topic == "Ranked Choice Voting" && <RankedChoiceVoting />}
     </div>
