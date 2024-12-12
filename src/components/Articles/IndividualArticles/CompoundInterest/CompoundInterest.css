@@ -6,6 +6,25 @@
   font-size: 1.25rem;
 }
 
+.bubble-investment-form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.bubble-form-inputs div {
+  display: flex;
+  justify-content: space-between;
+  max-width: 350px;
+}
+
+.bubble-form-inputs div input {
+  width: 100px;
+  margin-left: 20px;
+  font-size: 1.25rem;
+}
+
 .chartInputs {
   border: 2px solid var(--primary-purple);
   border-radius: 5px;
@@ -23,4 +42,26 @@
   line-height: 1rem;
   background-color: white;
   padding: 0;
+}
+
+.boy-and-bubble {
+  display: grid;
+  grid-template-columns: 270px 2fr;
+  margin: 40px auto 0 auto;
+  max-height: 500px;
+  width: 700px;
+}
+
+.boy-and-bubble img {
+  object-fit: contain;
+  margin-right: -24px;
+}
+.boy-and-bubble svg {
+  overflow: visible;
+}
+.investment-label {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  background-color: transparent;
 }

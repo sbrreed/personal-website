@@ -71,8 +71,7 @@ function CompoundInterestBalloon() {
 
     generateDataAndUpdateChart(age, initial, contribution);
   };
-  console.log("clickCount", clickCount);
-  console.log("previousClickCount", previousClickCount);
+
   return (
     <div className="article">
       <div className="multi-paragraph-section">
@@ -91,11 +90,7 @@ function CompoundInterestBalloon() {
           Calculate again will draw another bubble, for you to compare.
         </p>
       </div>
-      <form
-        id="investmentForm"
-        className="bubble-investment-form"
-        onSubmit={handleSubmit}
-      >
+      <form className="bubble-investment-form" onSubmit={handleSubmit}>
         <div className="bubble-form-inputs">
           <div>
             <label htmlFor="currentAge">Current Age:</label>
@@ -115,7 +110,11 @@ function CompoundInterestBalloon() {
               id="initialInvestment"
               name="initialInvestment"
               value={initialInvestment}
-              onChange={(e) => setInitialInvestment(Number(e.target.value))}
+              onChange={(e) =>
+                setInitialInvestment(
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
+              }
               required
             />
           </div>
@@ -127,15 +126,21 @@ function CompoundInterestBalloon() {
               id="annualContribution"
               name="annualContribution"
               value={annualContribution}
-              onChange={(e) => setAnnualContribution(Number(e.target.value))}
+              onChange={(e) =>
+                setAnnualContribution(
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
+              }
               required
             />
           </div>
         </div>
         <button type="submit">Calculate</button>
       </form>
+      <p>Refresh your page to start again.</p>
+
       <div className="boy-and-bubble">
-        <img src="/DataViz/boy_blowing_bubble.svg"></img>
+        <img src="/DataViz/boy_blowing_bubble.png"></img>
         {clickCount > 0 && clickCount !== previousClickCount && (
           <GrowingBubble
             data={allDataSets}

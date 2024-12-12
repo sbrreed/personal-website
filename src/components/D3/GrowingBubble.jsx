@@ -9,11 +9,10 @@ const GrowingBubble = ({
   resetChart,
   setResetChart,
 }) => {
-  // console.log("data in GrowingBubble", data);
   const { windowWidth } = useWindowDimensions();
   const chartHeight = 500;
-  const chartWidth = windowWidth * 0.65;
-  let margin = { top: -29, right: 0, bottom: 30, left: 0 };
+  const chartWidth = windowWidth * 0.45 > 600 ? 600 : windowWidth * 0.45;
+  let margin = { top: -79, right: 0, bottom: 30, left: -20 };
 
   const drawBubble = (svg) => {
     if (!data || data.length === 0) {
@@ -68,8 +67,7 @@ const GrowingBubble = ({
       .transition()
       .duration(3000)
       .attr("d", (d) => {
-        // console.log("d in bubble", d);
-        const radius = rScale(d);
+        const radius = rScale(d) * 0.8;
         const xloc = Math.sin(angle) * (radius - 20);
         const yloc = Math.cos(angle) * (radius - 20);
 
@@ -80,6 +78,33 @@ const GrowingBubble = ({
           L 0 ${chartHeight / 2}
           Z
           `;
+      });
+
+    // create labels
+    let label_container = svg
+      .selectAll(".bubble-label")
+      .data(maxData.sort((a, b) => b - a))
+      .enter()
+      .append("foreignObject")
+      .attr("class", "bubble-label")
+      .attr("x", 0)
+      .attr("y", chartHeight / 2 - 7)
+      .attr("width", 80)
+      .attr("height", 80);
+
+    label_container.append("xhtml:div").html(
+      (d, i) => `
+      <div class="investment-label">
+      <p>$${d3.format(",.0f")(d)}</p>
+      </div>`
+    );
+
+    label_container
+      .transition()
+      .duration(3000)
+      .attr("x", (d) => {
+        const radius = rScale(d) * 0.8;
+        return radius * 2;
       });
   };
 
