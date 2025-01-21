@@ -4,6 +4,11 @@ import * as topojson from "topojson-client";
 import D3Chart from "./D3Chart";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import CreateMapAndDots from "./CreateMapAndDots";
+import {
+  drawNationalMap,
+  drawNewEnglandMap,
+  drawMassMap,
+} from "./mapDrawFunctions";
 
 const USMap = ({ data }) => {
   console.log("renddering USMap");
