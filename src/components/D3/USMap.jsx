@@ -4,11 +4,6 @@ import * as topojson from "topojson-client";
 import D3Chart from "./D3Chart";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import CreateMapAndDots from "./CreateMapAndDots";
-import {
-  drawNationalMap,
-  drawNewEnglandMap,
-  drawMassMap,
-} from "./mapDrawFunctions";
 
 const USMap = ({ data }) => {
   console.log("renddering USMap");
@@ -39,6 +34,9 @@ const USMap = ({ data }) => {
     "Hawaii",
     "Puerto Rico",
     "United States Virgin Islands",
+    "Guam",
+    "American Samoa",
+    "Commonwealth of the Northern Mariana Islands",
   ];
 
   const newEnglandInsetRegionsToInclude = [
@@ -92,7 +90,9 @@ const USMap = ({ data }) => {
 
   const drawNationalMap = (svg) => {
     if (!geoJsonMap) return; // Wait until GeoJSON map is available
-    const nationalData = geoJsonMap.features;
+    const nationalData = geoJsonMap?.features.filter((d) => {
+      return !regionsToExclude.includes(d.properties.name);
+    });
     // Draw the US map
     CreateMapAndDots(
       nationalData,
@@ -105,7 +105,7 @@ const USMap = ({ data }) => {
     );
 
     if (showNewEngland) {
-      svg.transition().duration(1000).style("opacity", 0.2);
+      svg.style("opacity", 0.2);
     }
   };
   const drawNewEnglandMap = (svg) => {
@@ -126,7 +126,7 @@ const USMap = ({ data }) => {
     );
 
     if (showMass) {
-      svg.transition().duration(1000).style("opacity", 0.2);
+      svg.style("opacity", 0.2);
     }
   };
 
