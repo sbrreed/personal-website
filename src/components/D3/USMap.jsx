@@ -189,6 +189,11 @@ const USMap = ({ data }) => {
       )}
       {showDetails && selectedPerson && (
         <div className="detailPane">
+          <div>
+            <p>
+              Family tree for {selectedPerson.First} {selectedPerson.Last}
+            </p>
+          </div>
           <img src={selectedPerson.TreeImage} alt={selectedPerson.First} />
         </div>
       )}

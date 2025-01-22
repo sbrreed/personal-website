@@ -22,6 +22,16 @@
   width: auto;
   height: 100%;
 }
+.detailPane div {
+  width: 220px;
+  position: absolute;
+  left: 4%;
+  top: 24px;
+}
+
+.detailPane p {
+  font-size: 1.5rem;
+}
 
 .states path {
   fill: rgb(249, 248, 248);
