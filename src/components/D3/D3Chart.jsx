@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 
-const D3Chart = ({ width, height, margin, drawChart }) => {
+const D3Chart = ({ width, height, margin, drawChart, ID }) => {
   const svgRef = useRef(null);
 
   useEffect(() => {
@@ -9,6 +9,7 @@ const D3Chart = ({ width, height, margin, drawChart }) => {
       .select(svgRef.current)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
+      .attr("id", ID)
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 

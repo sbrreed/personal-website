@@ -5,6 +5,7 @@
 @import "./components/Footer/Footer.css";
 @import "./components/Articles/Articles.css";
 @import "./components/D3/D3Charts.css";
+@import "./components/Routes/FamilyTree/FamilyTree.css";
 
 * {
   box-sizing: border-box;
