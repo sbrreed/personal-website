@@ -184,11 +184,11 @@ function ETFs({ data }) {
         </>
       )}
       {graphic1Type === "chart" && (
-        <div className="flourish-iframe">
+        <div className="flourish-iframe responsive-iframe">
           <iframe
             src="https://flo.uri.sh/visualisation/19141961/embed"
             title="Interactive or visual content"
-            style={{ width: "50%", height: "600px", border: "0" }}
+            style={{ width: "100%", height: "600px", border: "0" }}
             sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
           ></iframe>
         </div>

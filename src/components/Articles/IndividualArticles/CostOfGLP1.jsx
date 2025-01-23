@@ -2,6 +2,7 @@ function CostOfGLP1() {
   return (
     <div className="article">
       <div className="cost-of-glp1">
+        <p>Jan 23rd, 2025</p>
         <h2>Is the cost of GLP1 appropriate?</h2>
         <p>
           In an effort to meet a nearly $1B budget shortfall, Colorado

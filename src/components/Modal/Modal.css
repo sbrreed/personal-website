@@ -14,10 +14,16 @@
 }
 
 .modal:has(.article) {
-  width: 90vw;
+  width: 95vw;
   max-height: 95%;
-  top: 5vh;
-  left: 5vw;
+  top: 2.5vh;
+  left: 2.5vw;
+  @media (max-width: 700px) {
+    width: 100vw;
+    max-height: 100%;
+    top: 0;
+    left: 0;
+  }
 }
 
 .modal:has(.article.fullScreen) {
@@ -62,19 +68,26 @@
 
 .modal-closeButton {
   position: absolute;
-  left: 13px;
+  left: 25%;
   top: 0;
-  font-size: 3rem;
+  font-size: 5rem;
   cursor: pointer;
+  @media (max-width: 1000px) {
+    left: 5%;
+    font-size: 3rem;
+  }
 }
 
 .modal-content {
   display: grid;
   grid-template-rows: 1fr max-content;
-  padding: 5%;
+  padding: 5% 25%;
   gap: 30px;
   overflow-y: auto;
   max-height: 50%;
+  @media (max-width: 1000px) {
+    padding: 5%;
+  }
   @media (max-width: 700px) {
     display: block;
     gap: 0px;
