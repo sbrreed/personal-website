@@ -5,6 +5,7 @@ import CompoundInterest from "./IndividualArticles/CompoundInterest/CompoundInte
 import CompoundInterestBalloon from "./IndividualArticles/CompoundInterest/CompoundInterestBalloon";
 import Supplements from "./IndividualArticles/Supplements/Supplements";
 import RankedChoiceVoting from "./IndividualArticles/RankedChoiceVoting/RankedChoiceVoting";
+import CostOfGLP1 from "./IndividualArticles/CostOfGLP1";
 
 function Articles({ topic, articleDataPath }) {
   const [articleData, setArticleData] = useState([]);
@@ -353,6 +354,7 @@ function Articles({ topic, articleDataPath }) {
       {topic == "Compound Interest Balloon" && <CompoundInterestBalloon />}
       {topic == "Supplement Research" && <Supplements />}
       {topic == "Ranked Choice Voting" && <RankedChoiceVoting />}
+      {topic == "Does GLP1 need to be so expensive?" && <CostOfGLP1 />}
     </div>
   );
 }

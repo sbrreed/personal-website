@@ -43,6 +43,26 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin: 10px 0;
+}
+
+.responsive-iframe {
+  @media (min-width: 1000px) {
+    width: 50%;
+  }
+}
+
+.article-callout {
+  background-color: var(--primary-purple);
+  color: white;
+  font-size: 1rem;
+  padding: 5px;
+  margin: 15px 0;
+}
+
+.article-callout h2 {
+  margin: 0;
+  padding: 0;
 }
 
 .graphic-chooser-buttons {
