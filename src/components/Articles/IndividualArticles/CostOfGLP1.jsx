@@ -85,6 +85,19 @@ function CostOfGLP1() {
           <h2>Potential annual savings to the state: $60,347,510</h2>
         </div>
         <p>
+          What leverage does the state have to pay a lower cost? Not much. Until
+          the passing of the Inflation Reduction Act in 2022, Medicare and
+          Medicaid, the largest single payers of prescription drugs in the
+          country, were legally bared from negotiating drug prices. With the
+          passing of the law, however, Medicaid has included Wegovy and Ozempic
+          on it's list of drugs that it will{" "}
+          <a href="https://www.barrons.com/articles/medicare-drug-price-negotiation-list-ozempic-e8457543?utm_source=chatgpt.com">
+            include in negotiations
+          </a>{" "}
+          (assuming the current administration continues the effort).{" "}
+        </p>
+        <br></br>
+        <p>
           Lawmakers on both sides of this debate should look deeper at the roots
           of the problem. It's possible that prescriptions for these drugs have
           ballooned past what they should be. It's certain, however, that the
