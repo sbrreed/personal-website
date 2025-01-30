@@ -18,6 +18,10 @@
   margin: 15px auto;
 }
 
+.article-image.large img {
+  width: 100%;
+}
+
 .article-image.center {
   display: flex;
   justify-content: center;
@@ -30,7 +34,7 @@
   width: 50%;
 }
 
-.multi-paragraph-section p {
+.multi-paragraph-section p:not(:first-of-type) {
   margin-top: 25px;
 }
 
@@ -85,6 +89,10 @@
   font-weight: bold;
 }
 
+.article-section {
+  margin-top: 10px;
+  border-top: 1px solid var(--nameTag-dark-gray);
+}
 table {
   border-collapse: collapse;
   border: 2px solid var(--light-gray);
