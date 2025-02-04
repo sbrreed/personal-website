@@ -147,89 +147,106 @@ function Work() {
           workType != "Wood" && (
             <div ref={modalRef}>
               <Modal onClose={closeModal} workType={workType}>
-                <h1 className="modal-title">{selectedProject.Title}</h1>
-                {selectedProject.ModalText == "Article" && (
-                  <Articles
-                    topic={selectedProject.Title}
-                    articleDataPath={selectedProject.ArticleDataPath}
-                  />
+                {(selectedProject.ModalText == "Article" ||
+                  selectedProject.ModalText == "FullPage") && (
+                  <>
+                    {selectedProject.ModalText == "Article" && (
+                      <h1 className="modal-title">{selectedProject.Title}</h1>
+                    )}{" "}
+                    <Articles
+                      topic={selectedProject.Title}
+                      articleDataPath={selectedProject.ArticleDataPath}
+                    />
+                  </>
                 )}
-                {selectedProject.ModalText != "Article" && (
-                  <div className="modal-description-image">
-                    <div className="modal-image-tech">
-                      {selectedProject.ModalImageType == "Video" && (
-                        // The ModalImage has to be a vimeo link in this case.
-                        <iframe
-                          src={selectedProject.ModalImage}
-                          width="640"
-                          height="360"
-                          frameborder="0"
-                          webkitallowfullscreen
-                          mozallowfullscreen
-                          allowfullscreen
-                        ></iframe>
-                      )}
-                      <a href={selectedProject.LinkToProject} target="_blank">
-                        {selectedProject.ModalImageType == "Image" && (
-                          <img
-                            src={selectedProject.ModalImage}
-                            alt={selectedProject.Title}
-                          />
-                        )}
-                      </a>
-                      {workType == "DataViz" && (
-                        <div className="modal-technologies">
-                          <p>
-                            <b>Technologies:</b>{" "}
-                            {selectedProject.Technologies.split(",").map(
-                              (item, index) => {
-                                if (
-                                  index !=
-                                  selectedProject.Technologies.split(",")
-                                    .length -
-                                    1
-                                ) {
-                                  return (
-                                    <span key={`tech_${index}`}>{item}, </span>
-                                  );
-                                } else {
-                                  return (
-                                    <span key={`tech_${index}`}>{item} </span>
-                                  );
-                                }
-                              }
+                {selectedProject.ModalText != "Article" &&
+                  selectedProject.ModalText != "FullPage" && (
+                    <>
+                      <h1 className="modal-title">{selectedProject.Title}</h1>
+                      <div className="modal-description-image">
+                        <div className="modal-image-tech">
+                          {selectedProject.ModalImageType == "Video" && (
+                            // The ModalImage has to be a vimeo link in this case.
+                            <iframe
+                              src={selectedProject.ModalImage}
+                              width="640"
+                              height="360"
+                              frameborder="0"
+                              webkitallowfullscreen
+                              mozallowfullscreen
+                              allowfullscreen
+                            ></iframe>
+                          )}
+                          <a
+                            href={selectedProject.LinkToProject}
+                            target="_blank"
+                          >
+                            {selectedProject.ModalImageType == "Image" && (
+                              <img
+                                src={selectedProject.ModalImage}
+                                alt={selectedProject.Title}
+                              />
                             )}
-                          </p>
+                          </a>
+                          {workType == "DataViz" && (
+                            <div className="modal-technologies">
+                              <p>
+                                <b>Technologies:</b>{" "}
+                                {selectedProject.Technologies.split(",").map(
+                                  (item, index) => {
+                                    if (
+                                      index !=
+                                      selectedProject.Technologies.split(",")
+                                        .length -
+                                        1
+                                    ) {
+                                      return (
+                                        <span key={`tech_${index}`}>
+                                          {item},{" "}
+                                        </span>
+                                      );
+                                    } else {
+                                      return (
+                                        <span key={`tech_${index}`}>
+                                          {item}{" "}
+                                        </span>
+                                      );
+                                    }
+                                  }
+                                )}
+                              </p>
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                    <div className="modal-description">
-                      {selectedProject.ModalText.split("<br>").map(
-                        (item, index) => {
-                          return <p key={`modalText_${index}`}>{item}</p>;
-                        }
-                      )}
+                        <div className="modal-description">
+                          {selectedProject.ModalText.split("<br>").map(
+                            (item, index) => {
+                              return <p key={`modalText_${index}`}>{item}</p>;
+                            }
+                          )}
 
-                      <p>
-                        <b>Roles and Responsibilites: </b>
-                      </p>
-                      <ul>
-                        {selectedProject.RolesAndResponsibilities.split(
-                          ","
-                        ).map((item, index) => {
-                          return index ==
-                            selectedProject.RolesAndResponsibilities.split(",")
-                              .length -
-                              1 ? (
-                            <li key={`roles_${index}`}>{item}</li>
-                          ) : (
-                            <li key={`roles_${index}`}>{item}</li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  </div>
-                )}
+                          <p>
+                            <b>Roles and Responsibilites: </b>
+                          </p>
+                          <ul>
+                            {selectedProject.RolesAndResponsibilities.split(
+                              ","
+                            ).map((item, index) => {
+                              return index ==
+                                selectedProject.RolesAndResponsibilities.split(
+                                  ","
+                                ).length -
+                                  1 ? (
+                                <li key={`roles_${index}`}>{item}</li>
+                              ) : (
+                                <li key={`roles_${index}`}>{item}</li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      </div>
+                    </>
+                  )}
               </Modal>
             </div>
           )}
