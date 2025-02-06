@@ -76,6 +76,7 @@
   top: 0;
   font-size: 5rem;
   cursor: pointer;
+  z-index: 2000;
   @media (max-width: 1000px) {
     left: 5%;
     font-size: 3rem;

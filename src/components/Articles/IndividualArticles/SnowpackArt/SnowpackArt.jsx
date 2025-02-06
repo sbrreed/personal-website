@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GetScreenSizeWarning from "../../../../sharedTools/GetScreenSizeWarning";
 
 function SnowpackArt() {
   const [MtbakerVisibility, setMtbakerVisibility] = useState("block");
@@ -14,8 +15,12 @@ function SnowpackArt() {
     );
   };
 
+  const windowWidth = window.innerWidth;
+  console.log(windowWidth);
+
   return (
     <div className="article snowPackArt fullScreen singlePage">
+      {windowWidth < 1000 && <GetScreenSizeWarning />}
       <div className="snowPackArt_container">
         <div className="chart">
           <img src="/DataViz/snowpackArt/PNG/MtnBackground.png"></img>
