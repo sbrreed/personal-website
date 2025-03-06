@@ -1,0 +1,39 @@
+.cartoon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+.cartoon p {
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+}
+
+.cartoon.text {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 10px;
+}
+
+.cartoon img,
+.healthcare-system img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.cartoon.strip {
+  display: block;
+}
+
+.cartoon img.enlarged,
+.healthcare-system img.enlarged {
+  transform: scale(2);
+  z-index: 1000;
+  position: relative;
+  left: 0;
+  margin-left: 0;
+}
+
+/* .cartoon:has(img.enlarged) {
+} */

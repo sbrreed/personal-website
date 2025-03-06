@@ -80,6 +80,10 @@
   margin: 2% 0;
 }
 
+.section-divider.large {
+  padding: 20px;
+}
+
 .section-divider h2 {
   margin: 0;
   padding: 0;

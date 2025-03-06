@@ -1,4 +1,21 @@
+import { useState } from "react";
+import useWindowDimensions from "../../../../hooks/useWindowDimensions";
+
 function HealthcareSystem() {
+  const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+
+  const toggleImageSize = () => {
+    if (windowWidth > 1000) {
+      setIsImageEnlarged(!isImageEnlarged);
+    }
+  };
+
+  const { windowWidth } = useWindowDimensions();
+
+  // Calculate the height based on the windowWidth
+  const iframeHeight =
+    windowWidth < 1400 ? 1000 : windowWidth < 800 ? 2000 : 600; // Adjust the multiplier as needed
+
   return (
     <div className="article">
       <div className="healthcare-system">
@@ -9,13 +26,11 @@ function HealthcareSystem() {
             you're an academic or deep-in-the-crease policy maker. Anyone left?
             Probably not. Our system of delivering and paying for healthcare is
             deeply complicated and opaque. Only those truly passionate about it
-            who also have a tolerance for lots of numbers (hand raised here!)
-            really understand how it all works (I'm not included in that latter
-            group, but working on it).
+            who also have a tolerance for lots of numbers really understand how
+            it all works.
           </p>
           <p>
-            I already had a passion for this topic, but after reading Uwe
-            Reinhardt's{" "}
+            After reading Uwe Reinhardt's{" "}
             <i>
               Priced Out: The Economics and Ethical Costs of American Health
               Care
@@ -70,6 +85,8 @@ function HealthcareSystem() {
           <div className="article-image large">
             <img
               src="/DataViz/Healthcare/PharmaCost_illustrated_withLegend.png"
+              className={isImageEnlarged ? "enlarged" : ""}
+              onClick={toggleImageSize}
               alt="Chart of all involved in the pharmaceutical food chain. They are the Insurer, Pharmacy Benfit Manager, Pharmacy, Wholesaler, and Manufacturer. Each takes a cut for internal use and profit. For a given $100 drug, the cost ot manufacture that drug is estimated to be $17. The rest is taken by the other players."
             ></img>
           </div>
@@ -105,6 +122,73 @@ function HealthcareSystem() {
                 another time.{" "}
               </p>
             </div>
+          </div>
+        </div>
+        <div className="article-section">
+          <div className="section-divider large">
+            <h2>Healthcare Cartoons</h2>
+          </div>
+          <div className="article-callout">
+            <h2>Waiting to see the doctor.</h2>
+          </div>
+          <div className="multi-paragraph-section"></div>
+          <div className="cartoon strip">
+            {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+            <img
+              src="/DataViz/Healthcare/waitingForHealthcare/waitingForHealthcare_fullStrip@2x.png"
+              className={isImageEnlarged ? "enlarged" : ""}
+              onClick={toggleImageSize}
+              alt="Rationing Strip"
+            ></img>
+          </div>
+          <div className="flourish">
+            <iframe
+              src="https://flo.uri.sh/visualisation/21716974/embed"
+              style={{
+                width: "100%",
+                height: `${iframeHeight}px`,
+                border: "0",
+              }}
+              sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+            ></iframe>
+            <div
+              style={{
+                width: "100%",
+                marginTop: "4px",
+                textAlign: "right",
+              }}
+            >
+              <a
+                className="flourish-credit"
+                href="https://public.flourish.studio/visualisation/21716974/?utm_source=embed&utm_campaign=visualisation/21716974"
+                target="_top"
+                style={{
+                  textDecoration: "none",
+                }}
+              >
+                <img
+                  alt="Made with Flourish"
+                  src="https://public.flourish.studio/resources/made_with_flourish.svg"
+                  style={{
+                    width: "105px",
+                    height: "16px",
+                    border: "none",
+                    margin: "0",
+                    objectFit: "contain",
+                  }}
+                />
+              </a>
+            </div>
+          </div>
+          <div className="cartoon text">
+            <img src="/DataViz/Healthcare/uwe_lecturing.png"></img>
+            <p>
+              In our healthcare system, we don’t explicitly force people to wait
+              for their healthcare. Instead, poorer people in our country are
+              forced to make the choice to wait for their healthcare because
+              they can't afford it. One system is simply more up-front about the
+              situation than the other.
+            </p>
           </div>
         </div>
       </div>
