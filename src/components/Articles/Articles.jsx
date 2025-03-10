@@ -7,6 +7,8 @@ import Supplements from "./IndividualArticles/Supplements/Supplements";
 import RankedChoiceVoting from "./IndividualArticles/RankedChoiceVoting/RankedChoiceVoting";
 import CostOfGLP1 from "./IndividualArticles/CostOfGLP1";
 import SnowpackArt from "./IndividualArticles/SnowpackArt/SnowpackArt";
+import HealthcareSystem from "./IndividualArticles/HeathcareSystem/HealthcareSystem";
+import HealthcareCartoon from "./IndividualArticles/HeathcareSystem/HealthcareCartoon";
 
 function Articles({ topic, articleDataPath }) {
   const [articleData, setArticleData] = useState([]);
@@ -357,6 +359,8 @@ function Articles({ topic, articleDataPath }) {
       {topic == "Supplement Research" && <Supplements />}
       {topic == "Ranked Choice Voting" && <RankedChoiceVoting />}
       {topic == "Does GLP1 need to be so expensive?" && <CostOfGLP1 />}
+      {topic == "Our Healthcare System" && <HealthcareSystem />}
+      {topic == "Our Sicker Sisters and Brothers" && <HealthcareCartoon />}
     </div>
   );
 }
