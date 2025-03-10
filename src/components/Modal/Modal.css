@@ -33,6 +33,10 @@
   left: 0;
 }
 
+.modal:has(.article.singlePage) .modal-closeButton {
+  left: 5px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -72,6 +76,7 @@
   top: 0;
   font-size: 5rem;
   cursor: pointer;
+  z-index: 2000;
   @media (max-width: 1000px) {
     left: 5%;
     font-size: 3rem;
@@ -93,6 +98,12 @@
     gap: 0px;
     margin-top: 10px;
   }
+}
+
+.modal-content:has(.singlePage) {
+  padding: 0;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 .modal-title {

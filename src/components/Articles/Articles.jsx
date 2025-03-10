@@ -6,6 +6,7 @@ import CompoundInterestBalloon from "./IndividualArticles/CompoundInterest/Compo
 import Supplements from "./IndividualArticles/Supplements/Supplements";
 import RankedChoiceVoting from "./IndividualArticles/RankedChoiceVoting/RankedChoiceVoting";
 import CostOfGLP1 from "./IndividualArticles/CostOfGLP1";
+import SnowpackArt from "./IndividualArticles/SnowpackArt/SnowpackArt";
 import HealthcareSystem from "./IndividualArticles/HeathcareSystem/HealthcareSystem";
 
 function Articles({ topic, articleDataPath }) {
@@ -258,6 +259,7 @@ function Articles({ topic, articleDataPath }) {
           </div>
         </div>
       )}
+      {topic == "Making art with snowpack data." && <SnowpackArt />}
       {topic == "Makeover Monday - Fashion" && (
         <div className="article">
           <div className="multi-paragraph-section">
