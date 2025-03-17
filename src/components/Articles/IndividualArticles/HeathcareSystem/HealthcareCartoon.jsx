@@ -52,7 +52,7 @@ function HealthcareCartoon() {
           <div className="cartoon strip">
             {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
             <img
-              src="/DataViz/Healthcare/waitingForHealthcare/waitingForHealthcare_fullStrip@2x.png"
+              src="/DataViz/Healthcare/waitingForHealthcare/waitingForHealthcare_v2.png"
               className={isImageEnlarged ? "enlarged" : ""}
               onClick={toggleImageSize}
               alt="Rationing Strip"
@@ -96,16 +96,6 @@ function HealthcareCartoon() {
                 />
               </a>
             </div>
-          </div>
-          <div className="cartoon text">
-            <img src="/DataViz/Healthcare/uwe_lecturing.png"></img>
-            <p>
-              In our healthcare system, we don’t explicitly force people to wait
-              for their healthcare. Instead, poorer people in our country are
-              forced to make the choice to wait for their healthcare because
-              they can't afford it. One system is simply more up-front about the
-              situation than the other.
-            </p>
           </div>
         </div>
       </div>
