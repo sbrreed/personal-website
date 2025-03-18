@@ -2,19 +2,18 @@ import { useState } from "react";
 import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 
 function HealthcareCartoon() {
-  const [isImageEnlarged, setIsImageEnlarged] = useState(false);
-
-  const toggleImageSize = () => {
-    if (windowWidth > 1000) {
-      setIsImageEnlarged(!isImageEnlarged);
-    }
-  };
-
+  const [enlargedImage, setEnlargedImage] = useState(null);
   const { windowWidth } = useWindowDimensions();
 
   // Calculate the height based on the windowWidth
   const iframeHeight =
     windowWidth < 1400 ? 1000 : windowWidth < 800 ? 2000 : 600; // Adjust the multiplier as needed
+
+  const toggleImageSize = (id) => {
+    if (windowWidth > 1000) {
+      setEnlargedImage(enlargedImage === id ? null : id);
+    }
+  };
 
   return (
     <div className="article">
@@ -48,15 +47,16 @@ function HealthcareCartoon() {
           <div className="article-callout">
             <h2>Waiting to see the doctor.</h2>
           </div>
-          <div className="multi-paragraph-section"></div>
           <div className="cartoon strip">
             {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
             <img
               src="/DataViz/Healthcare/waitingForHealthcare/waitingForHealthcare_v2.png"
-              className={isImageEnlarged ? "enlarged" : ""}
-              onClick={toggleImageSize}
-              alt="Rationing Strip"
-            ></img>
+              className={
+                enlargedImage === "waitingForHealthcare" ? "enlarged" : ""
+              }
+              onClick={() => toggleImageSize("waitingForHealthcare")}
+              alt="Waiting for Healthcare"
+            />
           </div>
           <div className="flourish">
             <iframe
@@ -96,6 +96,20 @@ function HealthcareCartoon() {
                 />
               </a>
             </div>
+          </div>
+          <div className="article-callout">
+            <h2>How are premiums set?</h2>
+          </div>
+          <div className="cartoon strip">
+            {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+            <img
+              src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v2.png"
+              className={
+                enlargedImage === "howArePremiumsSet" ? "enlarged" : ""
+              }
+              onClick={() => toggleImageSize("howArePremiumsSet")}
+              alt="How Are Premiums Set"
+            />
           </div>
         </div>
       </div>
