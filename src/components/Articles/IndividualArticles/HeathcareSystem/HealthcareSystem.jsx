@@ -21,13 +21,10 @@ function HealthcareSystem() {
       <div className="healthcare-system">
         <div className="multi-paragraph-section">
           <p>
-            Raise your hand if you feel you really understand how our system of
-            healthcare and health insurance works? Now put your hand down if
-            you're an academic or deep-in-the-crease policy maker. Anyone left?
-            Probably not. Our system of delivering and paying for healthcare is
-            deeply complicated and opaque. Only those truly passionate about it
-            who also have a tolerance for lots of numbers really understand how
-            it all works.
+            Our system of delivering and paying for healthcare is deeply
+            complicated and opaque. Only those truly passionate about it who
+            also have a tolerance for lots of numbers really understand how it
+            all works.
           </p>
           <p>
             After reading Uwe Reinhardt's{" "}

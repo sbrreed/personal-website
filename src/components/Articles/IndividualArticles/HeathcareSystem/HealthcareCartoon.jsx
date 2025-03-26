@@ -111,6 +111,239 @@ function HealthcareCartoon() {
               alt="How Are Premiums Set"
             />
           </div>
+          <div className="article-callout">
+            <h2>BEST in the World!</h2>
+          </div>
+          <div className="cartoon strip">
+            {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+            <img
+              src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes1_2.png"
+              className={
+                enlargedImage === "BESTinTheWorld_pane1_2" ? "enlarged" : ""
+              }
+              onClick={() => toggleImageSize("BESTinTheWorld_pane1_2")}
+              alt="BEST in the World"
+            />
+            <div className="flourish">
+              <iframe
+                src="https://flo.uri.sh/story/2989560/embed"
+                style={{
+                  width: "100%",
+                  height: `${iframeHeight}px`,
+                  border: "0",
+                }}
+                sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+              ></iframe>
+              <div
+                style={{
+                  width: "100%",
+                  marginTop: "4px",
+                  textAlign: "right",
+                }}
+              >
+                <a
+                  className="flourish-credit"
+                  href="https://public.flourish.studio/visualisation/2989560/?utm_source=embed&utm_campaign=visualisation/2989560"
+                  target="_top"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <img
+                    alt="Made with Flourish"
+                    src="https://public.flourish.studio/resources/made_with_flourish.svg"
+                    style={{
+                      width: "105px",
+                      height: "16px",
+                      border: "none",
+                      margin: "0",
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              </div>
+            </div>
+            <img
+              src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes3_4.png"
+              className={
+                enlargedImage === "BESTinTheWorld_pane3_4" ? "enlarged" : ""
+              }
+              onClick={() => toggleImageSize("BESTinTheWorld_pane3_4")}
+              alt="BEST in the World"
+            />
+            <div className="flourish">
+              <iframe
+                src="https://flo.uri.sh/visualisation/22204138/embed"
+                title="Interactive or visual content"
+                style={{
+                  width: "100%",
+                  height: `${iframeHeight}px`,
+                  border: "0",
+                }}
+                sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+              ></iframe>
+              <div
+                style={{
+                  width: "100%",
+                  marginTop: "4px",
+                  textAlign: "right",
+                }}
+              >
+                <a
+                  className="flourish-credit"
+                  href="https://public.flourish.studio/visualisation/22204138/?utm_source=embed&utm_campaign=visualisation/22204138"
+                  target="_top"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <img
+                    alt="Made with Flourish"
+                    src="https://public.flourish.studio/resources/made_with_flourish.svg"
+                    style={{
+                      width: "105px",
+                      height: "16px",
+                      border: "none",
+                      margin: "0",
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              </div>
+            </div>
+            <img
+              src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_pane5.png"
+              className={
+                enlargedImage === "BESTinTheWorld_pane5"
+                  ? "enlarged"
+                  : "height-reduced"
+              }
+              onClick={() => toggleImageSize("BESTinTheWorld_pane5")}
+              alt="BEST in the World"
+            />
+            <div className="flourish">
+              <iframe
+                src="https://flo.uri.sh/visualisation/22204850/embed"
+                title="Chart of outpatient visit prices by country for 3 different outpatient procedures."
+                style={{
+                  width: "100%",
+                  height: `${iframeHeight}px`,
+                  border: "0",
+                }}
+                sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+              ></iframe>
+
+              <div
+                style={{
+                  width: "100%",
+                  marginTop: "4px",
+                  textAlign: "right",
+                }}
+              >
+                <a
+                  className="flourish-credit"
+                  href="https://public.flourish.studio/visualisation/22204850/?utm_source=embed&utm_campaign=visualisation/22204850"
+                  target="_top"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <img
+                    alt="Made with Flourish"
+                    src="https://public.flourish.studio/resources/made_with_flourish.svg"
+                    style={{
+                      width: "105px",
+                      height: "16px",
+                      border: "none",
+                      margin: "0",
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flourish">
+              <iframe
+                src="https://flo.uri.sh/visualisation/22205079/embed"
+                title="Chart of generic drug prices by country for three different drugs."
+                style={{
+                  width: "100%",
+                  height: `${iframeHeight}px`,
+                  border: "0",
+                }}
+                sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+              ></iframe>
+
+              <div
+                style={{
+                  width: "100%",
+                  marginTop: "4px",
+                  textAlign: "right",
+                }}
+              >
+                <a
+                  className="flourish-credit"
+                  href="https://public.flourish.studio/visualisation/22205079/?utm_source=embed&utm_campaign=visualisation/22205079"
+                  target="_top"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <img
+                    alt="Made with Flourish"
+                    src="https://public.flourish.studio/resources/made_with_flourish.svg"
+                    style={{
+                      width: "105px",
+                      height: "16px",
+                      border: "none",
+                      margin: "0",
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flourish">
+              <iframe
+                src="https://flo.uri.sh/visualisation/22204984/embed"
+                title="Chart of brand name drug prices by country for 3 different drugs."
+                style={{
+                  width: "100%",
+                  height: `${iframeHeight}px`,
+                  border: "0",
+                }}
+                sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+              ></iframe>
+              <div
+                style={{
+                  width: "100%",
+                  marginTop: "4px",
+                  textAlign: "right",
+                }}
+              >
+                <a
+                  className="flourish-credit"
+                  href="https://public.flourish.studio/visualisation/22204984/?utm_source=embed&utm_campaign=visualisation/22204984"
+                  target="_top"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <img
+                    alt="Made with Flourish"
+                    src="https://public.flourish.studio/resources/made_with_flourish.svg"
+                    style={{
+                      width: "105px",
+                      height: "16px",
+                      border: "none",
+                      margin: "0",
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

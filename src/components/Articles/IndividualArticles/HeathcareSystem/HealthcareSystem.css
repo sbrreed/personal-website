@@ -35,5 +35,9 @@
   margin-left: 0;
 }
 
+.cartoon img.height-reduced {
+  max-height: 422px;
+  object-fit: contain;
+}
 /* .cartoon:has(img.enlarged) {
 } */
