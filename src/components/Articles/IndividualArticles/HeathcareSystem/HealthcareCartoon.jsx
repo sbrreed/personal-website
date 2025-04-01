@@ -5,9 +5,25 @@ function HealthcareCartoon() {
   const [enlargedImage, setEnlargedImage] = useState(null);
   const { windowWidth } = useWindowDimensions();
 
-  // Calculate the height based on the windowWidth
-  const iframeHeight =
-    windowWidth < 1400 ? 1000 : windowWidth < 800 ? 2000 : 600; // Adjust the multiplier as needed
+  let iframeStyle,
+    iframeWidth = "100%",
+    iframeHeight = 600;
+
+  if (windowWidth < 800) {
+    iframeWidth = "100%";
+  } else if (windowWidth < 1100) {
+    iframeHeight = 500;
+    iframeWidth = "80%";
+  } else if (windowWidth < 1400) {
+    iframeHeight = 1000;
+    iframeWidth = "80%";
+  }
+
+  iframeStyle = {
+    width: iframeWidth,
+    height: `${iframeHeight}px`,
+    border: "0",
+  };
 
   const toggleImageSize = (id) => {
     if (windowWidth > 1000) {
@@ -61,16 +77,16 @@ function HealthcareCartoon() {
           <div className="flourish">
             <iframe
               src="https://flo.uri.sh/visualisation/21716974/embed"
-              style={{
-                width: "100%",
-                height: `${iframeHeight}px`,
-                border: "0",
-              }}
+              style={
+                windowWidth < 500
+                  ? { ...iframeStyle, height: "850px" }
+                  : iframeStyle
+              }
               sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
             ></iframe>
             <div
               style={{
-                width: "100%",
+                width: { iframeWidth },
                 marginTop: "4px",
                 textAlign: "right",
               }}
@@ -127,16 +143,12 @@ function HealthcareCartoon() {
             <div className="flourish">
               <iframe
                 src="https://flo.uri.sh/story/2989560/embed"
-                style={{
-                  width: "100%",
-                  height: `${iframeHeight}px`,
-                  border: "0",
-                }}
+                style={iframeStyle}
                 sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               ></iframe>
               <div
                 style={{
-                  width: "100%",
+                  width: { iframeWidth },
                   marginTop: "4px",
                   textAlign: "right",
                 }}
@@ -175,16 +187,12 @@ function HealthcareCartoon() {
               <iframe
                 src="https://flo.uri.sh/visualisation/22204138/embed"
                 title="Interactive or visual content"
-                style={{
-                  width: "100%",
-                  height: `${iframeHeight}px`,
-                  border: "0",
-                }}
+                style={iframeStyle}
                 sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               ></iframe>
               <div
                 style={{
-                  width: "100%",
+                  width: { iframeWidth },
                   marginTop: "4px",
                   textAlign: "right",
                 }}
@@ -219,23 +227,19 @@ function HealthcareCartoon() {
                   : "height-reduced"
               }
               onClick={() => toggleImageSize("BESTinTheWorld_pane5")}
-              alt="BEST in the World"
+              alt="Prices are coming down for outpatient procedures."
             />
             <div className="flourish">
               <iframe
                 src="https://flo.uri.sh/visualisation/22204850/embed"
                 title="Chart of outpatient visit prices by country for 3 different outpatient procedures."
-                style={{
-                  width: "100%",
-                  height: `${iframeHeight}px`,
-                  border: "0",
-                }}
+                style={iframeStyle}
                 sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               ></iframe>
 
               <div
                 style={{
-                  width: "100%",
+                  width: { iframeWidth },
                   marginTop: "4px",
                   textAlign: "right",
                 }}
@@ -262,21 +266,25 @@ function HealthcareCartoon() {
                 </a>
               </div>
             </div>
+            <img
+              src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes6_7.png"
+              className={
+                enlargedImage === "BESTinTheWorld_panes6_7" ? "enlarged" : ""
+              }
+              onClick={() => toggleImageSize("BESTinTheWorld_panes6_7")}
+              alt="Cartoons talking about generic drug prices vs brand name drug prices."
+            />
             <div className="flourish">
               <iframe
                 src="https://flo.uri.sh/visualisation/22205079/embed"
                 title="Chart of generic drug prices by country for three different drugs."
-                style={{
-                  width: "100%",
-                  height: `${iframeHeight}px`,
-                  border: "0",
-                }}
+                style={iframeStyle}
                 sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               ></iframe>
 
               <div
                 style={{
-                  width: "100%",
+                  width: { iframeWidth },
                   marginTop: "4px",
                   textAlign: "right",
                 }}
@@ -307,16 +315,12 @@ function HealthcareCartoon() {
               <iframe
                 src="https://flo.uri.sh/visualisation/22204984/embed"
                 title="Chart of brand name drug prices by country for 3 different drugs."
-                style={{
-                  width: "100%",
-                  height: `${iframeHeight}px`,
-                  border: "0",
-                }}
+                style={iframeStyle}
                 sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               ></iframe>
               <div
                 style={{
-                  width: "100%",
+                  width: { iframeWidth },
                   marginTop: "4px",
                   textAlign: "right",
                 }}

@@ -36,8 +36,13 @@
 }
 
 .cartoon img.height-reduced {
-  max-height: 422px;
+  max-height: 300px;
   object-fit: contain;
 }
-/* .cartoon:has(img.enlarged) {
-} */
+
+.flourish {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
