@@ -4,16 +4,14 @@ function CartoonSection({ children, show, onPrev, onNext }) {
   return (
     <div className="cartoon-section">
       <div className="section-navigation">
-        {onPrev && (
+        <div className="section-navigation">
           <button className="nav-arrow left" onClick={onPrev}>
             ◀
           </button>
-        )}
-        {onNext && (
           <button className="nav-arrow right" onClick={onNext}>
             ▶
           </button>
-        )}
+        </div>
       </div>
       {children}
     </div>

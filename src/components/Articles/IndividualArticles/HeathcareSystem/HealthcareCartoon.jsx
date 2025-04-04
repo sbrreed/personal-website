@@ -165,6 +165,37 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
+
+    <div key="section4">
+      <div className="article-callout">
+        <h2>High Risk Pools</h2>
+      </div>
+      <div className="cartoon strip">
+        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        <img
+          src="/DataViz/Healthcare/highRiskPool/riskPool_pane1.png"
+          className={
+            enlargedImage === "riskPool_pane1" ? "enlarged" : "height-reduced"
+          }
+          onClick={() => toggleImageSize("riskPool_pane1")}
+          alt="Politician proposing the idea of a high risk pool."
+        />
+        <img
+          src="/DataViz/Healthcare/highRiskPool/riskPool.png"
+          className={enlargedImage === "riskPool" ? "enlarged" : ""}
+          onClick={() => toggleImageSize("riskPool")}
+          alt="Swimming pool with a sign saying 'High Risk Pool'. Sick people in the pool and falling into it. Uwe asks how those people are going to pay for their insurance."
+        />
+        <img
+          src="/DataViz/Healthcare/highRiskPool/riskPool_pane3.png"
+          className={
+            enlargedImage === "riskPool_pane3" ? "enlarged" : "height-reduced"
+          }
+          onClick={() => toggleImageSize("riskPool_pane3")}
+          alt="Uwe explaining that high risk pools were used before Obamacare outlawed exclusion of pre-existing conditions."
+        />
+      </div>
+    </div>,
   ];
 
   return (
@@ -175,12 +206,12 @@ function HealthcareCartoon() {
           <CartoonSection
             key={index}
             show={activeIndex === index}
-            onPrev={index > 0 ? () => setActiveIndex(index - 1) : null}
-            onNext={
-              index < sections.length - 1
-                ? () => setActiveIndex(index + 1)
-                : null
+            onPrev={() =>
+              setActiveIndex(
+                (activeIndex - 1 + sections.length) % sections.length
+              )
             }
+            onNext={() => setActiveIndex((activeIndex + 1) % sections.length)}
           >
             {sectionContent}
           </CartoonSection>
