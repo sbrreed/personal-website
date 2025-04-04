@@ -43,7 +43,9 @@ function HealthcareCartoon() {
         <h2>Waiting to see the doctor.</h2>
       </div>
       <div className="cartoon strip">
-        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
         <img
           src="/DataViz/Healthcare/waitingForHealthcare/waitingForHealthcare_v2.png"
           className={enlargedImage === "waitingForHealthcare" ? "enlarged" : ""}
@@ -66,7 +68,9 @@ function HealthcareCartoon() {
         <h2>How are premiums set?</h2>
       </div>
       <div className="cartoon strip">
-        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
         <img
           src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v2.png"
           className={enlargedImage === "howArePremiumsSet" ? "enlarged" : ""}
@@ -83,7 +87,9 @@ function HealthcareCartoon() {
       </div>
       {/* First content block in Section 3 */}
       <div className="cartoon strip">
-        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
         <img
           src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes1_2.png"
           className={
@@ -101,7 +107,9 @@ function HealthcareCartoon() {
       </div>
       {/* Second content block in Section 3 */}
       <div className="cartoon strip">
-        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
         <img
           src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes3_4.png"
           className={
@@ -119,7 +127,9 @@ function HealthcareCartoon() {
       </div>
       {/* Third content block in Section 3 */}
       <div className="cartoon strip">
-        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
         <img
           src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_pane5.png"
           className={
@@ -139,7 +149,9 @@ function HealthcareCartoon() {
       </div>
       {/* Fourth content block in Section 3 */}
       <div className="cartoon strip">
-        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
         <img
           src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes6_7.png"
           className={
@@ -165,13 +177,15 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-
+    // Section 4: "High Risk Pools"
     <div key="section4">
       <div className="article-callout">
         <h2>High Risk Pools</h2>
       </div>
       <div className="cartoon strip">
-        {windowWidth > 1000 && <p>Click image to enlarge/shrink</p>}
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
         <img
           src="/DataViz/Healthcare/highRiskPool/riskPool_pane1.png"
           className={
@@ -193,6 +207,42 @@ function HealthcareCartoon() {
           }
           onClick={() => toggleImageSize("riskPool_pane3")}
           alt="Uwe explaining that high risk pools were used before Obamacare outlawed exclusion of pre-existing conditions."
+        />
+      </div>
+    </div>,
+    // Section 5: "How total expenditures are distributed."
+    <div key="section5">
+      <div className="article-callout">
+        <h2>How total expenditures are distributed.</h2>
+      </div>
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/pricesDistributed/healthExpendituresDistributed_originalChart.png"
+          className={
+            enlargedImage === "pricesDistributed_originalChart"
+              ? "enlarged"
+              : ""
+          }
+          onClick={() => toggleImageSize("pricesDistributed_originalChart")}
+          alt="Chart from Kaiser Family Foundation showing how total health expenditures are distributed throughout the population."
+        />
+        <a href="https://www.kff.org/health-policy-101-health-care-costs-and-affordability/?entry=table-of-contents-how-does-health-care-spending-vary-across-the-population">
+          {" "}
+          Source: KFF News
+        </a>
+        <br></br>
+        <br></br>
+        <br></br>
+        <img
+          src="/DataViz/Healthcare/pricesDistributed/healthExpendituresDistributed_updatedChart.png"
+          className={
+            enlargedImage === "pricesDistributed_updatedChart" ? "enlarged" : ""
+          }
+          onClick={() => toggleImageSize("pricesDistributed_updatedChart")}
+          alt="Remade chart showing icons of 100 people and 100 dollars and lines relating the number of people to number of dollars. Showing 1% of the population uses 24% of the health expenditures. 50% of the population uses just 3% of the health expenditures."
         />
       </div>
     </div>,
