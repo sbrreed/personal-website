@@ -21,6 +21,10 @@ function HealthcareCartoonHeader() {
             </i>
           </h3>
         </div>
+        <p>
+          Our healthcare system is complex. These comics attempt to explain how
+          it works through humor and data.
+        </p>
       </div>
     </div>
   );

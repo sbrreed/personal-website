@@ -60,3 +60,10 @@
   font-size: 2rem;
   cursor: pointer;
 }
+
+.healthcare-cartoon-footer {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 2px solid #ccc;
+  text-align: center;
+}

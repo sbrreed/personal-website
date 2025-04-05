@@ -3,6 +3,7 @@ import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 import HealthcareCartoonHeader from "./HealthcareCartoonHeader";
 import CartoonSection from "./CartoonSection";
 import FlourishEmbed from "./FlourishEmbed";
+import HealthcareCartoonFooter from "./HealthcareCartoonFooter";
 
 function HealthcareCartoon() {
   const [enlargedImage, setEnlargedImage] = useState(null);
@@ -267,6 +268,7 @@ function HealthcareCartoon() {
           </CartoonSection>
         ))}
       </div>
+      <HealthcareCartoonFooter />
     </div>
   );
 }
