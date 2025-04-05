@@ -13,13 +13,12 @@ function HealthcareCartoonHeader() {
             Reinhardt's central tenet in this book is important to keep in mind
             whenever discussing any healthcare system:
           </p>
-          <h3>
-            <i>
-              "To what extent should the better-off members of society be made
-              to be their poorer and sick brothers' and sisters' keepers in
-              health care?"
-            </i>
-          </h3>
+          <div className="cartoon">
+            <img
+              className="height-reduced"
+              src="/DataViz/Healthcare/uwe_lecturing_maxim.png"
+            />
+          </div>
         </div>
         <p>
           Our healthcare system is complex. These comics attempt to explain how
