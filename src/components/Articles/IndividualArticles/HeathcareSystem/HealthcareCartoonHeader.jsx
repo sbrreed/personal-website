@@ -13,7 +13,7 @@ function HealthcareCartoonHeader() {
             Reinhardt's central tenet in this book is important to keep in mind
             whenever discussing any healthcare system:
           </p>
-          <div className="cartoon">
+          <div>
             <img
               className="height-reduced"
               src="/DataViz/Healthcare/uwe_lecturing_maxim.png"

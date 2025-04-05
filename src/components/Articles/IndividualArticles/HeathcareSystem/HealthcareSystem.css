@@ -35,7 +35,7 @@
   margin-left: 0;
 }
 
-.cartoon img.height-reduced {
+img.height-reduced {
   max-height: 300px;
   object-fit: contain;
 }
