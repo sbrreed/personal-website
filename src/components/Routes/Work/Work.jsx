@@ -3,7 +3,7 @@ import Modal from "../../Modal/Modal";
 import Articles from "../../Articles/Articles";
 import getFilteredWorkData from "../../../sharedTools/getFilteredWorkData";
 import { useState, useEffect, useRef } from "react";
-import Papa from "papaparse";
+import { useNavigate } from "react-router-dom";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import NavBar from "../../NavBar/NavBar";
 import FetchWorkData from "../../../sharedTools/getFetchWorkData";
@@ -19,6 +19,10 @@ function Work() {
   const [searchParams] = useSearchParams();
   const project = searchParams.get("project");
   const modalRef = useRef();
+  const navigate = useNavigate();
+  const handleCloseNavigation = () => {
+    navigate(`/work/${workType}`);
+  };
 
   // get all the necessary data
   const [workData, setWorkData] = useState([]);
@@ -146,13 +150,24 @@ function Work() {
           project != undefined &&
           workType != "Wood" && (
             <div ref={modalRef}>
-              <Modal onClose={closeModal} workType={workType}>
+              <Modal workType={workType}>
+                <div className="modalHeader">
+                  <span
+                    className="close"
+                    onClick={() => {
+                      handleCloseNavigation();
+                      closeModal();
+                    }}
+                  >
+                    &times;
+                  </span>
+                  {selectedProject.ModalText != "FullPage" && (
+                    <h1 className="modal-title">{selectedProject.Title}</h1>
+                  )}
+                </div>
                 {(selectedProject.ModalText == "Article" ||
                   selectedProject.ModalText == "FullPage") && (
                   <>
-                    {selectedProject.ModalText == "Article" && (
-                      <h1 className="modal-title">{selectedProject.Title}</h1>
-                    )}{" "}
                     <Articles
                       topic={selectedProject.Title}
                       articleDataPath={selectedProject.ArticleDataPath}
@@ -162,7 +177,6 @@ function Work() {
                 {selectedProject.ModalText != "Article" &&
                   selectedProject.ModalText != "FullPage" && (
                     <>
-                      <h1 className="modal-title">{selectedProject.Title}</h1>
                       <div className="modal-description-image">
                         <div className="modal-image-tech">
                           {selectedProject.ModalImageType == "Video" && (

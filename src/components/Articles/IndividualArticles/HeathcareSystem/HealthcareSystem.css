@@ -28,16 +28,31 @@
 
 .cartoon img.enlarged,
 .healthcare-system img.enlarged {
-  transform: scale(2);
+  width: 175%;
   z-index: 1000;
   position: relative;
-  left: 0;
+  left: -30%;
   margin-left: 0;
 }
 
 img.height-reduced {
   max-height: 300px;
   object-fit: contain;
+}
+
+img.central-tenet {
+  max-height: 150px;
+  width: auto;
+}
+
+.cartoon-footer-top-section {
+  text-align: left;
+}
+
+.copyright {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid var(--light-gray);
 }
 
 .flourish {
@@ -50,20 +65,41 @@ img.height-reduced {
 .section-navigation {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--nameTag-dark-gray);
+  align-items: center;
+  color: var(--nameTag-dark-gray);
+  background: linear-gradient(
+    to right,
+    white 0%,
+    var(--light-blue) 30%,
+    var(--light-blue) 70%,
+    white 100%
+  );
+}
+
+.section-navigation button {
+  background-color: transparent;
+  color: var(--nameTag-dark-gray);
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.section-navigation h1 {
+  margin: 0;
 }
 
 .nav-arrow {
   background: none;
   border: none;
-  font-size: 2rem;
   cursor: pointer;
 }
 
 .healthcare-cartoon-footer {
   margin-top: 20px;
   padding-top: 10px;
-  border-top: 2px solid #ccc;
+  border-top: 4px solid var(--primary-purple);
   text-align: center;
 }

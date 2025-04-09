@@ -39,10 +39,7 @@ function HealthcareCartoon() {
   // Define sections for navigation:
   const sections = [
     // Section 1: "Waiting to see the doctor."
-    <div key="section1">
-      <div className="article-callout">
-        <h2>Waiting to see the doctor.</h2>
-      </div>
+    <div key="Waiting to see the doctor.">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
           <p>Click image to enlarge. Click again to shrink.</p>
@@ -64,10 +61,7 @@ function HealthcareCartoon() {
     </div>,
 
     // Section 2: "How are premiums set?"
-    <div key="section2">
-      <div className="article-callout">
-        <h2>How are premiums set?</h2>
-      </div>
+    <div key="How are premiums calculated?">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
           <p>Click image to enlarge. Click again to shrink.</p>
@@ -82,10 +76,7 @@ function HealthcareCartoon() {
     </div>,
 
     // Section 3: "BEST in the World!"
-    <div key="section3">
-      <div className="article-callout">
-        <h2>BEST in the World!</h2>
-      </div>
+    <div key="BEST in the World!?">
       {/* First content block in Section 3 */}
       <div className="cartoon strip">
         {windowWidth > 1000 && (
@@ -179,10 +170,7 @@ function HealthcareCartoon() {
       </div>
     </div>,
     // Section 4: "High Risk Pools"
-    <div key="section4">
-      <div className="article-callout">
-        <h2>High Risk Pools</h2>
-      </div>
+    <div key="High Risk Pools?">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
           <p>Click image to enlarge. Click again to shrink.</p>
@@ -212,10 +200,7 @@ function HealthcareCartoon() {
       </div>
     </div>,
     // Section 5: "How total expenditures are distributed."
-    <div key="section5">
-      <div className="article-callout">
-        <h2>How total expenditures are distributed.</h2>
-      </div>
+    <div key="Who uses the most healthcare?">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
           <p>Click image to enlarge. Click again to shrink.</p>
@@ -257,6 +242,7 @@ function HealthcareCartoon() {
           <CartoonSection
             key={index}
             show={activeIndex === index}
+            title={sectionContent.key}
             onPrev={() =>
               setActiveIndex(
                 (activeIndex - 1 + sections.length) % sections.length

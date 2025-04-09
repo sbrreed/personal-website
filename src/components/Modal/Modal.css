@@ -33,7 +33,7 @@
   left: 0;
 }
 
-.modal:has(.article.singlePage) .modal-closeButton {
+.modal:has(.article.singlePage) .close {
   left: 5px;
 }
 
@@ -69,25 +69,22 @@
   opacity: 0.5;
   animation: fadeIn50 0.5s ease-in-out;
 }
-
-.modal-closeButton {
-  position: absolute;
-  left: 25%;
-  top: 0;
-  font-size: 5rem;
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20%;
+}
+span.close {
+  font-size: 3rem;
   cursor: pointer;
   z-index: 2000;
-  @media (max-width: 1000px) {
-    left: 5%;
-    font-size: 3rem;
-  }
 }
 
 .modal-content {
   display: grid;
   grid-template-rows: 1fr max-content;
   padding: 5% 25%;
-  gap: 30px;
   overflow-y: auto;
   max-height: 50%;
   @media (max-width: 1100px) {
@@ -106,15 +103,13 @@
   overflow-y: hidden;
 }
 
-.modal-title {
-  border-bottom: 3px solid var(--primary-yellow);
-}
-
 .modal-description-image {
   display: grid;
   grid-template-columns: 3fr 6fr;
   gap: 20px;
   align-items: start;
+  padding-top: 20px;
+  border-top: 3px solid var(--primary-yellow);
   @media (max-width: 700px) {
     grid-template-columns: none;
     grid-template-rows: 1fr max-content;
@@ -129,10 +124,6 @@
     height: auto;
     margin: auto;
   }
-}
-
-.modal-description p {
-  margin-top: 10px;
 }
 
 .modal-technologies {
