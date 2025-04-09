@@ -45,19 +45,12 @@ function HealthcareCartoon() {
           <p>Click image to enlarge. Click again to shrink.</p>
         )}
         <img
-          src="/DataViz/Healthcare/waitingForHealthcare/waitingForHealthcare_v2.png"
+          src="/DataViz/Healthcare/waitingForHealthcare/waitingForHealthcare_all.png"
           className={enlargedImage === "waitingForHealthcare" ? "enlarged" : ""}
           onClick={() => toggleImageSize("waitingForHealthcare")}
-          alt="Waiting for Healthcare"
+          alt="Waiting for Healthcare cartoon"
         />
       </div>
-      <FlourishEmbed
-        src="https://flo.uri.sh/visualisation/21716974/embed"
-        creditUrl="https://public.flourish.studio/visualisation/21716974/?utm_source=embed&utm_campaign=visualisation/21716974"
-        title="Healthcare Visualisation 21716974"
-        baseStyle={iframeStyle}
-        customHeight={windowWidth < 500 ? "850px" : undefined}
-      />
     </div>,
 
     // Section 2: "How are premiums set?"
