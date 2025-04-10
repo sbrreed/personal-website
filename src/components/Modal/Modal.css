@@ -74,6 +74,10 @@
   flex-direction: row;
   align-items: center;
   gap: 25%;
+
+  @media (max-width: 700px) {
+    gap: 10px;
+  }
 }
 span.close {
   font-size: 3rem;
@@ -94,6 +98,12 @@ span.close {
     display: block;
     gap: 0px;
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .modal-content h1 {
+    font-size: 1.5rem;
   }
 }
 
