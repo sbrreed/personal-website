@@ -77,8 +77,32 @@ a:visited {
   border: 2px solid black;
 }
 
-.resume {
-  width: 100%;
+.resume-container {
+  padding: 0 13%;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.resume-buttons button {
+  margin-right: 10px;
+}
+
+.download-button {
+  font-weight: bold;
+}
+
+.resume-image-wrapper {
+  text-align: center;
+}
+
+.resume-image {
+  max-width: 90%;
+  margin-top: 20px;
 }
 
 .no-scroll {
