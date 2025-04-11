@@ -86,18 +86,10 @@ function HealthcareCartoon() {
         )}
         <img
           src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry.png"
-          className={
-            enlargedImage === "BESTinTheWorld_pane1_2" ? "enlarged" : ""
-          }
-          onClick={() => toggleImageSize("BESTinTheWorld_pane1_2")}
-          alt="BEST in the World"
+          className={enlargedImage === "BESTinTheWorld" ? "enlarged" : ""}
+          onClick={() => toggleImageSize("BESTinTheWorld")}
+          alt="Cartoon about healthcare costs in the US compared to other countries."
         />
-        {/* <FlourishEmbed
-          src="https://flo.uri.sh/story/2989560/embed"
-          creditUrl="https://public.flourish.studio/visualisation/2989560/?utm_source=embed&utm_campaign=visualisation/2989560"
-          title="Healthcare Story 2989560"
-          baseStyle={iframeStyle}
-        /> */}
       </div>
       <p>Sources:</p>
       <ul>
