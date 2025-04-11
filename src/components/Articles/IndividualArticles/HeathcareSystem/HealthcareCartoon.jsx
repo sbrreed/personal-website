@@ -54,7 +54,10 @@ function HealthcareCartoon() {
       <p>Sources:</p>
       <ul>
         <li>
-          <a href="https://www.federalreserve.gov/publications/2024-economic-well-being-of-us-households-in-2023-expenses.htm">
+          <a
+            href="https://www.federalreserve.gov/publications/2024-economic-well-being-of-us-households-in-2023-expenses.htm"
+            target="_blank"
+          >
             Federal Reserve Report on the Economic Well-Being of U.S. Households
             in 2023 - May 2024
           </a>
@@ -94,13 +97,19 @@ function HealthcareCartoon() {
       <p>Sources:</p>
       <ul>
         <li>
-          <a href="https://www.healthsystemtracker.org/chart-collection/health-spending-u-s-compare-countries/">
+          <a
+            href="https://www.healthsystemtracker.org/chart-collection/health-spending-u-s-compare-countries/"
+            target="_blank"
+          >
             Health Systems Tracker- How does health spending in the U.S. compare
             to other countries?
           </a>
         </li>
         <li>
-          <a href="https://ifhp.com/claims-cost-comparison-report-2021/">
+          <a
+            href="https://ifhp.com/claims-cost-comparison-report-2021/"
+            target="_blank"
+          >
             IFHP International Health Cost Comparison Report 2022
           </a>
         </li>
@@ -152,7 +161,10 @@ function HealthcareCartoon() {
           onClick={() => toggleImageSize("pricesDistributed_originalChart")}
           alt="Chart from Kaiser Family Foundation showing how total health expenditures are distributed throughout the population."
         />
-        <a href="https://www.kff.org/health-policy-101-health-care-costs-and-affordability/?entry=table-of-contents-how-does-health-care-spending-vary-across-the-population">
+        <a
+          href="https://www.kff.org/health-policy-101-health-care-costs-and-affordability/?entry=table-of-contents-how-does-health-care-spending-vary-across-the-population"
+          target="_blank"
+        >
           {" "}
           Source: KFF News
         </a>
