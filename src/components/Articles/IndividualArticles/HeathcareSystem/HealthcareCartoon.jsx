@@ -51,6 +51,15 @@ function HealthcareCartoon() {
           alt="Waiting for Healthcare cartoon"
         />
       </div>
+      <p>Sources:</p>
+      <ul>
+        <li>
+          <a href="https://www.federalreserve.gov/publications/2024-economic-well-being-of-us-households-in-2023-expenses.htm">
+            Federal Reserve Report on the Economic Well-Being of U.S. Households
+            in 2023 - May 2024
+          </a>
+        </li>
+      </ul>
     </div>,
 
     // Section 2: "How are premiums set?"
@@ -76,91 +85,34 @@ function HealthcareCartoon() {
           <p>Click image to enlarge. Click again to shrink.</p>
         )}
         <img
-          src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes1_2.png"
+          src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry.png"
           className={
             enlargedImage === "BESTinTheWorld_pane1_2" ? "enlarged" : ""
           }
           onClick={() => toggleImageSize("BESTinTheWorld_pane1_2")}
           alt="BEST in the World"
         />
-        <FlourishEmbed
+        {/* <FlourishEmbed
           src="https://flo.uri.sh/story/2989560/embed"
           creditUrl="https://public.flourish.studio/visualisation/2989560/?utm_source=embed&utm_campaign=visualisation/2989560"
           title="Healthcare Story 2989560"
           baseStyle={iframeStyle}
-        />
+        /> */}
       </div>
-      {/* Second content block in Section 3 */}
-      <div className="cartoon strip">
-        {windowWidth > 1000 && (
-          <p>Click image to enlarge. Click again to shrink.</p>
-        )}
-        <img
-          src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes3_4.png"
-          className={
-            enlargedImage === "BESTinTheWorld_pane3_4" ? "enlarged" : ""
-          }
-          onClick={() => toggleImageSize("BESTinTheWorld_pane3_4")}
-          alt="BEST in the World"
-        />
-        <FlourishEmbed
-          src="https://flo.uri.sh/visualisation/22204138/embed"
-          creditUrl="https://public.flourish.studio/visualisation/22204138/?utm_source=embed&utm_campaign=visualisation/22204138"
-          title="Interactive Visualisation 22204138"
-          baseStyle={iframeStyle}
-        />
-      </div>
-      {/* Third content block in Section 3 */}
-      <div className="cartoon strip">
-        {windowWidth > 1000 && (
-          <p>Click image to enlarge. Click again to shrink.</p>
-        )}
-        <img
-          src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_pane5.png"
-          className={
-            enlargedImage === "BESTinTheWorld_pane5"
-              ? "enlarged"
-              : "height-reduced"
-          }
-          onClick={() => toggleImageSize("BESTinTheWorld_pane5")}
-          alt="Prices are coming down for outpatient procedures."
-        />
-        <FlourishEmbed
-          src="https://flo.uri.sh/visualisation/22204850/embed"
-          creditUrl="https://public.flourish.studio/visualisation/22204850/?utm_source=embed&utm_campaign=visualisation/22204850"
-          title="Outpatient Visit Prices 22204850"
-          baseStyle={iframeStyle}
-        />
-      </div>
-      {/* Fourth content block in Section 3 */}
-      <div className="cartoon strip">
-        {windowWidth > 1000 && (
-          <p>Click image to enlarge. Click again to shrink.</p>
-        )}
-        <img
-          src="/DataViz/Healthcare/costsComparedByCountry/costsComparedByCountry_panes6_7.png"
-          className={
-            enlargedImage === "BESTinTheWorld_panes6_7" ? "enlarged" : ""
-          }
-          onClick={() => toggleImageSize("BESTinTheWorld_panes6_7")}
-          alt="Cartoons talking about generic drug prices vs brand name drug prices."
-        />
-        <FlourishEmbed
-          src="https://flo.uri.sh/visualisation/22205079/embed"
-          creditUrl="https://public.flourish.studio/visualisation/22205079/?utm_source=embed&utm_campaign=visualisation/22205079"
-          title="Generic Drug Prices 22205079"
-          baseStyle={iframeStyle}
-        />
-      </div>
-      {/* Fifth content block in Section 3 */}
-      <div className="cartoon strip">
-        <FlourishEmbed
-          src="https://flo.uri.sh/visualisation/22204984/embed"
-          creditUrl="https://public.flourish.studio/visualisation/22204984/?utm_source=embed&utm_campaign=visualisation/22204984"
-          title="Brand Name Drug Prices 22204984"
-          baseStyle={iframeStyle}
-        />
-      </div>
+      <p>Sources:</p>
+      <ul>
+        <li>
+          <a href="https://www.healthsystemtracker.org/chart-collection/health-spending-u-s-compare-countries/">
+            Health Systems Tracker- How does health spending in the U.S. compare
+            to other countries?
+          </a>
+        </li>
+        <li>
+          <a href="https://ifhp.com/claims-cost-comparison-report-2021/">
+            IFHP International Health Cost Comparison Report 2022
+          </a>
+        </li>
+      </ul>
     </div>,
     // Section 4: "High Risk Pools"
     <div key="High Risk Pools?">
