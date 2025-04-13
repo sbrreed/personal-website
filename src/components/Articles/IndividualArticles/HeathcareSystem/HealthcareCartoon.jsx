@@ -122,26 +122,10 @@ function HealthcareCartoon() {
           <p>Click image to enlarge. Click again to shrink.</p>
         )}
         <img
-          src="/DataViz/Healthcare/highRiskPool/riskPool_pane1.png"
-          className={
-            enlargedImage === "riskPool_pane1" ? "enlarged" : "height-reduced"
-          }
-          onClick={() => toggleImageSize("riskPool_pane1")}
-          alt="Politician proposing the idea of a high risk pool."
-        />
-        <img
           src="/DataViz/Healthcare/highRiskPool/riskPool.png"
           className={enlargedImage === "riskPool" ? "enlarged" : ""}
           onClick={() => toggleImageSize("riskPool")}
-          alt="Swimming pool with a sign saying 'High Risk Pool'. Sick people in the pool and falling into it. Uwe asks how those people are going to pay for their insurance."
-        />
-        <img
-          src="/DataViz/Healthcare/highRiskPool/riskPool_pane3.png"
-          className={
-            enlargedImage === "riskPool_pane3" ? "enlarged" : "height-reduced"
-          }
-          onClick={() => toggleImageSize("riskPool_pane3")}
-          alt="Uwe explaining that high risk pools were used before Obamacare outlawed exclusion of pre-existing conditions."
+          alt="Politician proposing the idea of a high risk pool."
         />
       </div>
     </div>,
