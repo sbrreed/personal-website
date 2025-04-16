@@ -165,6 +165,21 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
+    // Section 6: "Pharma Web"
+    <div key="Pharma Web">
+      {windowWidth > 1000 && (
+        <p>Click image to enlarge. Click again to shrink.</p>
+      )}
+      <img
+        src="/DataViz/Healthcare/circleOfMoney/circleOfMoney.png"
+        className={enlargedImage === "circleOfMoney" ? "enlarged" : ""}
+        onClick={() => toggleImageSize("circleOfMoney")}
+        alt="Cartoon discussing the way pharmaceutical spending is passed around a complex network of middlemen."
+      />
+      Source:{" "}
+      <i>Priced Out: The Economics and Ethical Costs of American Health Care</i>
+      , Uwe Reinhardt, 2017
+    </div>,
   ];
 
   return (
