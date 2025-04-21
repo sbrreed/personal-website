@@ -11,6 +11,9 @@ function Footer() {
             <a href="https://www.linkedin.com/in/sarahbrreed/" target="_blank">
               <img src="/In-White-128.png"></img>
             </a>
+            <a href="https://www.instagram.com/sarah_artviz/" target="_blank">
+              <img src="/icons8-instagram-50.png"></img>
+            </a>
           </div>
         </div>
       </div>

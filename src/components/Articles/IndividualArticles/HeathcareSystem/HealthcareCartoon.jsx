@@ -180,6 +180,22 @@ function HealthcareCartoon() {
       <i>Priced Out: The Economics and Ethical Costs of American Health Care</i>
       , Uwe Reinhardt, 2017
     </div>,
+    // Section 7: "Shoping for Healthcare"
+    <div key="Shopping for Healthcare">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/shoppingAround/shoppingAround.png"
+          className={
+            enlargedImage === "shoppingForHealthcare" ? "enlarged" : ""
+          }
+          onClick={() => toggleImageSize("shoppingForHealthcare")}
+          alt="Cartoon comparing the experience of figuring out how much an oven will cost to figuring out how much a healthcare procedure will cost."
+        />
+      </div>
+    </div>,
   ];
 
   return (
