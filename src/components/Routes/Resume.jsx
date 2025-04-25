@@ -13,10 +13,10 @@ export default function Resume() {
             Visualization Developer, Data Geek.
           </p>
           <p>
-            I have always been curious-- driven by a love for learning and
+            I have always been curious—driven by a love for learning and
             experimentation throughout my life. As a student, teacher,
-            woodworker, engineer and designer I have always brought my curiosity
-            to the table.
+            woodworker, engineer, and designer I have always brought my
+            curiosity to the table.
           </p>
           <p>
             As someone fascinated with information visualization I've spent far
@@ -56,10 +56,10 @@ export default function Resume() {
             And from these answers, I might write a short article with some
             simple line charts, or create a more complex interactive experience
             that walks my audience through intuitive steps to deepen their
-            understanding. There is no one size fits all when it comes to
+            understanding. There is no one-size-fits-all when it comes to
             information storytelling. It comes down to the needs of the
-            information and the audience. We are story-tellers with a unique
-            story-telling medium.
+            information and the audience. We are storytellers with a unique
+            storytelling medium.
           </p>
         </div>
       </div>
@@ -117,7 +117,7 @@ export default function Resume() {
         <ul>
           <li>
             <strong>Maryland Institute College of Art </strong>
-            <em> Information Visualisation</em>
+            <em> Information Visualization</em>
           </li>
           <li>
             <strong>Massachusetts Institute of Technology</strong>
@@ -137,7 +137,7 @@ export default function Resume() {
           </li>
           <li>
             <strong>Software:</strong> Adobe Illustrator, InDesign, Photoshop,
-            Office 365, Tableau, Google Drive Suite
+            Office 365, Tableau, Google Workspace
           </li>
         </ul>
         <h2>Hobbies and Interests</h2>
