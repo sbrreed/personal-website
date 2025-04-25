@@ -4,9 +4,10 @@
   justify-content: space-between;
   text-align: center;
   height: max-content;
-  padding: 10px;
+  padding: 3px;
   background-color: var(--primary-purple);
   margin-bottom: 1rem;
+  line-height: 1;
 }
 
 .work-navBar-content {
@@ -25,20 +26,13 @@
   border: none;
   padding: 0;
   background-color: transparent;
-  color: black;
-  font-size: 1.75rem;
-  font-weight: 400;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 300;
   text-transform: uppercase;
   text-decoration: none;
 }
 
 .work-navBar a.active {
-  outline: 1px solid var(--primary-yellow);
-  padding: 6px;
-  background-color: var(--medium-gray);
-  color: white;
-}
-
-.work-navBar a.active:focus {
-  outline: 3px solid var(--primary-yellow);
+  border-bottom: 2px solid var(--primary-yellow);
 }

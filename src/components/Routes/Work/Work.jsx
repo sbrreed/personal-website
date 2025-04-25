@@ -89,7 +89,7 @@ function Work() {
       <NavBar />
       <div className={modalIsOpen ? "work modalOpen" : "work"}>
         {workType != "Wood" && (
-          <div className="work-intro">
+          <div className={`work-intro ${workType}`}>
             <p>Click on a card to learn more about the project</p>
           </div>
         )}

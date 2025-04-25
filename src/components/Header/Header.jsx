@@ -10,7 +10,7 @@ function Header() {
         </NavLink>
       </div>
       <div className="header-navBar">
-        <NavLink
+        {/* <NavLink
           id="header-navBar-home"
           to={"/"}
           className={({ isActive, isPending }) =>
@@ -18,7 +18,7 @@ function Header() {
           }
         >
           HOME
-        </NavLink>
+        </NavLink> */}
         <NavLink
           id="header-navBar-work"
           to={"/work/DataViz"}
@@ -35,7 +35,7 @@ function Header() {
             isActive ? "active" : isPending ? "pending" : ""
           }
         >
-          RESUME
+          ABOUT
         </NavLink>
       </div>
     </header>

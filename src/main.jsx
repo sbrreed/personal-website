@@ -7,8 +7,10 @@ import Work, {
   loader as workTypeLoader,
 } from "./components/Routes/Work/Work.jsx";
 import Resume from "./components/Routes/Resume.jsx";
-import Home from "./components/Routes/Home.jsx";
+// import Home from "./components/Routes/Home.jsx";
 import FamilyTree from "./components/Routes/FamilyTree/FamilyTree.jsx";
+import { Navigate } from "react-router-dom";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Navigate to="/work/DataViz" replace={true} />,
       },
       {
         path: "/work/:workType",

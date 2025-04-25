@@ -20,12 +20,13 @@ header p {
 }
 
 .nameTag a {
-  font-family: "Snell Roundhand", cursive;
+  font-family: "Pompiere", cursive;
   font-size: 5rem;
   background-color: transparent;
   border: none;
   color: var(--nameTag-dark-gray);
   text-decoration: none;
+  text-transform: capitalize;
 
   @media (max-width: 700px) {
     font-size: 4rem;
@@ -42,12 +43,11 @@ header p {
 }
 
 .header-navBar a {
-  font-size: 1.5rem;
+  font-size: 2rem;
   border: none;
   padding: 0;
   background-color: transparent;
-  font-family: "Cinzel", serif;
-  font-weight: 200;
+  font-weight: 300;
   color: #4b4a4a;
   text-decoration: none;
 }
