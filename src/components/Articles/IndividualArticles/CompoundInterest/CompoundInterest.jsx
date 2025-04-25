@@ -81,9 +81,11 @@ function CompoundInterest() {
           In this calculator, the interest rate has been set at 8%, which is the{" "}
           <a href="https://www.fool.com/investing/how-to-invest/stocks/average-stock-market-return/">
             {" "}
-            widely considered
+            widely considered a reasonable long-term
           </a>{" "}
-          standard rate of return for the stock market.
+          standard rate of return for the stock market. (The article actually
+          lists 10% as the current standard, but 8% is a more conservative
+          estimate.)
         </p>
         <p>
           Use this calculator to play with various initial investment and annual
