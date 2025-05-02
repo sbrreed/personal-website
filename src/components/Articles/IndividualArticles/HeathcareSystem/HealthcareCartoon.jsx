@@ -38,6 +38,37 @@ function HealthcareCartoon() {
 
   // Define sections for navigation:
   const sections = [
+    // Section 7: "Shopping for Healthcare"
+    <div key="Shopping for Healthcare">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/shoppingAround/shoppingAround.png"
+          className={
+            enlargedImage === "shoppingForHealthcare" ? "enlarged" : ""
+          }
+          onClick={() => toggleImageSize("shoppingForHealthcare")}
+          alt="Cartoon comparing the experience of figuring out how much an oven will cost to figuring out how much a healthcare procedure will cost."
+        />
+      </div>
+    </div>,
+    // Section 6: "Pharma Web"
+    <div key="Pharma Web">
+      {windowWidth > 1000 && (
+        <p>Click image to enlarge. Click again to shrink.</p>
+      )}
+      <img
+        src="/DataViz/Healthcare/circleOfMoney/circleOfMoney.png"
+        className={enlargedImage === "circleOfMoney" ? "enlarged" : ""}
+        onClick={() => toggleImageSize("circleOfMoney")}
+        alt="Cartoon discussing the way pharmaceutical spending is passed around a complex network of middlemen."
+      />
+      Source:{" "}
+      <i>Priced Out: The Economics and Ethical Costs of American Health Care</i>
+      , Uwe Reinhardt, 2017
+    </div>,
     // Section 1: "Waiting to see the doctor."
     <div key="Waiting to see the doctor.">
       <div className="cartoon strip">
@@ -64,7 +95,6 @@ function HealthcareCartoon() {
         </li>
       </ul>
     </div>,
-
     // Section 2: "How are premiums set?"
     <div key="How are premiums calculated?">
       <div className="cartoon strip">
@@ -79,7 +109,6 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-
     // Section 3: "BEST in the World!"
     <div key="BEST in the World!?">
       {/* First content block in Section 3 */}
@@ -165,37 +194,6 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-    // Section 6: "Pharma Web"
-    <div key="Pharma Web">
-      {windowWidth > 1000 && (
-        <p>Click image to enlarge. Click again to shrink.</p>
-      )}
-      <img
-        src="/DataViz/Healthcare/circleOfMoney/circleOfMoney.png"
-        className={enlargedImage === "circleOfMoney" ? "enlarged" : ""}
-        onClick={() => toggleImageSize("circleOfMoney")}
-        alt="Cartoon discussing the way pharmaceutical spending is passed around a complex network of middlemen."
-      />
-      Source:{" "}
-      <i>Priced Out: The Economics and Ethical Costs of American Health Care</i>
-      , Uwe Reinhardt, 2017
-    </div>,
-    // Section 7: "Shopping for Healthcare"
-    <div key="Shopping for Healthcare">
-      <div className="cartoon strip">
-        {windowWidth > 1000 && (
-          <p>Click image to enlarge. Click again to shrink.</p>
-        )}
-        <img
-          src="/DataViz/Healthcare/shoppingAround/shoppingAround.png"
-          className={
-            enlargedImage === "shoppingForHealthcare" ? "enlarged" : ""
-          }
-          onClick={() => toggleImageSize("shoppingForHealthcare")}
-          alt="Cartoon comparing the experience of figuring out how much an oven will cost to figuring out how much a healthcare procedure will cost."
-        />
-      </div>
-    </div>,
     // Section 8: "Low Value Medicine"
     <div key="Low Value Medicine">
       <div className="cartoon strip">
@@ -218,6 +216,22 @@ function HealthcareCartoon() {
         {" "}
         <i>Overtreatment in the United States</i>, Heather Lyu, et al. 2014{" "}
       </a>
+    </div>,
+    // Section 9: "On the Phone with Insurance"
+    <div key="On the Phone with Insurance">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/onThePhoneWithInsurance/onThePhoneWithInsurance.png"
+          className={
+            enlargedImage === "onThePhoneWithInsurance" ? "enlarged" : ""
+          }
+          onClick={() => toggleImageSize("onThePhoneWithInsurance")}
+          alt="Cartoon about the experience of trying to get insurance coverage."
+        />
+      </div>
     </div>,
   ];
 
