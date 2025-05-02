@@ -209,6 +209,15 @@ function HealthcareCartoon() {
           alt="Cartoon discussing the concept of over prescribing and unnecessary healthcare in medicine."
         />
       </div>
+      <p>Source:</p>
+      <a
+        href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0181970"
+        target="
+        _blank"
+      >
+        {" "}
+        <i>Overtreatment in the United States</i>, Heather Lyu, et al. 2014{" "}
+      </a>
     </div>,
   ];
 
