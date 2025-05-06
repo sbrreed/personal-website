@@ -218,7 +218,7 @@ function HealthcareCartoon() {
       </a>
     </div>,
     // Section 9: "On the Phone with Insurance"
-    <div key="On the Phone with Insurance">
+    <div key="I don't have that information.">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
           <p>Click image to enlarge. Click again to shrink.</p>
