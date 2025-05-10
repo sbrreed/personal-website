@@ -41,6 +41,8 @@ function Work() {
     workType,
   });
 
+  console.log("filteredWorkData", filteredWorkData);
+
   // Filter the data based on the type of project
   const professionalDataVizData = filteredWorkData.filter(
     (item) => item.Type == "Professional"
@@ -88,11 +90,11 @@ function Work() {
     <>
       <NavBar />
       <div className={modalIsOpen ? "work modalOpen" : "work"}>
-        {workType != "Wood" && (
-          <div className={`work-intro ${workType}`}>
-            <p>Click on a card to learn more about the project</p>
-          </div>
-        )}
+        <div className={`work-intro ${workType}`}>
+          <p>Click on a card to learn more about the project</p>
+        </div>
+
+        {/* dataviz section is broken into professional and personal projects */}
         {workType == "DataViz" && (
           <div className="data-viz-container">
             <div className="professional-data-viz">
@@ -131,6 +133,7 @@ function Work() {
             </div>
           </div>
         )}
+        {/* normal work container without the professional/personal split */}
         <div className="work-container">
           {workType != "DataViz" &&
             filteredWorkData.map((item, index) => {
@@ -145,125 +148,167 @@ function Work() {
               );
             })}
         </div>
-        {modalIsOpen &&
-          selectedProject &&
-          project != undefined &&
-          workType != "Wood" && (
-            <div ref={modalRef}>
-              <Modal workType={workType}>
-                <div className="modalHeader">
-                  <span
-                    className="close"
-                    onClick={() => {
-                      handleCloseNavigation();
-                      closeModal();
-                    }}
-                  >
-                    &times;
-                  </span>
-                  {selectedProject.ModalText != "FullPage" && (
+        {/* Modal for the selected project */}
+        {modalIsOpen && selectedProject && project != undefined && (
+          <div ref={modalRef}>
+            <Modal workType={workType}>
+              <div className="modalHeader">
+                <span
+                  className="close"
+                  onClick={() => {
+                    handleCloseNavigation();
+                    closeModal();
+                  }}
+                >
+                  &times;
+                </span>
+                {selectedProject.ModalText != "FullPage" &&
+                  workType != "FineArt" && (
                     <h1 className="modal-title">{selectedProject.Title}</h1>
                   )}
-                </div>
-                {(selectedProject.ModalText == "Article" ||
-                  selectedProject.ModalText == "FullPage") && (
+              </div>
+              {(selectedProject.ModalText == "Article" ||
+                selectedProject.ModalText == "FullPage") && (
+                <>
+                  <Articles
+                    topic={selectedProject.Title}
+                    articleDataPath={selectedProject.ArticleDataPath}
+                  />
+                </>
+              )}
+              {selectedProject.ModalText != "Article" &&
+                selectedProject.ModalText != "FullPage" &&
+                workType != "FineArt" && (
                   <>
-                    <Articles
-                      topic={selectedProject.Title}
-                      articleDataPath={selectedProject.ArticleDataPath}
-                    />
+                    <div className="modal-description-image">
+                      <div className="modal-image-tech">
+                        {selectedProject.ModalImageType == "Video" && (
+                          // The ModalImage has to be a vimeo link in this case.
+                          <iframe
+                            src={selectedProject.ModalImage}
+                            width="640"
+                            height="360"
+                            frameborder="0"
+                            webkitallowfullscreen
+                            mozallowfullscreen
+                            allowfullscreen
+                          ></iframe>
+                        )}
+                        <a href={selectedProject.LinkToProject} target="_blank">
+                          {selectedProject.ModalImageType == "Image" && (
+                            <img
+                              src={selectedProject.ModalImage}
+                              alt={selectedProject.Title}
+                            />
+                          )}
+                        </a>
+                        {workType == "DataViz" && (
+                          <div className="modal-technologies">
+                            <p>
+                              <b>Technologies:</b>{" "}
+                              {selectedProject.Technologies.split(",").map(
+                                (item, index) => {
+                                  if (
+                                    index !=
+                                    selectedProject.Technologies.split(",")
+                                      .length -
+                                      1
+                                  ) {
+                                    return (
+                                      <span key={`tech_${index}`}>
+                                        {item},{" "}
+                                      </span>
+                                    );
+                                  } else {
+                                    return (
+                                      <span key={`tech_${index}`}>{item} </span>
+                                    );
+                                  }
+                                }
+                              )}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                      <div className="modal-description">
+                        {selectedProject.ModalText.split("<br>").map(
+                          (item, index) => {
+                            return <p key={`modalText_${index}`}>{item}</p>;
+                          }
+                        )}
+
+                        <p>
+                          <b>Roles and Responsibilites: </b>
+                        </p>
+                        <ul>
+                          {selectedProject.RolesAndResponsibilities.split(
+                            ","
+                          ).map((item, index) => {
+                            return index ==
+                              selectedProject.RolesAndResponsibilities.split(
+                                ","
+                              ).length -
+                                1 ? (
+                              <li key={`roles_${index}`}>{item}</li>
+                            ) : (
+                              <li key={`roles_${index}`}>{item}</li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </div>
                   </>
                 )}
-                {selectedProject.ModalText != "Article" &&
-                  selectedProject.ModalText != "FullPage" && (
-                    <>
-                      <div className="modal-description-image">
-                        <div className="modal-image-tech">
-                          {selectedProject.ModalImageType == "Video" && (
-                            // The ModalImage has to be a vimeo link in this case.
-                            <iframe
-                              src={selectedProject.ModalImage}
-                              width="640"
-                              height="360"
-                              frameborder="0"
-                              webkitallowfullscreen
-                              mozallowfullscreen
-                              allowfullscreen
-                            ></iframe>
-                          )}
-                          <a
-                            href={selectedProject.LinkToProject}
-                            target="_blank"
-                          >
-                            {selectedProject.ModalImageType == "Image" && (
-                              <img
-                                src={selectedProject.ModalImage}
-                                alt={selectedProject.Title}
-                              />
-                            )}
-                          </a>
-                          {workType == "DataViz" && (
-                            <div className="modal-technologies">
-                              <p>
-                                <b>Technologies:</b>{" "}
-                                {selectedProject.Technologies.split(",").map(
-                                  (item, index) => {
-                                    if (
-                                      index !=
-                                      selectedProject.Technologies.split(",")
-                                        .length -
-                                        1
-                                    ) {
-                                      return (
-                                        <span key={`tech_${index}`}>
-                                          {item},{" "}
-                                        </span>
-                                      );
-                                    } else {
-                                      return (
-                                        <span key={`tech_${index}`}>
-                                          {item}{" "}
-                                        </span>
-                                      );
-                                    }
-                                  }
-                                )}
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                        <div className="modal-description">
-                          {selectedProject.ModalText.split("<br>").map(
-                            (item, index) => {
-                              return <p key={`modalText_${index}`}>{item}</p>;
-                            }
-                          )}
 
-                          <p>
-                            <b>Roles and Responsibilites: </b>
-                          </p>
-                          <ul>
-                            {selectedProject.RolesAndResponsibilities.split(
-                              ","
-                            ).map((item, index) => {
-                              return index ==
-                                selectedProject.RolesAndResponsibilities.split(
-                                  ","
-                                ).length -
-                                  1 ? (
-                                <li key={`roles_${index}`}>{item}</li>
-                              ) : (
-                                <li key={`roles_${index}`}>{item}</li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      </div>
-                    </>
-                  )}
-              </Modal>
-            </div>
-          )}
+              {workType === "FineArt" && (
+                <div className="modal-fineArt">
+                  <button
+                    className="carousel-arrow left"
+                    onClick={() => {
+                      const currentIndex = filteredWorkData.findIndex(
+                        (item) => item.URL_Title === selectedProject.URL_Title
+                      );
+                      const prevIndex =
+                        (currentIndex - 1 + filteredWorkData.length) %
+                        filteredWorkData.length;
+                      const prevItem = filteredWorkData[prevIndex];
+                      navigate(
+                        `/work/${workType}/?project=${prevItem.URL_Title}`
+                      );
+                      setSelectedProject(prevItem);
+                    }}
+                  >
+                    ‹
+                  </button>
+
+                  <img
+                    className="fineArt-modal-img"
+                    src={selectedProject.ModalImage}
+                    alt={selectedProject.Title}
+                  />
+
+                  <button
+                    className="carousel-arrow right"
+                    onClick={() => {
+                      const currentIndex = filteredWorkData.findIndex(
+                        (item) => item.URL_Title === selectedProject.URL_Title
+                      );
+                      const nextIndex =
+                        (currentIndex + 1) % filteredWorkData.length;
+                      const nextItem = filteredWorkData[nextIndex];
+                      navigate(
+                        `/work/${workType}/?project=${nextItem.URL_Title}`
+                      );
+                      setSelectedProject(nextItem);
+                    }}
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+            </Modal>
+          </div>
+        )}
       </div>
     </>
   );

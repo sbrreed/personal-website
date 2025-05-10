@@ -16,14 +16,12 @@ function Card({ item, style, onClick, workType }) {
     <button
       className={`card ${workType}`}
       style={style}
-      onClick={
-        workType !== "Wood"
-          ? () => {
-              handleNavigation();
-              onClick();
-            }
-          : null
-      }
+      onClick={() => {
+        handleNavigation();
+        if (onClick) {
+          onClick();
+        }
+      }}
     >
       {loading && <div className="loading">Loading...</div>}
       <img src={item.Thumbnail} alt={item.Title} onLoad={handleImageLoad} />

@@ -23,13 +23,13 @@ function NavBar() {
           Mechanical Engineering
         </NavLink>
         <NavLink
-          id="work-navBar-wood"
-          to="/work/Wood"
+          id="work-navBar-fineArtWood"
+          to="/work/FineArt"
           className={({ isActive, isPending }) =>
             isActive ? "active" : isPending ? "pending" : ""
           }
         >
-          Wood
+          Fine Art & Wood
         </NavLink>
       </div>
     </div>
