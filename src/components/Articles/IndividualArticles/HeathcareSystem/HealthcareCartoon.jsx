@@ -102,7 +102,7 @@ function HealthcareCartoon() {
           <p>Click image to enlarge. Click again to shrink.</p>
         )}
         <img
-          src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v3.png"
+          src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v4.png"
           className={enlargedImage === "howArePremiumsSet" ? "enlarged" : ""}
           onClick={() => toggleImageSize("howArePremiumsSet")}
           alt="How Are Premiums Set"
