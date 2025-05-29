@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import useWindowDimensions from "../../../../hooks/useWindowDimensions";
 import HealthcareCartoonHeader from "./HealthcareCartoonHeader";
 import CartoonSection from "./CartoonSection";
-import FlourishEmbed from "./FlourishEmbed";
 import HealthcareCartoonFooter from "./HealthcareCartoonFooter";
 
 function HealthcareCartoon() {
   const [enlargedImage, setEnlargedImage] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
   const { windowWidth } = useWindowDimensions();
 
   const toggleImageSize = (id) => {
@@ -30,11 +29,62 @@ function HealthcareCartoon() {
     iframeWidth = "80%";
   }
 
-  const iframeStyle = {
-    width: iframeWidth,
-    height: `${iframeHeight}px`,
-    border: "0",
+  const sectionSlugs = [
+    "shopping-for-healthcare",
+    "how-are-premiums-set",
+    "pharma-web",
+    "waiting-to-see-the-doctor",
+    "healthcare-systems-around-the-world",
+    "best-in-the-world",
+    "high-risk-pools",
+    "expenditures-distribution",
+    "low-value-medicine",
+    "on-the-phone",
+  ];
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const slug = searchParams.get("section");
+
+  const initialSlugIndex = sectionSlugs.indexOf(slug);
+  const [activeSlugIndex, setActiveSlugIndex] = useState(
+    initialSlugIndex !== -1 ? initialSlugIndex : 0
+  );
+
+  // Ensure the project is set to "HealthcareCartoons" if not specified:
+  useEffect(() => {
+    if (!searchParams.get("project")) {
+      const params = Object.fromEntries(searchParams.entries());
+      params.project = "HealthcareCartoons";
+      setSearchParams(params);
+    }
+  }, []);
+
+  // Function to navigate to a specific section by index
+  const goToIndex = (index) => {
+    const params = Object.fromEntries(searchParams.entries());
+    params.section = sectionSlugs[index];
+    setSearchParams(params); // Preserves existing `project` param
+    setActiveSlugIndex(index);
   };
+
+  // Update activeSlugIndex when searchParams change:
+  useEffect(() => {
+    const slug = searchParams.get("section");
+    const index = sectionSlugs.indexOf(slug);
+    if (index !== -1 && index !== activeSlugIndex) {
+      setActiveSlugIndex(index);
+    }
+  }, [searchParams]);
+
+  // Ensure the first section is set if no section is specified:
+  useEffect(() => {
+    if (!searchParams.has("section")) {
+      setSearchParams({
+        project: "HealthcareCartoons",
+        section: sectionSlugs[0],
+      });
+    }
+  }, []);
 
   // Define sections for navigation:
   const sections = [
@@ -51,6 +101,20 @@ function HealthcareCartoon() {
           }
           onClick={() => toggleImageSize("shoppingForHealthcare")}
           alt="Cartoon comparing the experience of figuring out how much an oven will cost to figuring out how much a healthcare procedure will cost."
+        />
+      </div>
+    </div>,
+    // Section 2: "How are premiums set?"
+    <div key="How are premiums calculated?">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v4.png"
+          className={enlargedImage === "howArePremiumsSet" ? "enlarged" : ""}
+          onClick={() => toggleImageSize("howArePremiumsSet")}
+          alt="How Are Premiums Set"
         />
       </div>
     </div>,
@@ -95,20 +159,24 @@ function HealthcareCartoon() {
         </li>
       </ul>
     </div>,
-    // Section 2: "How are premiums set?"
-    <div key="How are premiums calculated?">
+    <div key="Healthcare systems around the world">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
           <p>Click image to enlarge. Click again to shrink.</p>
         )}
         <img
-          src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v4.png"
-          className={enlargedImage === "howArePremiumsSet" ? "enlarged" : ""}
-          onClick={() => toggleImageSize("howArePremiumsSet")}
-          alt="How Are Premiums Set"
+          src="/DataViz/Healthcare/healthcareSystemsAroundTheWorld/healthcareSystemsAroundTheWorld.png"
+          className={
+            enlargedImage === "healthcareSystemsAroundTheWorld"
+              ? "enlarged"
+              : ""
+          }
+          onClick={() => toggleImageSize("healthcareSystemsAroundTheWorld")}
+          alt="Cartoon comparing healthcare systems around the world."
         />
       </div>
     </div>,
+
     // Section 3: "BEST in the World!"
     <div key="BEST in the World!?">
       {/* First content block in Section 3 */}
@@ -242,14 +310,14 @@ function HealthcareCartoon() {
         {sections.map((sectionContent, index) => (
           <CartoonSection
             key={index}
-            show={activeIndex === index}
+            show={activeSlugIndex === index}
             title={sectionContent.key}
             onPrev={() =>
-              setActiveIndex(
-                (activeIndex - 1 + sections.length) % sections.length
+              goToIndex(
+                (activeSlugIndex - 1 + sections.length) % sections.length
               )
             }
-            onNext={() => setActiveIndex((activeIndex + 1) % sections.length)}
+            onNext={() => goToIndex((activeSlugIndex + 1) % sections.length)}
           >
             {sectionContent}
           </CartoonSection>

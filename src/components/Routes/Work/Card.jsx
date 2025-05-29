@@ -5,7 +5,13 @@ function Card({ item, style, onClick, workType }) {
   const navigate = useNavigate();
 
   const handleNavigation = () => {
-    navigate(`/work/${workType}/?project=${item.URL_Title}`);
+    if (item.URL_Title === "HealthcareCartoons") {
+      navigate(
+        `/work/${workType}/?project=HealthcareCartoons&section=shopping-for-healthcare`
+      );
+    } else {
+      navigate(`/work/${workType}/?project=${item.URL_Title}`);
+    }
   };
 
   const handleImageLoad = () => {

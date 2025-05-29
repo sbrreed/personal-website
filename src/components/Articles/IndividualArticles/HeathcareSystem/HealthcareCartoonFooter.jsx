@@ -3,10 +3,11 @@ function HealthcareCartoonFooter() {
     <div className="healthcare-cartoon-footer">
       <div className="multi-paragraph-section cartoon-footer-top-section">
         <p>
-          These cartoons are inspired by Uwe Reinhardt's{" "}
+          These cartoons were originally inspired by Uwe Reinhardt's{" "}
           <i>
             Priced Out: The Economics and Ethical Costs of American Health Care
           </i>
+          .
         </p>
         <p>
           Reinhardt's central tenet in this book is important to keep in mind
@@ -17,6 +18,13 @@ function HealthcareCartoonFooter() {
         className="central-tenet"
         src="/DataViz/Healthcare/uwe_lecturing_maxim.png"
       />
+      <div className="multi-paragraph-section cartoon-footer-top-section">
+        <p>
+          Since reading that book, each subsequent book I've read on the subject
+          has lent a multitude of ideas. Our system is complicated and there is
+          so much to talk about.
+        </p>
+      </div>
       <div className="copyright">
         <p>© Sarah Reed 2025.</p>
         <p>

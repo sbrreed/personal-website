@@ -41,8 +41,6 @@ function Work() {
     workType,
   });
 
-  console.log("filteredWorkData", filteredWorkData);
-
   // Filter the data based on the type of project
   const professionalDataVizData = filteredWorkData.filter(
     (item) => item.Type == "Professional"

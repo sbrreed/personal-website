@@ -359,8 +359,8 @@ function Articles({ topic, articleDataPath }) {
       {topic == "Supplement Research" && <Supplements />}
       {topic == "Ranked Choice Voting" && <RankedChoiceVoting />}
       {topic == "Does GLP1 need to be so expensive?" && <CostOfGLP1 />}
-      {topic == "Our Healthcare System" && <HealthcareSystem />}
-      {topic == "Our Sicker Sisters and Brothers" && <HealthcareCartoon />}
+      {topic == "Healthcare" && <HealthcareSystem />}
+      {topic == "Our Crazy System" && <HealthcareCartoon />}
     </div>
   );
 }

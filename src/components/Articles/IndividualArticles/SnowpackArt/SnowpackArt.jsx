@@ -16,7 +16,6 @@ function SnowpackArt() {
   };
 
   const windowWidth = window.innerWidth;
-  console.log(windowWidth);
 
   return (
     <div className="article snowPackArt fullScreen singlePage">
