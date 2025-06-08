@@ -347,4 +347,7 @@ figcaption {
   .article-image img {
     width: 100%;
   }
+  figcaption {
+    width: 100%;
+  }
 }
