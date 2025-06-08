@@ -21,7 +21,7 @@ function SkinInTheGame() {
         </p>
         <div className="article-image small center">
           <img
-            src="/public/DataViz/Healthcare/skinInTheGame/checkingIn.png"
+            src="/DataViz/Healthcare/skinInTheGame/checkingIn.png"
             alt="Checking in at Children's Hospital"
           />
         </div>
@@ -41,7 +41,7 @@ function SkinInTheGame() {
         </p>
         <div className="article-image small center">
           <img
-            src="/public/DataViz/Healthcare/skinInTheGame/rowOfShops.png"
+            src="/DataViz/Healthcare/skinInTheGame/rowOfShops.png"
             alt="Checking in at Children's Hospital"
           />
         </div>
@@ -71,7 +71,7 @@ function SkinInTheGame() {
         </p>
         <div className="article-image small center">
           <img
-            src="/public/DataViz/Healthcare/skinInTheGame/HDHP enrollment.png"
+            src="/DataViz/Healthcare/skinInTheGame/HDHP enrollment.png"
             alt="High Deductible Health Plan"
           />
         </div>
@@ -96,7 +96,7 @@ function SkinInTheGame() {
         </p>
         <div className="article-image center">
           <img
-            src="/public/DataViz/Healthcare/skinInTheGame/onThePhoneWithInsurance.png"
+            src="/DataViz/Healthcare/skinInTheGame/onThePhoneWithInsurance.png"
             alt="Anthem Insurance Information"
           />
         </div>
@@ -125,7 +125,7 @@ function SkinInTheGame() {
         </p>
         <figure className="article-image small center">
           <img
-            src="/public/DataViz/Healthcare/skinInTheGame/CIVHC1.png"
+            src="/DataViz/Healthcare/skinInTheGame/CIVHC1.png"
             alt="CIVHC Dashboard"
           />
           <figcaption>
@@ -135,7 +135,7 @@ function SkinInTheGame() {
         </figure>
         <figure className="article-image small center">
           <img
-            src="/public/DataViz/Healthcare/skinInTheGame/CIVHC2.png"
+            src="/DataViz/Healthcare/skinInTheGame/CIVHC2.png"
             alt="CIVHC Dashboard"
           />
           <figcaption>
@@ -145,7 +145,7 @@ function SkinInTheGame() {
         </figure>
         <figure className="article-image small center">
           <img
-            src="/public/DataViz/Healthcare/skinInTheGame/CIVHC3.png"
+            src="/DataViz/Healthcare/skinInTheGame/CIVHC3.png"
             alt="CIVHC Dashboard"
           />
           <figcaption>
