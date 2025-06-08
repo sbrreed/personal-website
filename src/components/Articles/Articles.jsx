@@ -7,8 +7,9 @@ import Supplements from "./IndividualArticles/Supplements/Supplements";
 import RankedChoiceVoting from "./IndividualArticles/RankedChoiceVoting/RankedChoiceVoting";
 import CostOfGLP1 from "./IndividualArticles/CostOfGLP1";
 import SnowpackArt from "./IndividualArticles/SnowpackArt/SnowpackArt";
-import HealthcareSystem from "./IndividualArticles/HeathcareSystem/HealthcareSystem";
-import HealthcareCartoon from "./IndividualArticles/HeathcareSystem/HealthcareCartoon";
+import HealthcareSystem from "./IndividualArticles/HealthcareSystem/HealthcareSystem";
+import HealthcareCartoon from "./IndividualArticles/HealthcareSystem/HealthcareCartoon";
+import SkinInTheGame from "./IndividualArticles/HealthcareSystem/SkinInTheGame";
 
 function Articles({ topic, articleDataPath }) {
   const [articleData, setArticleData] = useState([]);
@@ -361,6 +362,7 @@ function Articles({ topic, articleDataPath }) {
       {topic == "Does GLP1 need to be so expensive?" && <CostOfGLP1 />}
       {topic == "Healthcare" && <HealthcareSystem />}
       {topic == "Our Crazy System" && <HealthcareCartoon />}
+      {topic == "Skin in the Game" && <SkinInTheGame />}
     </div>
   );
 }

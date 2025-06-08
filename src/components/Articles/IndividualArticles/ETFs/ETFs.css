@@ -1,0 +1,17 @@
+tr:nth-child(odd) {
+  background-color: var(--table-row-purple);
+}
+
+tr:nth-child(even) {
+  background-color: var(--very-light-purple);
+}
+
+table:not(#table1) tr:last-of-type td {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  @media (max-width: 1000px) {
+    font-size: 0.75rem;
+    line-height: normal;
+  }
+}

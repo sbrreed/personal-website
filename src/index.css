@@ -6,7 +6,7 @@
 @import "./components/Articles/Articles.css";
 @import "./components/D3/D3Charts.css";
 @import "./components/Routes/FamilyTree/FamilyTree.css";
-@import "./components/Articles/IndividualArticles/HeathcareSystem/HealthcareSystem.css";
+@import "./components/Articles/IndividualArticles/HealthcareSystem/HealthcareSystem.css";
 
 * {
   box-sizing: border-box;
