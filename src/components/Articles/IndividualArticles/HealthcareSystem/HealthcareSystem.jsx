@@ -17,7 +17,7 @@ function HealthcareSystem() {
     windowWidth < 1400 ? 1000 : windowWidth < 800 ? 2000 : 600; // Adjust the multiplier as needed
 
   return (
-    <div className="article">
+    <div className="article narrow">
       <div className="healthcare-system">
         <div className="multi-paragraph-section">
           <p>

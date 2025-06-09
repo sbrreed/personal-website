@@ -109,7 +109,7 @@ function Articles({ topic, articleDataPath }) {
         </div>
       )}
       {topic == "Was the powder really that good then?" && (
-        <div className="article">
+        <div className="article narrow">
           <div className="multi-paragraph-section">
             <p>
               I moved to Colorado in November of 1997- following an old
