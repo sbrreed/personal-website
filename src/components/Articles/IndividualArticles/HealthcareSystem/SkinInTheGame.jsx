@@ -1,6 +1,6 @@
 function SkinInTheGame() {
   return (
-    <div className="article">
+    <div className="article narrow">
       <div className="multi-paragraph-section">
         <h2>My Quest to find the best priced Endoscopy</h2>
         <p>
@@ -19,7 +19,7 @@ function SkinInTheGame() {
           the need for patients to shop around. They call this having “skin in
           the game.” And to be sure, I was battered and bruised by the end.
         </p>
-        <div className="article-image small center">
+        <div className="article-image center">
           <img
             src="/DataViz/Healthcare/skinInTheGame/checkingIn.png"
             alt="Checking in at Children's Hospital"
@@ -39,7 +39,7 @@ function SkinInTheGame() {
           this had been stated on one of the many forms I filled out while
           checking in that day.
         </p>
-        <div className="article-image small center">
+        <div className="article-image center">
           <img
             src="/DataViz/Healthcare/skinInTheGame/rowOfShops.png"
             alt="Checking in at Children's Hospital"
@@ -69,7 +69,7 @@ function SkinInTheGame() {
           intended to encourage consumers to take more control of their health
           care spending.
         </p>
-        <div className="article-image small center">
+        <div className="article-image center">
           <img
             src="/DataViz/Healthcare/skinInTheGame/HDHP enrollment.png"
             alt="High Deductible Health Plan"
@@ -94,7 +94,7 @@ function SkinInTheGame() {
           my shopping easier and lower costs for them and everybody else. No–
           they referred me back to the same provider list.
         </p>
-        <div className="article-image center">
+        <div className="article-image large center">
           <img
             src="/DataViz/Healthcare/skinInTheGame/onThePhoneWithInsurance.png"
             alt="Anthem Insurance Information"
@@ -123,7 +123,7 @@ function SkinInTheGame() {
           with all the correct information, a person can get a 25th -75th
           percentile estimate for a procedure.
         </p>
-        <figure className="article-image small center">
+        <figure className="article-image large center">
           <img
             src="/DataViz/Healthcare/skinInTheGame/CIVHC1.png"
             alt="CIVHC Dashboard"
@@ -133,7 +133,7 @@ function SkinInTheGame() {
             common procedures.
           </figcaption>
         </figure>
-        <figure className="article-image small center">
+        <figure className="article-image large center">
           <img
             src="/DataViz/Healthcare/skinInTheGame/CIVHC2.png"
             alt="CIVHC Dashboard"
@@ -143,7 +143,7 @@ function SkinInTheGame() {
             procedures.
           </figcaption>
         </figure>
-        <figure className="article-image small center">
+        <figure className="article-image large center">
           <img
             src="/DataViz/Healthcare/skinInTheGame/CIVHC3.png"
             alt="CIVHC Dashboard"
@@ -313,7 +313,7 @@ function SkinInTheGame() {
           After over 30 phone calls, and weeks of work, I had ended up with the
           following (all values are with insurance applied).
         </p>
-        <table className="set-width">
+        <table>
           <colgroup>
             <col style={{ width: "25%" }} />
             <col style={{ width: "25%" }} />

@@ -26,10 +26,6 @@
   margin: 15px auto;
 }
 
-.article-image.large img {
-  width: 100%;
-}
-
 .article-image.center {
   display: flex;
   justify-content: center;
@@ -41,6 +37,9 @@
 
 .article-image.medium img {
   width: 50%;
+}
+.article-image.large img {
+  width: 100%;
 }
 
 .multi-paragraph-section p:not(:first-of-type) {
