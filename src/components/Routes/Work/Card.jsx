@@ -7,7 +7,7 @@ function Card({ item, style, onClick, workType }) {
   const handleNavigation = () => {
     if (item.URL_Title === "HealthcareCartoons") {
       navigate(
-        `/work/${workType}/?project=HealthcareCartoons&section=shopping-for-healthcare`
+        `/work/${workType}/?project=HealthcareCartoons&section=how-are-premiums-set`
       );
     } else {
       navigate(`/work/${workType}/?project=${item.URL_Title}`);
