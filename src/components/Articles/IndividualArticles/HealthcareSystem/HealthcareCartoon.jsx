@@ -30,8 +30,10 @@ function HealthcareCartoon() {
   }
 
   const sectionSlugs = [
-    "shopping-for-healthcare",
     "how-are-premiums-set",
+    "premium-tax-credits",
+    "reinsurance",
+    "shopping-for-healthcare",
     "pharma-web",
     "waiting-to-see-the-doctor",
     "healthcare-systems-around-the-world",
@@ -88,7 +90,49 @@ function HealthcareCartoon() {
 
   // Define sections for navigation:
   const sections = [
-    // Section 7: "Shopping for Healthcare"
+    // "How are premiums set?"
+    <div key="How are premiums calculated?">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v4.png"
+          className={enlargedImage === "howArePremiumsSet" ? "enlarged" : ""}
+          onClick={() => toggleImageSize("howArePremiumsSet")}
+          alt="How Are Premiums Set"
+        />
+      </div>
+    </div>,
+    // "Premium Tax Credits"
+    <div key="Premium Tax Credits">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/premiumTaxCredit/premiumTaxCredit.png"
+          className={enlargedImage === "premiumTaxCredits" ? "enlarged" : ""}
+          onClick={() => toggleImageSize("premiumTaxCredits")}
+          alt="Cartoon about premium tax credits."
+        />
+      </div>
+    </div>,
+    // "Reinsurance"
+    <div key="Reinsurance">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/reinsurance/reinsurance.png"
+          className={enlargedImage === "reinsurance" ? "enlarged" : ""}
+          onClick={() => toggleImageSize("reinsurance")}
+          alt="Cartoon about reinsurance."
+        />
+      </div>
+    </div>,
+    // "Shopping for Healthcare"
     <div key="Shopping for Healthcare">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
@@ -104,21 +148,7 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-    // Section 2: "How are premiums set?"
-    <div key="How are premiums calculated?">
-      <div className="cartoon strip">
-        {windowWidth > 1000 && (
-          <p>Click image to enlarge. Click again to shrink.</p>
-        )}
-        <img
-          src="/DataViz/Healthcare/howArePremiumsSet/howArePremiumsSet_v4.png"
-          className={enlargedImage === "howArePremiumsSet" ? "enlarged" : ""}
-          onClick={() => toggleImageSize("howArePremiumsSet")}
-          alt="How Are Premiums Set"
-        />
-      </div>
-    </div>,
-    // Section 6: "Pharma Web"
+    // "Pharma Web"
     <div key="Pharma Web">
       {windowWidth > 1000 && (
         <p>Click image to enlarge. Click again to shrink.</p>
@@ -133,7 +163,7 @@ function HealthcareCartoon() {
       <i>Priced Out: The Economics and Ethical Costs of American Health Care</i>
       , Uwe Reinhardt, 2017
     </div>,
-    // Section 1: "Waiting to see the doctor."
+    // "Waiting to see the doctor."
     <div key="Waiting to see the doctor.">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
@@ -159,6 +189,7 @@ function HealthcareCartoon() {
         </li>
       </ul>
     </div>,
+    // "Healthcare systems around the world"
     <div key="Healthcare systems around the world">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
@@ -176,10 +207,8 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-
-    // Section 3: "BEST in the World!"
+    // "BEST in the World!"
     <div key="BEST in the World!?">
-      {/* First content block in Section 3 */}
       <div className="cartoon strip">
         {windowWidth > 1000 && (
           <p>Click image to enlarge. Click again to shrink.</p>
@@ -212,7 +241,7 @@ function HealthcareCartoon() {
         </li>
       </ul>
     </div>,
-    // Section 4: "High Risk Pools"
+    // "High Risk Pools"
     <div key="High Risk Pools?">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
@@ -226,7 +255,7 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-    // Section 5: "How total expenditures are distributed."
+    // "How total expenditures are distributed."
     <div key="Who uses the most healthcare?">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
@@ -262,7 +291,7 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-    // Section 8: "Low Value Medicine"
+    // "Low Value Medicine"
     <div key="Low Value Medicine">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
@@ -285,7 +314,7 @@ function HealthcareCartoon() {
         <i>Overtreatment in the United States</i>, Heather Lyu, et al. 2014{" "}
       </a>
     </div>,
-    // Section 9: "On the Phone with Insurance"
+    // "On the Phone with Insurance"
     <div key="I don't have that information.">
       <div className="cartoon strip">
         {windowWidth > 1000 && (
