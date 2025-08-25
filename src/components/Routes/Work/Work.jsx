@@ -192,14 +192,24 @@ function Work() {
                             allowfullscreen
                           ></iframe>
                         )}
-                        <a href={selectedProject.LinkToProject} target="_blank">
-                          {selectedProject.ModalImageType == "Image" && (
+                        {selectedProject.ModalImageType == "Image" &&
+                          (selectedProject.LinkToProject ? (
+                            <a
+                              href={selectedProject.LinkToProject}
+                              target="_blank"
+                            >
+                              <img
+                                src={selectedProject.ModalImage}
+                                alt={selectedProject.Title}
+                              />
+                            </a>
+                          ) : (
                             <img
                               src={selectedProject.ModalImage}
                               alt={selectedProject.Title}
                             />
-                          )}
-                        </a>
+                          ))}
+
                         {workType == "DataViz" && (
                           <div className="modal-technologies">
                             <p>
@@ -235,7 +245,7 @@ function Work() {
                           }
                         )}
 
-                        <p>
+                        <p className="roles-responsibilities">
                           <b>Roles and Responsibilites: </b>
                         </p>
                         <ul>
