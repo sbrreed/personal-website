@@ -293,6 +293,7 @@ function Work() {
                     className="fineArt-modal-img"
                     src={selectedProject.ModalImage}
                     alt={selectedProject.Title}
+                    loading="lazy"
                   />
 
                   <button
