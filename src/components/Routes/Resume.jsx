@@ -5,7 +5,7 @@ export default function Resume() {
     <div className="resume-about-container">
       <div className="about-intro-container">
         <div className="resume-image-wrapper">
-          <img src="/acme_photoshoot_headshot.JPG" alt="Sarah Reed" />
+          <img src="/headshot-denim-small.jpg" alt="Sarah Reed" />
         </div>
         <div className="introduction">
           <p>
