@@ -132,6 +132,20 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
+    // "Death Spiral"
+    <div key="deathSpiral">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/deathSpiral/deathSpiral.png"
+          className={enlargedImage === "deathSpiral" ? "enlarged" : ""}
+          onClick={() => toggleImageSize("deathSpiral")}
+          alt="Cartoon about the insurance death spiral."
+        />
+      </div>
+    </div>,
     // "Shopping for Healthcare"
     <div key="Shopping for Healthcare">
       <div className="cartoon strip">
