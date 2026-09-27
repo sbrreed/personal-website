@@ -22,7 +22,7 @@ export default function Resume() {
             As someone fascinated with information visualization I've spent far
             too much time working and re-working my resume. To that end, I've
             created two versions. Download a{" "}
-            <a href="/SarahReed_resume_2025_05_25.pdf" download>
+            <a href="/SarahReed_Resume_2026-04-07.pdf" download>
               standard format
             </a>{" "}
             or, what I consider the more{" "}
@@ -66,6 +66,42 @@ export default function Resume() {
       <div className="resume">
         <h2>Experience</h2>
         <ul>
+          <li>
+            <strong>Program Officer</strong>
+            <em> Perls Foundation</em>
+            <ul>
+              <li>
+                Support a global health foundation's grantmaking work focused on
+                equitable access to medicines, serving as a relationship manager
+                for grantee partners.
+              </li>
+              <li>
+                Assess grantee needs, monitor program progress, and develop
+                recommendations to inform funding strategy.
+              </li>
+              <li>
+                Represent the foundation at industry conferences and convenings
+                to track developments in the global access-to-medicines
+                movement.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Data Analyst / Visualization Developer</strong>
+            <em> Freelance</em>
+            <ul>
+              <li>
+                Partner with mission-driven nonprofits and foundations to design
+                and build data visualizations that communicate program impact
+                clearly to diverse audiences.
+              </li>
+              <li>
+                Produce annual report data packages — including charts,
+                infographics, and narrative data summaries — for nonprofit
+                clients communicating outcomes to donors and stakeholders.
+              </li>
+            </ul>
+          </li>
           <li>
             <strong>Data Visualization Developer</strong>
             <em> Crow Insight</em>

@@ -135,6 +135,10 @@ span.close {
   }
 }
 
+.modal-text-spacer {
+  height: 1em;
+}
+
 .modal-description-image img {
   border: 1px solid black;
   @media (max-width: 700px) {

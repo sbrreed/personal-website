@@ -14,6 +14,30 @@ export async function loader({ params }) {
   return { workType };
 }
 
+// Turn markdown-style links, e.g. [here](/file.pdf), in modal text into anchors
+function renderTextWithLinks(text) {
+  const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  while ((match = linkPattern.exec(text)) !== null) {
+    parts.push(text.slice(lastIndex, match.index));
+    parts.push(
+      <a
+        key={`link_${match.index}`}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {match[1]}
+      </a>,
+    );
+    lastIndex = linkPattern.lastIndex;
+  }
+  parts.push(text.slice(lastIndex));
+  return parts;
+}
+
 function Work() {
   const { workType } = useLoaderData();
   const [searchParams] = useSearchParams();
@@ -43,10 +67,10 @@ function Work() {
 
   // Filter the data based on the type of project
   const professionalDataVizData = filteredWorkData.filter(
-    (item) => item.Type == "Professional"
+    (item) => item.Type == "Professional",
   );
   const personalDataVizData = filteredWorkData.filter(
-    (item) => item.Type == "Personal"
+    (item) => item.Type == "Personal",
   );
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -56,7 +80,7 @@ function Work() {
   useEffect(() => {
     if (project && filteredWorkData.length > 0) {
       const foundProject = filteredWorkData.find(
-        (item) => item.URL_Title === project
+        (item) => item.URL_Title === project,
       );
       setSelectedProject(foundProject || null);
       setModalIsOpen(!!foundProject);
@@ -232,17 +256,25 @@ function Work() {
                                       <span key={`tech_${index}`}>{item} </span>
                                     );
                                   }
-                                }
+                                },
                               )}
                             </p>
                           </div>
                         )}
                       </div>
                       <div className="modal-description">
-                        {selectedProject.ModalText.split("<br>").map(
-                          (item, index) => {
-                            return <p key={`modalText_${index}`}>{item}</p>;
-                          }
+                        {selectedProject.ModalText.split(/<br>|\r?\n/).map(
+                          (item, index) =>
+                            item.trim() === "" ? (
+                              <div
+                                key={`modalText_${index}`}
+                                className="modal-text-spacer"
+                              />
+                            ) : (
+                              <p key={`modalText_${index}`}>
+                                {renderTextWithLinks(item)}
+                              </p>
+                            ),
                         )}
 
                         <p className="roles-responsibilities">
@@ -250,11 +282,11 @@ function Work() {
                         </p>
                         <ul>
                           {selectedProject.RolesAndResponsibilities.split(
-                            ","
+                            ",",
                           ).map((item, index) => {
                             return index ==
                               selectedProject.RolesAndResponsibilities.split(
-                                ","
+                                ",",
                               ).length -
                                 1 ? (
                               <li key={`roles_${index}`}>{item}</li>
@@ -274,14 +306,14 @@ function Work() {
                     className="carousel-arrow left"
                     onClick={() => {
                       const currentIndex = filteredWorkData.findIndex(
-                        (item) => item.URL_Title === selectedProject.URL_Title
+                        (item) => item.URL_Title === selectedProject.URL_Title,
                       );
                       const prevIndex =
                         (currentIndex - 1 + filteredWorkData.length) %
                         filteredWorkData.length;
                       const prevItem = filteredWorkData[prevIndex];
                       navigate(
-                        `/work/${workType}/?project=${prevItem.URL_Title}`
+                        `/work/${workType}/?project=${prevItem.URL_Title}`,
                       );
                       setSelectedProject(prevItem);
                     }}
@@ -300,13 +332,13 @@ function Work() {
                     className="carousel-arrow right"
                     onClick={() => {
                       const currentIndex = filteredWorkData.findIndex(
-                        (item) => item.URL_Title === selectedProject.URL_Title
+                        (item) => item.URL_Title === selectedProject.URL_Title,
                       );
                       const nextIndex =
                         (currentIndex + 1) % filteredWorkData.length;
                       const nextItem = filteredWorkData[nextIndex];
                       navigate(
-                        `/work/${workType}/?project=${nextItem.URL_Title}`
+                        `/work/${workType}/?project=${nextItem.URL_Title}`,
                       );
                       setSelectedProject(nextItem);
                     }}

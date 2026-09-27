@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import LineChart from "../../../D3/LineChart";
 import getCompoundInterestData from "./getCompoundInterestData";
 import GrowingBubble from "../../../D3/GrowingBubble";
@@ -24,7 +25,7 @@ function CompoundInterestBalloon() {
       initial,
       contribution,
       numYearsToReport,
-      interestRate
+      interestRate,
     );
 
     if (age !== prevAge) {
@@ -66,7 +67,7 @@ function CompoundInterestBalloon() {
     const age = Number(document.getElementById("currentAge").value);
     const initial = Number(document.getElementById("initialInvestment").value);
     const contribution = Number(
-      document.getElementById("annualContribution").value
+      document.getElementById("annualContribution").value,
     );
 
     generateDataAndUpdateChart(age, initial, contribution);
@@ -77,7 +78,10 @@ function CompoundInterestBalloon() {
       <div className="multi-paragraph-section">
         <p>
           This project is the fun little sister to the more informative{" "}
-          <a href="">Compound Interest Calculator</a>.
+          <Link to="/work/DataViz/?project=CompoundInterest">
+            Compound Interest Calculator
+          </Link>
+          .
         </p>
         <p>
           Let's draw compound interest as a bubblegum balloon! (If you're
@@ -112,7 +116,7 @@ function CompoundInterestBalloon() {
               value={initialInvestment}
               onChange={(e) =>
                 setInitialInvestment(
-                  e.target.value === "" ? "" : Number(e.target.value)
+                  e.target.value === "" ? "" : Number(e.target.value),
                 )
               }
               required
@@ -128,7 +132,7 @@ function CompoundInterestBalloon() {
               value={annualContribution}
               onChange={(e) =>
                 setAnnualContribution(
-                  e.target.value === "" ? "" : Number(e.target.value)
+                  e.target.value === "" ? "" : Number(e.target.value),
                 )
               }
               required
