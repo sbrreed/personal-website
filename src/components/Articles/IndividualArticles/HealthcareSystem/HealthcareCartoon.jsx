@@ -49,7 +49,7 @@ function HealthcareCartoon() {
 
   const initialSlugIndex = sectionSlugs.indexOf(slug);
   const [activeSlugIndex, setActiveSlugIndex] = useState(
-    initialSlugIndex !== -1 ? initialSlugIndex : 0
+    initialSlugIndex !== -1 ? initialSlugIndex : 0,
   );
 
   // Ensure the project is set to "HealthcareCartoons" if not specified:
@@ -101,6 +101,24 @@ function HealthcareCartoon() {
           className={enlargedImage === "howArePremiumsSet" ? "enlarged" : ""}
           onClick={() => toggleImageSize("howArePremiumsSet")}
           alt="How Are Premiums Set"
+        />
+      </div>
+    </div>,
+    // "Healthcare systems around the world"
+    <div key="Healthcare systems around the world">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/healthcareSystemsAroundTheWorld/healthcareSystemsAroundTheWorld.png"
+          className={
+            enlargedImage === "healthcareSystemsAroundTheWorld"
+              ? "enlarged"
+              : ""
+          }
+          onClick={() => toggleImageSize("healthcareSystemsAroundTheWorld")}
+          alt="Cartoon comparing healthcare systems around the world."
         />
       </div>
     </div>,
@@ -162,21 +180,6 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-    // "Pharma Web"
-    <div key="Pharma Web">
-      {windowWidth > 1000 && (
-        <p>Click image to enlarge. Click again to shrink.</p>
-      )}
-      <img
-        src="/DataViz/Healthcare/circleOfMoney/circleOfMoney.png"
-        className={enlargedImage === "circleOfMoney" ? "enlarged" : ""}
-        onClick={() => toggleImageSize("circleOfMoney")}
-        alt="Cartoon discussing the way pharmaceutical spending is passed around a complex network of middlemen."
-      />
-      Source:{" "}
-      <i>Priced Out: The Economics and Ethical Costs of American Health Care</i>
-      , Uwe Reinhardt, 2017
-    </div>,
     // "Waiting to see the doctor."
     <div key="Waiting to see the doctor.">
       <div className="cartoon strip">
@@ -202,24 +205,6 @@ function HealthcareCartoon() {
           </a>
         </li>
       </ul>
-    </div>,
-    // "Healthcare systems around the world"
-    <div key="Healthcare systems around the world">
-      <div className="cartoon strip">
-        {windowWidth > 1000 && (
-          <p>Click image to enlarge. Click again to shrink.</p>
-        )}
-        <img
-          src="/DataViz/Healthcare/healthcareSystemsAroundTheWorld/healthcareSystemsAroundTheWorld.png"
-          className={
-            enlargedImage === "healthcareSystemsAroundTheWorld"
-              ? "enlarged"
-              : ""
-          }
-          onClick={() => toggleImageSize("healthcareSystemsAroundTheWorld")}
-          alt="Cartoon comparing healthcare systems around the world."
-        />
-      </div>
     </div>,
     // "BEST in the World!"
     <div key="BEST in the World!?">
@@ -269,42 +254,6 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
-    // "How total expenditures are distributed."
-    <div key="Who uses the most healthcare?">
-      <div className="cartoon strip">
-        {windowWidth > 1000 && (
-          <p>Click image to enlarge. Click again to shrink.</p>
-        )}
-        <img
-          src="/DataViz/Healthcare/pricesDistributed/healthExpendituresDistributed_originalChart.png"
-          className={
-            enlargedImage === "pricesDistributed_originalChart"
-              ? "enlarged"
-              : ""
-          }
-          onClick={() => toggleImageSize("pricesDistributed_originalChart")}
-          alt="Chart from Kaiser Family Foundation showing how total health expenditures are distributed throughout the population."
-        />
-        <a
-          href="https://www.kff.org/health-policy-101-health-care-costs-and-affordability/?entry=table-of-contents-how-does-health-care-spending-vary-across-the-population"
-          target="_blank"
-        >
-          {" "}
-          Source: KFF News
-        </a>
-        <br></br>
-        <br></br>
-        <br></br>
-        <img
-          src="/DataViz/Healthcare/pricesDistributed/healthExpendituresDistributed_updatedChart.png"
-          className={
-            enlargedImage === "pricesDistributed_updatedChart" ? "enlarged" : ""
-          }
-          onClick={() => toggleImageSize("pricesDistributed_updatedChart")}
-          alt="Remade chart showing icons of 100 people and 100 dollars and lines relating the number of people to number of dollars. Showing 1% of the population uses 24% of the health expenditures. 50% of the population uses just 3% of the health expenditures."
-        />
-      </div>
-    </div>,
     // "Low Value Medicine"
     <div key="Low Value Medicine">
       <div className="cartoon strip">
@@ -344,6 +293,57 @@ function HealthcareCartoon() {
         />
       </div>
     </div>,
+    // "Pharma Web"
+    <div key="Pharma Web">
+      {windowWidth > 1000 && (
+        <p>Click image to enlarge. Click again to shrink.</p>
+      )}
+      <img
+        src="/DataViz/Healthcare/circleOfMoney/circleOfMoney.png"
+        className={enlargedImage === "circleOfMoney" ? "enlarged" : ""}
+        onClick={() => toggleImageSize("circleOfMoney")}
+        alt="Cartoon discussing the way pharmaceutical spending is passed around a complex network of middlemen."
+      />
+      Source:{" "}
+      <i>Priced Out: The Economics and Ethical Costs of American Health Care</i>
+      , Uwe Reinhardt, 2017
+    </div>,
+    // "How total expenditures are distributed."
+    <div key="Who uses the most healthcare?">
+      <div className="cartoon strip">
+        {windowWidth > 1000 && (
+          <p>Click image to enlarge. Click again to shrink.</p>
+        )}
+        <img
+          src="/DataViz/Healthcare/pricesDistributed/healthExpendituresDistributed_originalChart.png"
+          className={
+            enlargedImage === "pricesDistributed_originalChart"
+              ? "enlarged"
+              : ""
+          }
+          onClick={() => toggleImageSize("pricesDistributed_originalChart")}
+          alt="Chart from Kaiser Family Foundation showing how total health expenditures are distributed throughout the population."
+        />
+        <a
+          href="https://www.kff.org/health-policy-101-health-care-costs-and-affordability/?entry=table-of-contents-how-does-health-care-spending-vary-across-the-population"
+          target="_blank"
+        >
+          {" "}
+          Source: KFF News
+        </a>
+        <br></br>
+        <br></br>
+        <br></br>
+        <img
+          src="/DataViz/Healthcare/pricesDistributed/healthExpendituresDistributed_updatedChart.png"
+          className={
+            enlargedImage === "pricesDistributed_updatedChart" ? "enlarged" : ""
+          }
+          onClick={() => toggleImageSize("pricesDistributed_updatedChart")}
+          alt="Remade chart showing icons of 100 people and 100 dollars and lines relating the number of people to number of dollars. Showing 1% of the population uses 24% of the health expenditures. 50% of the population uses just 3% of the health expenditures."
+        />
+      </div>
+    </div>,
   ];
 
   return (
@@ -357,7 +357,7 @@ function HealthcareCartoon() {
             title={sectionContent.key}
             onPrev={() =>
               goToIndex(
-                (activeSlugIndex - 1 + sections.length) % sections.length
+                (activeSlugIndex - 1 + sections.length) % sections.length,
               )
             }
             onNext={() => goToIndex((activeSlugIndex + 1) % sections.length)}
